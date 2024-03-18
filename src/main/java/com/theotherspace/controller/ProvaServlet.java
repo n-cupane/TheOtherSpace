@@ -7,6 +7,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.List;
 
 import com.theotherspace.model.User;
 import com.theotherspace.utilities.BusinessLogic;
@@ -30,13 +32,11 @@ public class ProvaServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		try {
-			User user = BusinessLogic.findUserById(1);
-			System.out.println("Ciao " + user.getFirstName() + " " + user.getLastName());
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		User user = new User();
+		user = BusinessLogic.findUserByEmail("p.baudo@rai.it");
+		System.out.println(user);
+		
+		
 	}
 
 	/**

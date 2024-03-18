@@ -1,6 +1,7 @@
 package com.theotherspace.model;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class User {
 	
@@ -72,9 +73,21 @@ public class User {
 	public LocalDate getDateOfBirth() {
 		return dateOfBirth;
 	}
+	
+	public String getDateOfBirthInSqlQueryFormat() {
+//		metodo da usare per ottenere la data di nascita in formato per query sql
+		return dateOfBirth.format(DateTimeFormatter.
+				ofPattern("yyyy-MM-dd"));
+	}
 
 	public void setDateOfBirth(LocalDate dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
+	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", username=" + username + ", firstName=" + firstName + ", lastName=" + lastName
+				+ ", email=" + email + ", password=" + password + ", dateOfBirth=" + dateOfBirth + "]";
 	}
 	
 	

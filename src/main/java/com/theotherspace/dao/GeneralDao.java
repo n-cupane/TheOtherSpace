@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface GeneralDao<T> {
 
-	public abstract T findById(long id) throws SQLException;
+	public abstract T findById(long id);
 	List<T> findAll();
 	void update(T t);
 	void delete(long id);
