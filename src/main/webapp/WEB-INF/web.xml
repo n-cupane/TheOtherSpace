@@ -9,4 +9,14 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>ProvaServlet</display-name>
+    <servlet-name>ProvaServlet</servlet-name>
+    <servlet-class>com.theotherspace.controller.ProvaServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProvaServlet</servlet-name>
+    <url-pattern>/ProvaServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
