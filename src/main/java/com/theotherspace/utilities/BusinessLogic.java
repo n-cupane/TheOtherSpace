@@ -10,7 +10,7 @@ import com.theotherspace.model.User;
 public class BusinessLogic {
 	
 //	ATTENZIONE: Tutti i metodi seguenti restituiscono null se la query dà result set vuoto
-//	Quindi ogni volta che si usa uno di questi metodi effettuare gli opportuni controlli
+//	quindi ogni volta che si usa uno di questi metodi effettuare gli opportuni controlli
 //	prima di utilizzare il valore ritornato per evitare NullPointerException
 	
 	
