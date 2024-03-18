@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 import com.theotherspace.dao.DaoFactory;
+import com.theotherspace.dao.TicketDao;
 import com.theotherspace.dao.UserDao;
 
 public class JDBCDaoFactory extends DaoFactory {
@@ -27,5 +28,12 @@ public class JDBCDaoFactory extends DaoFactory {
 	public UserDao getUserDao() {
 		return JDBCUserDao.getInstance();
 	}
+	
+	@Override
+	public TicketDao getTicketDao() {
+		return JDBCTicketDao.getInstance();
+	}
+
+	
 	
 }

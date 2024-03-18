@@ -56,7 +56,11 @@ public class Ticket {
 	public void setSeat(int seat) {
 		this.seat = seat;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "Ticket [id=" + id + ", userId=" + userId + ", screeningId=" + screeningId + ", price=" + price
+				+ ", seat=" + seat + "]";
+	}
 
 }

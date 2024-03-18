@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.theotherspace.dao.DaoFactory;
+import com.theotherspace.model.Ticket;
 import com.theotherspace.model.User;
 
 public class BusinessLogic {
@@ -38,6 +39,46 @@ public class BusinessLogic {
 	
 	public static User findUserByEmail(String email) {
 		return DaoFactory.getDaoFactory().getUserDao().findUserByEmail(email);
+	}
+	
+	public static List<User> findAllUsersForScreening(long screeningId) {
+		return DaoFactory.getDaoFactory().getUserDao().findAllUsersForScreening(screeningId);
+	}
+	
+	
+	
+//	METODI TICKET
+	
+	public static Ticket findTicketById(long id) {
+		return DaoFactory.getDaoFactory().getTicketDao().findById(id);
+	}
+	
+	public static List<Ticket> findAllTickets() {
+		return DaoFactory.getDaoFactory().getTicketDao().findAll();
+	}
+	
+	public static void updateTicket(Ticket t) {
+		DaoFactory.getDaoFactory().getTicketDao().update(t);
+	}
+	
+	public static void deleteTicket(long id) {
+		DaoFactory.getDaoFactory().getTicketDao().delete(id);
+	}
+	
+	public static void addTicket(Ticket t) {
+		DaoFactory.getDaoFactory().getTicketDao().insert(t);
+	}
+	
+	public static List<Ticket> findAllTicketsOfUser(long userId) {
+		return DaoFactory.getDaoFactory().getTicketDao().findAllTicketsOfUser(userId);
+	}
+	
+	public static List<Ticket> findAllTicketsForScreening(long screeningId) {
+		return DaoFactory.getDaoFactory().getTicketDao().findAllTicketsForScreening(screeningId);
+	}
+	
+	public static List<Ticket> findAllTicketsForMovie(long movieId) {
+		return DaoFactory.getDaoFactory().getTicketDao().findAllTicketsForMovie(movieId);
 	}
 
 }

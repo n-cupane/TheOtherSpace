@@ -8,4 +8,8 @@ public interface TicketDao extends GeneralDao<Ticket> {
 
 	abstract public List<Ticket> findAllTicketsOfUser(long userId);
 	
+	abstract public List<Ticket> findAllTicketsForScreening(long screeningId);
+	
+	abstract public List<Ticket> findAllTicketsForMovie(long movieId);
+	
 }

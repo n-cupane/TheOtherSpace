@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.theotherspace.model.Ticket;
 import com.theotherspace.model.User;
 import com.theotherspace.utilities.BusinessLogic;
 
@@ -32,10 +33,11 @@ public class ProvaServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		User user = new User();
-		user = BusinessLogic.findUserByEmail("p.baudo@rai.it");
-		System.out.println(user);
+		List<User> ticketsOf4 = BusinessLogic.findAllUsersForScreening(1);
 		
+		for (User ticket: ticketsOf4) {
+			System.out.println(ticket);
+		}
 		
 	}
 

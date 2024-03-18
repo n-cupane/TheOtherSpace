@@ -17,7 +17,13 @@ public abstract class DaoFactory {
 //	Aggiungere getter astratti dei Dao specifici
 
 	public abstract UserDao getUserDao();
-
+	public abstract TicketDao getTicketDao();
+//	public abstract TheaterDao getTheaterDao();
+//	public abstract ScreeningDao getScreeningDao();
+//	public abstract ReviewDao getReviewDao();
+//	public abstract MovieDao getMovieDao();
+//	public abstract GenreDao getGenreDao();
+//	public abstract FavoriteDao getFavoriteDao();
 	
 
 }

@@ -212,4 +212,49 @@ public class JDBCUserDao implements UserDao {
 		}
 	}
 
+	@Override
+	public List<User> findAllUsersForScreening(long screeningId) {
+		
+		List<User> usersToReturn = new ArrayList<>();
+		
+		try (Connection c = JDBCDaoFactory.getConnection()) {
+			
+			PreparedStatement ps = c.prepareStatement("select * from user "
+					+ "join ticket on user.id = user_id "
+					+ "join showing on showing_id = showing.id "
+					+ "where showing.id = ?");
+			ps.setLong(1, screeningId);
+			ResultSet rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				User u = new User();
+				
+				long userId = rs.getLong("id");
+				String username = rs.getString("username");
+				String firstName = rs.getString("name");
+				String lastName = rs.getString("surname");
+				String email = rs.getString("email");
+				String password = rs.getString("password");
+				LocalDate dob = rs.getDate("dob").toLocalDate(); 
+				
+				u.setId(userId);
+				u.setUsername(username);
+				u.setFirstName(firstName);
+				u.setLastName(lastName);
+				u.setEmail(email);
+				u.setPassword(password);
+				u.setDateOfBirth(dob);
+				
+				usersToReturn.add(u);
+			}
+			
+			return (usersToReturn.size()>0) ? usersToReturn : null;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		
+	}
+
 }
