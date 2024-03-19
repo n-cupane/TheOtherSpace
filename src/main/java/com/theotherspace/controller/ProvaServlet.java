@@ -33,11 +33,7 @@ public class ProvaServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		List<User> ticketsOf4 = BusinessLogic.findAllUsersForScreening(1);
 		
-		for (User ticket: ticketsOf4) {
-			System.out.println(ticket);
-		}
 		
 	}
 

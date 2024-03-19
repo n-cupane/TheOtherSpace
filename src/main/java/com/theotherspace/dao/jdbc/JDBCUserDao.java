@@ -55,6 +55,7 @@ public class JDBCUserDao implements UserDao {
 				u.setDateOfBirth(dob);
 				
 				return u;
+				
 			} else {
 				return null;
 			}
@@ -87,7 +88,7 @@ public class JDBCUserDao implements UserDao {
 				String lastName = rs.getString("surname");
 				String email = rs.getString("email");
 				String password = rs.getString("password");
-				LocalDate dob = rs.getDate("dob").toLocalDate(); 
+				LocalDate dob = rs.getDate("dob").toLocalDate();
 				
 				u.setId(userId);
 				u.setUsername(username);

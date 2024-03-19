@@ -73,12 +73,6 @@ public class User {
 	public LocalDate getDateOfBirth() {
 		return dateOfBirth;
 	}
-	
-	public String getDateOfBirthInSqlQueryFormat() {
-//		metodo da usare per ottenere la data di nascita in formato per query sql
-		return dateOfBirth.format(DateTimeFormatter.
-				ofPattern("yyyy-MM-dd"));
-	}
 
 	public void setDateOfBirth(LocalDate dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
