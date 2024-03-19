@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 import com.theotherspace.dao.DaoFactory;
+import com.theotherspace.dao.FavoriteDao;
 import com.theotherspace.dao.GenreDao;
 import com.theotherspace.dao.MovieDao;
 import com.theotherspace.dao.TicketDao;
@@ -44,6 +45,11 @@ public class JDBCDaoFactory extends DaoFactory {
 	@Override
 	public GenreDao getGenreDao() {
 		return JDBCGenreDao.getInstance();
+	}
+
+	@Override
+	public FavoriteDao getFavoriteDao() {
+		return JDBCFavoriteDao.getInstance();
 	}
 	
 }
