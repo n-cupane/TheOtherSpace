@@ -6,6 +6,8 @@ import java.sql.SQLException;
 
 import com.theotherspace.dao.DaoFactory;
 import com.theotherspace.dao.MovieDao;
+import com.theotherspace.dao.ReviewDao;
+import com.theotherspace.dao.ScreeningDao;
 import com.theotherspace.dao.TicketDao;
 import com.theotherspace.dao.UserDao;
 
@@ -38,6 +40,18 @@ public class JDBCDaoFactory extends DaoFactory {
 	@Override
 	public MovieDao getMovieDao() {
 		return JDBCMovieDao.getInstance();
+	}
+	
+	//Aggiunto override al metodo getReviewDao
+	@Override
+	public ReviewDao getReviewDao() {
+		return null;
+	}
+
+	@Override
+	public ScreeningDao getScreeningDao() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	
