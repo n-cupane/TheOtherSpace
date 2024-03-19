@@ -32,7 +32,7 @@ public class ProvaServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		//Commento aggiunto per test git
 		
 		
 	}
