@@ -22,8 +22,8 @@ public abstract class DaoFactory {
 //	public abstract ScreeningDao getScreeningDao();
 //	public abstract ReviewDao getReviewDao();
 	public abstract MovieDao getMovieDao();
-//	public abstract GenreDao getGenreDao();
-//	public abstract FavoriteDao getFavoriteDao();
+	public abstract GenreDao getGenreDao();
+	public abstract FavoriteDao getFavoriteDao();
 	
 
 }
