@@ -18,7 +18,7 @@ public abstract class DaoFactory {
 
 	public abstract UserDao getUserDao();
 	public abstract TicketDao getTicketDao();
-//	public abstract TheaterDao getTheaterDao();
+	public abstract TheaterDao getTheaterDao();
     public abstract ScreeningDao getScreeningDao();
 	public abstract ReviewDao getReviewDao();
 	public abstract MovieDao getMovieDao();

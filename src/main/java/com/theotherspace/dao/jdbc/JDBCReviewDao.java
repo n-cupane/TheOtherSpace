@@ -83,7 +83,7 @@ public class JDBCReviewDao implements ReviewDao{
 		{
 			Statement s = c.createStatement();
 			
-			String query = "selct * from review";
+			String query = "select * from review";
 			
 			ResultSet rs = s.executeQuery(query);
 			
@@ -125,6 +125,7 @@ public class JDBCReviewDao implements ReviewDao{
 	        ps.setLong(3, rv.getId());
 	        
 	        ps.executeUpdate();
+	        
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	    }
@@ -136,6 +137,7 @@ public class JDBCReviewDao implements ReviewDao{
 		try (Connection c = JDBCDaoFactory.getConnection()) {
 			
 			PreparedStatement ps = c.prepareStatement("delete from review where id = ?");
+			
 			ps.setLong(1, id);
 			
 			ps.executeUpdate();
@@ -163,7 +165,7 @@ public class JDBCReviewDao implements ReviewDao{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+	
 	}
 	
 	
