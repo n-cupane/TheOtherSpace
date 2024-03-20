@@ -21,6 +21,13 @@
   </servlet-mapping>
   <servlet>
     <description></description>
+    <display-name>SignUpServlet</display-name>
+    <servlet-name>SignUpServlet</servlet-name>
+    <servlet-class>com.theotherspace.controller.SignUpServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SignUpServlet</servlet-name>
+    <url-pattern>/SignUpServlet</url-pattern>
     <display-name>LogInServlet</display-name>
     <servlet-name>LogInServlet</servlet-name>
     <servlet-class>com.theotherspace.controller.LogInServlet</servlet-class>
