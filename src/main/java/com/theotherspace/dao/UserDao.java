@@ -10,5 +10,7 @@ public interface UserDao extends GeneralDao<User> {
 	abstract public User findUserByEmail(String email);
 	
 	abstract public List<User> findAllUsersForScreening(long screeningId);
+	
+	abstract public User findUserByUsername(String username);
 
 }

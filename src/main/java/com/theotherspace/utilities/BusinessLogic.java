@@ -51,6 +51,10 @@ public class BusinessLogic {
 		return DaoFactory.getDaoFactory().getUserDao().findAllUsersForScreening(screeningId);
 	}
 	
+	public static User findUserByUsername(String username) {
+		return DaoFactory.getDaoFactory().getUserDao().findUserByUsername(username);
+	}
+	
 	
 	
 //	METODI TICKET
