@@ -45,17 +45,17 @@ public class JDBCDaoFactory extends DaoFactory {
 	
 	@Override
 	public ReviewDao getReviewDao() {
-		return null;
+		return JDBCReviewDao.getInstance();
 	}
 
 	@Override
 	public ScreeningDao getScreeningDao() {
-		return null;
+		return JDBCScreeningDao.getInstance();
 	}
 
 	@Override
 	public TheaterDao getTheaterDao() {
-		return null;
+		return JDBCTheaterDao.getInstance();
 	}
 
 	
