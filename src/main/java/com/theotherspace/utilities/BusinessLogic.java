@@ -4,6 +4,9 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.theotherspace.dao.DaoFactory;
+import com.theotherspace.model.Review;
+import com.theotherspace.model.Screening;
+import com.theotherspace.model.Theater;
 import com.theotherspace.model.Favorite;
 import com.theotherspace.model.Genre;
 import com.theotherspace.model.Movie;
@@ -83,6 +86,75 @@ public class BusinessLogic {
 	public static List<Ticket> findAllTicketsForMovie(long movieId) {
 		return DaoFactory.getDaoFactory().getTicketDao().findAllTicketsForMovie(movieId);
 	}
+	
+// 	METODI REVIEW
+	
+	public static Review findReviewById(long id) {
+		return DaoFactory.getDaoFactory().getReviewDao().findById(id);
+	}
+	
+	public static List<Review> findAllReviews() {
+		return DaoFactory.getDaoFactory().getReviewDao().findAll();
+	}
+	
+	public static void updateReview(Review rw) {
+		DaoFactory.getDaoFactory().getReviewDao().update(rw);
+	}
+	
+	public static void deleteReview(long id) {
+		DaoFactory.getDaoFactory().getReviewDao().delete(id);
+	}
+	
+	public static void addReview(Review rw) {
+		DaoFactory.getDaoFactory().getReviewDao().insert(rw);
+	}
+	
+// METODI THEATER
+	
+	public static Theater findTheaterById(long id) {
+		return DaoFactory.getDaoFactory().getTheaterDao().findById(id);
+	}
+	
+	public static List<Theater> findAllTheaters() {
+		return DaoFactory.getDaoFactory().getTheaterDao().findAll();
+	}
+	
+	public static void updateTheater(Theater tr) {
+		DaoFactory.getDaoFactory().getTheaterDao().update(tr);
+	}
+	
+	public static void deleteTheater(long id) {
+		DaoFactory.getDaoFactory().getTheaterDao().delete(id);
+	}
+	
+	public static void addTheater(Theater tr) {
+		DaoFactory.getDaoFactory().getTheaterDao().insert(tr);
+	}
+	
+// METODI SCREENING
+	
+	public static Screening findScreeningById(long id) {
+		return DaoFactory.getDaoFactory().getScreeningDao().findById(id);
+	}
+	
+	public static List<Screening> findAllScreenings() {
+		return DaoFactory.getDaoFactory().getScreeningDao().findAll();
+	}
+	
+	public static void updateScreening(Screening sc) {
+		DaoFactory.getDaoFactory().getScreeningDao().update(sc);
+	}
+	
+	public static void deleteScreening(long id) {
+		DaoFactory.getDaoFactory().getScreeningDao().delete(id);
+	}
+	
+	public static void addScreening(Screening sc) {
+		DaoFactory.getDaoFactory().getScreeningDao().insert(sc);
+	}
+	
+	
+	
 
 	
 	
