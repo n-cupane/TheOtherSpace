@@ -19,4 +19,14 @@
     <servlet-name>ProvaServlet</servlet-name>
     <url-pattern>/ProvaServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>HomePageServlet</display-name>
+    <servlet-name>HomePageServlet</servlet-name>
+    <servlet-class>com.theotherspace.controller.HomePageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HomePageServlet</servlet-name>
+    <url-pattern>/HomePageServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
