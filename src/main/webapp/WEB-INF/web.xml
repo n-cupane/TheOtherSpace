@@ -19,4 +19,14 @@
     <servlet-name>ProvaServlet</servlet-name>
     <url-pattern>/ProvaServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LogInServlet</display-name>
+    <servlet-name>LogInServlet</servlet-name>
+    <servlet-class>com.theotherspace.controller.LogInServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LogInServlet</servlet-name>
+    <url-pattern>/LogInServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
