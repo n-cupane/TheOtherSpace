@@ -20,12 +20,11 @@ public class HomePageServlet extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-    
-    
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         boolean isLoggedIn = (request.getSession().getAttribute("loggedInUser") != null);
         request.setAttribute("isLoggedIn",isLoggedIn);
@@ -39,6 +38,7 @@ public class HomePageServlet extends HttpServlet {
         // Reindirizza alla pagina JSP
         request.getRequestDispatcher("html/HomePage.jsp").forward(request, response);
     }
+
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

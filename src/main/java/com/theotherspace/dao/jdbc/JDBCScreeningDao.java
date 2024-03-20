@@ -159,6 +159,47 @@ private static JDBCScreeningDao instance;
 	    }
 	}
 
+	@Override
+	public List<Screening> findAllScreeningsByMovieId(long movieId) {
+
+		List<Screening> screeningToReturn = new ArrayList<>();
+		
+		try (Connection c = JDBCDaoFactory.getConnection()) {
+			
+			PreparedStatement ps = c.prepareStatement("select * from showing where movie_id = ?");
+			ps.setLong(1, movieId);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next())
+			{
+				Screening sc = new Screening();
+				
+				Long screeningId = rs.getLong("id");
+				Long theaterId = rs.getLong("room_id");
+				Long movie_Id = rs.getLong("movie_id");
+				LocalDate date = rs.getDate("date_time").toLocalDate();
+				LocalTime time = rs.getTime("date_time").toLocalTime();
+				
+				LocalDateTime dateTime = date.atTime(time);
+				
+			
+				sc.setId(screeningId);
+				sc.setTheaterId(theaterId);
+				sc.setMovieId(movie_Id);
+				sc.setDateTime(dateTime);
+				
+				screeningToReturn.add(sc);
+			}
+			
+			return (screeningToReturn.size()>0) ? screeningToReturn : null;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
 	
 
 }

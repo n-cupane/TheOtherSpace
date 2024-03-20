@@ -157,7 +157,9 @@ public class BusinessLogic {
 		DaoFactory.getDaoFactory().getScreeningDao().insert(sc);
 	}
 	
-	
+	public static List<Screening> findAllScreningsByMovieId(long movieId) {
+		return DaoFactory.getDaoFactory().getScreeningDao().findAllScreeningsByMovieId(movieId);
+	}
 	
 
 	

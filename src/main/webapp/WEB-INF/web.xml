@@ -58,4 +58,13 @@
     <servlet-name>LogoutServlet</servlet-name>
     <url-pattern>/LogoutServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <display-name>MovieDetailsServlet</display-name>
+    <servlet-name>MovieDetailsServlet</servlet-name>
+    <servlet-class>com.theotherspace.controller.MovieDetailsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MovieDetailsServlet</servlet-name>
+    <url-pattern>/MovieDetailsServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

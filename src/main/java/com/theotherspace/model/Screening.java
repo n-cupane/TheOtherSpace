@@ -1,6 +1,7 @@
 package com.theotherspace.model;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Screening {
 	
@@ -49,6 +50,10 @@ public class Screening {
 		this.dateTime = dateTime;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return dateTime.format(DateTimeFormatter
+				.ofPattern("dd.MM HH:mm"));
+	}
 
 }
