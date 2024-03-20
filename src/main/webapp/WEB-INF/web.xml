@@ -35,5 +35,12 @@
   <servlet-mapping>
     <servlet-name>LogInServlet</servlet-name>
     <url-pattern>/LogInServlet</url-pattern>
+    <display-name>HomePageServlet</display-name>
+    <servlet-name>HomePageServlet</servlet-name>
+    <servlet-class>com.theotherspace.controller.HomePageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HomePageServlet</servlet-name>
+    <url-pattern>/HomePageServlet</url-pattern>
   </servlet-mapping>
 </web-app>
