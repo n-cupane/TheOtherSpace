@@ -10,7 +10,7 @@
     </head>
     <body>
         <div class="container_total">
-            <div class="container_signin">
+            <div class="container_signup">
                 <h2 id="title">SIGN UP</h2>
                 <form action="http://localhost:8080/TheOtherSpace/SignUpServlet" method="POST">
                     <div class="container_input">

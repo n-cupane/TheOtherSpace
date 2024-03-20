@@ -1,3 +1,7 @@
+<%@ page import="java.util.List" %>
+<%@ page import="com.theotherspace.model.Movie" %>
+<%@ page import="com.theotherspace.utilities.BusinessLogic" %>
+<%@ page import="java.lang.Boolean" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -36,13 +40,24 @@
                     
                     <button id="btn" class="btn btn-secondary dropdown-toggle d-flex justify-content-evenly align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                       <span id="person-img" class="material-icons">&#xe7fd;</span>
-                      <p>LOG IN</p>
+                      <% if((Boolean)request.getAttribute("isLoggedIn")){ %>
+                      	<p><%= session.getAttribute("loggedInUser") %></p>
+                   	 <% }else{ %>
+                   	 	<p>Login</p>
+                     <% } %>
+                     
+                      
                     </button>
                     <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">(Username)</a></li>
-                      <li><a class="dropdown-item" href="#">Signin</a></li>
-                      <li><a class="dropdown-item" href="#">Login</a></li>
-                      <li><a class="dropdown-item" href="#">Logout</a></li>
+                    <% if((Boolean)request.getAttribute("isLoggedIn")){ %>
+                    <!-- Se l'utente è loggato, mostra solo l'username e l'opzione Logout -->
+                      <li><a class="dropdown-item" href="#"><%= session.getAttribute("loggedInUser") %></a></li>
+                      <li><a class="dropdown-item" href="/TheOtherSpace/LogoutServlet">Logout</a></li>
+                    <% }else{ %>
+                     <!-- Se l'utente non è loggato, mostra le opzioni Signin e Login -->
+                      <li><a class="dropdown-item" href="/TheOtherSpace/SignUpServlet">Registrati</a></li>
+                      <li><a class="dropdown-item" href="/TheOtherSpace/LogInServlet">Login</a></li>
+                     <% } %>
                     </ul>
 
                 </div>
@@ -82,12 +97,20 @@
         </div>
         
         <h1 id="text_all_movies">ALL MOVIES</h1>
+        
         <div class="container_movies">
-        	<div class="container_poster">
-        		<div class="poster_movie"></div>
-        		<p id="title_movie"></p>
-        	</div>
-        </div>
+	            <% 
+	                // Recupero dei film dal database
+	                List<Movie> movies = BusinessLogic.findAllMovies();
+	                for (Movie movie : movies) {
+	            %>
+	            <div class="container_poster">
+	                <div class="poster_movie">
+		                </div>
+		                 <p id="title_movie"><%= movie.getTitle() %></p>
+	                 </div>
+	            <% } %>
+    	</div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
