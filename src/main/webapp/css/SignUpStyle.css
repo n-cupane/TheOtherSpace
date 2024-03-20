@@ -1,0 +1,76 @@
+body{
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    background-image:url(https://4kwallpapers.com/images/wallpapers/dune-2-8k-2024-6016x3384-15019.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+#title{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 30px;
+    margin-bottom: 20px;
+    color: black;
+}
+
+.container_total{
+    width: 100%;
+    height: 30%;
+    padding-top: 7%;
+}
+
+
+
+.container_signin{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form{
+    width: 20%;
+    border: 2px solid orange;
+    border-radius: 10%;
+    padding: 70px;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+input{
+    background-color: rgba(0, 0, 0, 0.918);
+    color: rgba(255, 255, 255, 0.63);
+    padding-right: 10px;
+    padding-left: 10px;
+    width: 100%;
+    height: 4vh;
+    border: 1px solid black;
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-size: 17px;
+}
+
+::placeholder{
+    color: rgba(255, 255, 255, 0.63);
+}
+
+.container_button{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#button_signin {
+    width: 40%;
+    height: 5vh;
+    display: block;
+    margin-top: 10px;
+    border: 1px solid black;
+    border-radius: 15px;
+    background-color: orange;
+    font-size: 17px;
+}
+
+#error-msg {
+	color: white;
+}
