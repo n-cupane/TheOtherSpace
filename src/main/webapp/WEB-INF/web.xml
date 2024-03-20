@@ -48,4 +48,14 @@
     <servlet-name>HomePageServlet</servlet-name>
     <url-pattern>/HomePageServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MovieDetailsServlet</display-name>
+    <servlet-name>MovieDetailsServlet</servlet-name>
+    <servlet-class>com.theotherspace.controller.MovieDetailsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MovieDetailsServlet</servlet-name>
+    <url-pattern>/MovieDetailsServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

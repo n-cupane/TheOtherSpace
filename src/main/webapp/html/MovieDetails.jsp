@@ -1,3 +1,5 @@
+<%@page import="com.theotherspace.model.Screening"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -52,6 +54,13 @@
 
                 
         <div id="movie-container">
+        <%
+        String movieTitle = (String) request.getAttribute("movieTitle");
+        boolean over18 = (boolean) request.getAttribute("over18");
+        String movieDescription = (String) request.getAttribute("movieDescription");
+        String movieGenre = (String) request.getAttribute("movieGenre");
+        List<Screening> screeningsOfMovie = (List<Screening>) request.getAttribute("screeningsOfMovie");
+        %>
         
         <div id="left-movie-container">
         	<img id="movie-image" src=https://image.tmdb.org/t/p/w600_and_h900_bestv2/zozGfM5kO9qbx1XSvwDwrh6yTca.jpg>
@@ -60,18 +69,31 @@
         <div id="right-movie-container">
         
         	<form action="" method="post" id="movie-form">
-        	<h1 id="movie-title">DUNE - PARTE DUE</h1>
+        	<h1 id="movie-title"><%=movieTitle.toUpperCase() %></h1>
         	
         	<div id="below-title">
-        	<%// SE IL FILM È PER MAGGIORENNI APPARE L'ICONA %>
-        	<img id="over-18" src="<%=request.getContextPath()%>/res/number-18.png">
-        	<p id="movie-genre">Azione</p>
+        	<%
+        		if(over18) {
+        	%>
+        		<img id="over-18" src="<%=request.getContextPath()%>/res/number-18.png">
+        	<%
+        		}
+        	%>
+        	<p id="movie-genre"><%=movieGenre %></p>
         	</div>
         	 
-        	<p id="movie-description">Il mitico viaggio di Paul Atreides che si unisce a Chani e ai Fremen sul sentiero della vendetta contro i cospiratori che hanno distrutto la sua famiglia. Di fronte alla scelta tra l'amore della sua vita e il destino dell'universo conosciuto, Paul intraprende una missione per impedire un terribile futuro che solo lui è in grado di prevedere.</p>
+        	<p id="movie-description"><%=movieDescription %></p>
         	
-        	<select id="screening-select" required>
-        		<option>Giovedì 20:30</option>
+        	<select id="screening-select" name="movie-screening" required>
+        	<%
+        	if (screeningsOfMovie != null && screeningsOfMovie.size() > 0) {
+        		for (Screening screening: screeningsOfMovie) {
+        			%>
+        			<option value="<%=screening.getId() %>"><%=screening.toString() %></option>
+        			<%
+        		}
+        	}
+        	%>     	
         	</select>
         	
         	<input type="submit" id="submit-btn" value="SCEGLI IL TUO POSTO">
