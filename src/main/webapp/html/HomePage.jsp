@@ -26,11 +26,7 @@
             
             <nav class="col-3 d-flex align-items-center justify-content-evenly">
 
-                <a href="">PRENOTA</a>
-
-                <a href="">GENERI</a>
-
-                <a href="">FILM</a>
+                <a href="#container_movies">FILM</a>
 
             </nav>
 
@@ -98,7 +94,7 @@
         
         <h1 id="text_all_movies">ALL MOVIES</h1>
         
-        <div class="container_movies">
+        <div class="container_movies" id="container_movies">
 	            <% 
 	                // Recupero dei film dal database
 	                List<Movie> movies = BusinessLogic.findAllMovies();

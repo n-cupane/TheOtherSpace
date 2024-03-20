@@ -113,26 +113,30 @@ p {
 }
 
 #text_all_movies{
-	padding-left: 4vw;
+	width: 100%;
+	font-size: 35px;
+	padding-left: 12vw;
+	margin-left: 30px;
 	padding-top:4vw;
 }
 
 .container_movies{
-	padding-left: 4vw;
+	padding-left: 12vw;
 	padding-right: 4vw;
 	padding-top: 1vw;
 	width: 100vw;
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
-	justify-content: space-between;
+	justify-content: flex-start;
 }
 
 
 .container_poster{
 	width: 15%;
 	height: 40vh;
-	margin-bottom: 10px;
+	margin-bottom: 40px;
+	padding: 30px;
 }
 
 .poster_movie{
@@ -149,4 +153,5 @@ p {
 	justify-content: center;
 	text-align: center;
 	font-size: 20px;
+	padding-top: 5px;
 }
