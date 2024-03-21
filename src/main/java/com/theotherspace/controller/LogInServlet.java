@@ -34,7 +34,6 @@ public class LogInServlet extends HttpServlet {
      */
     public LogInServlet() {
         super();
-  
     }
 
 	/**
@@ -75,13 +74,13 @@ public class LogInServlet extends HttpServlet {
                 break;
             } 
         }
-       
         // Nel caso di avvenuto Login modifico i boolean di controllo e reindirizzo nella Home Servlet
         
         if (loginSuccess) {
         	logged=true;
         	wrongCredential = false;
-            response.sendRedirect("HomeServlet");   
+        	request.getSession().setAttribute("loggedInUser", username);
+            response.sendRedirect("HomePageServlet");   
         } else {   // Nel caso in cui le credenziali inserite non risultino corrette invio l'utente alla servlet di login con l'errore caricato 
         	wrongCredential = true; // modifica il boolean di controllo per far apparire il messaggio nella jsp
             response.sendRedirect("LogInServlet");

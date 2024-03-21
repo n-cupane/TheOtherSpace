@@ -67,6 +67,5 @@ public class Movie {
 		this.over18 = over18;
 	}
 	
-	
 
 }

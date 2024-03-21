@@ -1,7 +1,5 @@
-<%@ page import="java.util.List" %>
-<%@ page import="com.theotherspace.model.Movie" %>
-<%@ page import="com.theotherspace.utilities.BusinessLogic" %>
-<%@ page import="java.lang.Boolean" %>
+<%@page import="com.theotherspace.model.Screening"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -13,7 +11,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/HomePageStyle.css"/>
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/MovieDetailsStyle.css"/>
 </head>
 <body>
     <div id="container" class="container-fluid">
@@ -61,52 +59,63 @@
             </div>
         </header>
 
-        <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-            
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            </div>
-              
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <img src="<%=request.getContextPath()%>/res/img_dune.png" id="img_carousel" class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                  <img src="<%=request.getContextPath()%>/res/matinee_desktop.jpg" class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                  <img src="<%=request.getContextPath()%>/res/the space card 2023_hero_desktop_new.jpg" class="d-block w-100" alt="...">
-                </div>
-            </div>
-
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
-            </button>
-          
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
-            </button>
+                
+        <div id="movie-container">
+        <%
+        String movieTitle = (String) request.getAttribute("movieTitle");
+        boolean over18 = (boolean) request.getAttribute("over18");
+        String movieDescription = (String) request.getAttribute("movieDescription");
+        String movieGenre = (String) request.getAttribute("movieGenre");
+        List<Screening> screeningsOfMovie = (List<Screening>) request.getAttribute("screeningsOfMovie");
+        %>
+        
+        <div id="left-movie-container">
+        	<img id="movie-image" src=https://image.tmdb.org/t/p/w600_and_h900_bestv2/zozGfM5kO9qbx1XSvwDwrh6yTca.jpg>
         </div>
         
-        <h1 id="text_all_movies">ALL MOVIES</h1>
+        <div id="right-movie-container">
         
-        <div class="container_movies" id="container_movies">
-	            <% 
-	                // Recupero dei film dal database
-	                List<Movie> movies = BusinessLogic.findAllMovies();
-	                for (Movie movie : movies) {
-	            %>
-	            <a href="http://localhost:8080/TheOtherSpace/MovieDetailsServlet?movieId=<%=movie.getId() %>" class="container_poster">
-	                <div class="poster_movie">
-		            </div>
-		            <p id="title_movie"><%= movie.getTitle() %></p>
-	            </a>
-	            <% } %>
-    	</div>
+        	<form action="" method="post" id="movie-form">
+        	<h1 id="movie-title"><%=movieTitle.toUpperCase() %></h1>
+        	
+        	<div id="below-title">
+        	<%
+        		if(over18) {
+        	%>
+        		<img id="over-18" src="<%=request.getContextPath()%>/res/number-18.png">
+        	<%
+        		} else {
+        	%>
+           		<img id="over-18" src="<%=request.getContextPath()%>/res/eighteen.png">
+           	<%
+        		}
+        	%>
+        	<p id="movie-genre"><%=movieGenre %></p>
+        	</div>
+        	 
+        	<p id="movie-description"><%=movieDescription %></p>
+        	
+        	<select id="screening-select" name="movie-screening" required>
+        	<%
+        	if (screeningsOfMovie != null && screeningsOfMovie.size() > 0) {
+        		for (Screening screening: screeningsOfMovie) {
+        			%>
+        			<option value="<%=screening.getId() %>"><%=screening.toString() %></option>
+        			<%
+        		}
+        	}
+        	%>     	
+        	</select>
+        	
+        	<input type="submit" id="submit-btn" value="SCEGLI IL TUO POSTO">
+        	
+        	</form>
+        	
+        </div>
+         
+        </div>
+        
+        
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
