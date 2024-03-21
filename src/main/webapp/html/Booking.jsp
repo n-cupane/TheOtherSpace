@@ -28,6 +28,7 @@
                 <input type="hidden" name="price" value="<%= price %>">
     			<input type="hidden" name="screeningDateTimeVariable" value="<%= screeningDateTimeVariable %>">
     			<input type="hidden" name="showing_idVariable" value="<%= showing_idVariable %>">
+    			<input type="hidden" name="seatsVariable" value="<%= seatsVariable %>">
                 <button type="submit">Submit</button>
             </form>
         </div>
