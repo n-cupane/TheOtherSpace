@@ -7,10 +7,12 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.theotherspace.model.Screening;
 import com.theotherspace.model.Theater;
+import com.theotherspace.model.Ticket;
 import com.theotherspace.model.User;
 import com.theotherspace.utilities.BusinessLogic;
 
@@ -26,6 +28,7 @@ public class BookingServlet extends HttpServlet {
 	double price;
 	Long theaterVariableId;
 	static int seatsVariable;
+	List<Integer> ticketForScreaningBlocked = new ArrayList<>();
 	
 	
     /**
@@ -40,6 +43,7 @@ public class BookingServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		
 		int hour = screeningDateTimeVariable.getHour();
 
         if (hour < 12) {
@@ -47,7 +51,7 @@ public class BookingServlet extends HttpServlet {
         } else {
         	price = 12.99;
         }
-        
+        request.setAttribute("ticketForScreaningBlocked", ticketForScreaningBlocked);
         request.setAttribute("username", LogInServlet.username);
 		request.setAttribute("seatsVariable", seatsVariable);
 		request.setAttribute("screeningDateTimeVariable", screeningDateTimeVariable);
@@ -76,6 +80,16 @@ public class BookingServlet extends HttpServlet {
 		showing_idVariable = screeningReservation.getId();
 		Theater theaterVariable = BusinessLogic.findTheaterById(theaterVariableId);
 		seatsVariable = theaterVariable.getSeats();
+
+		List<Ticket> ticketForScreaning = BusinessLogic.findAllTicketsForScreening(showing_idVariable);
+		for(Ticket ticket : ticketForScreaning) {
+			int seatBlocked = ticket.getSeat();
+			ticketForScreaningBlocked.add(seatBlocked);
+			
+		}
+		
+		
+		
 		response.sendRedirect("BookingServlet");
 		
 		

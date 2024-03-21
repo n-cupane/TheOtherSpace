@@ -1,3 +1,4 @@
+<%@page import="java.util.List"%>
 <%@page import="java.time.LocalDateTime"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -17,12 +18,13 @@
                 	double price = (double)request.getAttribute("price");
                 	LocalDateTime screeningDateTimeVariable = (LocalDateTime)request.getAttribute("screeningDateTimeVariable");
                 	Long showing_idVariable = (Long)request.getAttribute("showing_idVariable");
+                	List<Integer> ticketForScreaningBlocked = (List<Integer>)request.getAttribute("ticketForScreaningBlocked");
                 	
-                    for (int i = 1; i <= seatsVariable; i++) { 
+                    for (int i = 1; i <= seatsVariable; i++) {
+                        boolean isBlocked = ticketForScreaningBlocked.contains(i); // Verifica se il posto è bloccato
                 %>
                     <div class="seat">
-                        <input type="checkbox" id="seat<%= i %>" name="seat<%= i %>" value="<%= i %>">
-                        
+                        <input type="checkbox" id="seat<%= i %>" name="seat<%= i %>" value="<%= i %>" <%= isBlocked ? "disabled" : "" %>>
                     </div>
                 <% } %>
                 <input type="hidden" name="price" value="<%= price %>">
@@ -38,5 +40,3 @@
     </div>
 </body>
 </html>
-
-
