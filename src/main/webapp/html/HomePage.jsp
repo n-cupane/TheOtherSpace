@@ -100,11 +100,11 @@
 	                List<Movie> movies = BusinessLogic.findAllMovies();
 	                for (Movie movie : movies) {
 	            %>
-	            <div class="container_poster">
+	            <a href="http://localhost:8080/TheOtherSpace/MovieDetailsServlet?movieId=<%=movie.getId() %>" class="container_poster">
 	                <div class="poster_movie">
-		                </div>
-		                 <p id="title_movie"><%= movie.getTitle() %></p>
-	                 </div>
+		            </div>
+		            <p id="title_movie"><%= movie.getTitle() %></p>
+	            </a>
 	            <% } %>
     	</div>
     </div>

@@ -30,20 +30,31 @@ public class MovieDetailsServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//		Logica per mostrare contenuti diversi sulla toolbar superiore a seconda che l'utente sia loggato o meno
+		boolean isLoggedIn = (request.getSession().getAttribute("loggedInUser") != null);
+        request.setAttribute("isLoggedIn",isLoggedIn);
+        
+        if(isLoggedIn) {
+            // Se l'utente è loggato, mostro solo username e logout nel dropdown
+            String username = (String) request.getSession().getAttribute("loggedInUser");
+            request.setAttribute("username", username);
+        }
 		
 //		 Recupero l'id del film passato come parametro dalla home page e poi recupero il film stesso
-//		 int movieId = Integer.parseInt(request.getParameter("movieId"));
-		 Movie movieToDisplay = BusinessLogic.findMovieById(3); // SOSTITUISCI
+		 int movieId = Integer.parseInt(request.getParameter("movieId"));
+		 Movie movieToDisplay = BusinessLogic.findMovieById(movieId);
 		 
+		 if (movieToDisplay != null) {
 //		 Passo gli attributi da mostrare sulla jsp
 		 request.setAttribute("movieTitle", movieToDisplay.getTitle());
 		 request.setAttribute("over18", movieToDisplay.isOver18());
 		 request.setAttribute("movieDescription", movieToDisplay.getDescription());
 		 request.setAttribute("movieGenre", BusinessLogic.findGenreById(movieToDisplay.getGenreId()).getName() );
-		 List<Screening> screeningsOfMovie = BusinessLogic.findAllScreningsByMovieId(3); // SOSTITUISCI
+		 List<Screening> screeningsOfMovie = BusinessLogic.findAllScreningsByMovieId(movieId);
 		 request.setAttribute("screeningsOfMovie", screeningsOfMovie);
 		 
 		 request.getRequestDispatcher("html/MovieDetails.jsp").forward(request, response);
+		 }
 	}
 
 	/**

@@ -24,11 +24,7 @@
             
             <nav class="col-3 d-flex align-items-center justify-content-evenly">
 
-                <a href="">PRENOTA</a>
-
-                <a href="">GENERI</a>
-
-                <a href="">FILM</a>
+                <a href="#container_movies">FILM</a>
 
             </nav>
 
@@ -38,13 +34,24 @@
                     
                     <button id="btn" class="btn btn-secondary dropdown-toggle d-flex justify-content-evenly align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                       <span id="person-img" class="material-icons">&#xe7fd;</span>
-                      <p>LOG IN</p>
+                      <% if((Boolean)request.getAttribute("isLoggedIn")){ %>
+                      	<p><%= session.getAttribute("loggedInUser") %></p>
+                   	 <% }else{ %>
+                   	 	<p>Login</p>
+                     <% } %>
+                     
+                      
                     </button>
                     <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">(Username)</a></li>
-                      <li><a class="dropdown-item" href="#">Signin</a></li>
-                      <li><a class="dropdown-item" href="#">Login</a></li>
-                      <li><a class="dropdown-item" href="#">Logout</a></li>
+                    <% if((Boolean)request.getAttribute("isLoggedIn")){ %>
+                    <!-- Se l'utente è loggato, mostra solo l'username e l'opzione Logout -->
+                      <li><a class="dropdown-item" href="#"><%= session.getAttribute("loggedInUser") %></a></li>
+                      <li><a class="dropdown-item" href="/TheOtherSpace/LogoutServlet">Logout</a></li>
+                    <% }else{ %>
+                     <!-- Se l'utente non è loggato, mostra le opzioni Signin e Login -->
+                      <li><a class="dropdown-item" href="/TheOtherSpace/SignUpServlet">Registrati</a></li>
+                      <li><a class="dropdown-item" href="/TheOtherSpace/LogInServlet">Login</a></li>
+                     <% } %>
                     </ul>
 
                 </div>
@@ -77,6 +84,10 @@
         	%>
         		<img id="over-18" src="<%=request.getContextPath()%>/res/number-18.png">
         	<%
+        		} else {
+        	%>
+           		<img id="over-18" src="<%=request.getContextPath()%>/res/eighteen.png">
+           	<%
         		}
         	%>
         	<p id="movie-genre"><%=movieGenre %></p>
