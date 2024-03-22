@@ -40,6 +40,36 @@
   </servlet-mapping>
   <servlet>
     <description></description>
+    <display-name>BookingServlet</display-name>
+    <servlet-name>BookingServlet</servlet-name>
+    <servlet-class>com.theotherspace.controller.BookingServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BookingServlet</servlet-name>
+    <url-pattern>/BookingServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CheckOutServlet</display-name>
+    <servlet-name>CheckOutServlet</servlet-name>
+    <servlet-class>com.theotherspace.controller.CheckOutServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CheckOutServlet</servlet-name>
+    <url-pattern>/CheckOutServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ConfirmationServlet</display-name>
+    <servlet-name>ConfirmationServlet</servlet-name>
+    <servlet-class>com.theotherspace.controller.ConfirmationServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ConfirmationServlet</servlet-name>
+    <url-pattern>/ConfirmationServlet</url-pattern>
+  </servlet-mapping> 
+  <servlet>
+    <description></description>
     <display-name>HomePageServlet</display-name>
     <servlet-name>HomePageServlet</servlet-name>
     <servlet-class>com.theotherspace.controller.HomePageServlet</servlet-class>

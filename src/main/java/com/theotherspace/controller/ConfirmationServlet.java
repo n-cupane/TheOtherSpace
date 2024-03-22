@@ -6,29 +6,21 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.SQLException;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-import com.theotherspace.model.Review;
-import com.theotherspace.model.Screening;
-import com.theotherspace.model.Theater;
 import com.theotherspace.model.Ticket;
-import com.theotherspace.model.User;
 import com.theotherspace.utilities.BusinessLogic;
 
 /**
- * Servlet implementation class ProvaServlet
+ * Servlet implementation class ConfirmationServlet
  */
-public class ProvaServlet extends HttpServlet {
+public class ConfirmationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ProvaServlet() {
+    public ConfirmationServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,15 +29,19 @@ public class ProvaServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("html/Prova.jsp").forward(request, response);
+		
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+		// prelevo la lista con i ticket e li aggiungo al db
+		List<Ticket> blockedTicket = CheckOutServlet.blockedTicket;
+		for(Ticket userTicket : blockedTicket) {
+			BusinessLogic.addTicket(userTicket);
+		}
 	}
 
 }

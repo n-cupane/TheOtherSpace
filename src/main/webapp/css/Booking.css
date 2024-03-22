@@ -1,0 +1,32 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    background-color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.seats-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 30%;
+}
+
+.seat {
+    width: calc(100%/20); 
+    margin-bottom: 1%;
+}
+
+form{
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%
+}
+
+
+
+
