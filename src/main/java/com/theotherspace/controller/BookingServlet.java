@@ -78,7 +78,7 @@ public class BookingServlet extends HttpServlet {
 		User activeUser = BusinessLogic.findUserByUsername(LogInServlet.username);
 		
 		// Prelevo dalla Servlet di descrizione film l'id della proiezione selezionata
-		long screeningId =request.getParameter("movie-screening");
+		long screeningId = Long.parseLong(request.getParameter("movie-screening"));
 		// Prelevo i dati della prenotazione utilizzando la business logic
 		Screening screeningReservation = BusinessLogic.findScreeningById(screeningId);
 		

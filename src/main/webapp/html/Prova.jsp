@@ -8,7 +8,7 @@
 </head>
 <body>
 	<div>
-		<form action="BookingServlet" method="POST">
+		<form action="MyTicketServlet" method="POST">
 			<button type="submit">invia</button>
 		</form>
 	</div>

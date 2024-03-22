@@ -25,8 +25,10 @@ public class LogoutServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		
+		//imposto le variabili statiche del login ai valori di default
+				LogInServlet.username = null;
+				LogInServlet.logged = false;
 		
 		//Distruzione della sessione attuale per eseguire il logout
 		request.getSession().invalidate();

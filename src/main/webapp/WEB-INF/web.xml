@@ -67,7 +67,7 @@
   <servlet-mapping>
     <servlet-name>ConfirmationServlet</servlet-name>
     <url-pattern>/ConfirmationServlet</url-pattern>
-  </servlet-mapping> 
+  </servlet-mapping>
   <servlet>
     <description></description>
     <display-name>HomePageServlet</display-name>
@@ -96,5 +96,15 @@
   <servlet-mapping>
     <servlet-name>MovieDetailsServlet</servlet-name>
     <url-pattern>/MovieDetailsServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MyTicketServlet</display-name>
+    <servlet-name>MyTicketServlet</servlet-name>
+    <servlet-class>com.theotherspace.controller.MyTicketServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MyTicketServlet</servlet-name>
+    <url-pattern>/MyTicketServlet</url-pattern>
   </servlet-mapping>
 </web-app>

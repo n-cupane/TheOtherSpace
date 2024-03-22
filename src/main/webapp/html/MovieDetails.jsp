@@ -75,7 +75,7 @@
         
         <div id="right-movie-container">
         
-        	<form action="" method="post" id="movie-form">
+        	<form action="BookingServlet" method="post" id="movie-form">
         	<h1 id="movie-title"><%=movieTitle.toUpperCase() %></h1>
         	
         	<div id="below-title">
