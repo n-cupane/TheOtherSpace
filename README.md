@@ -7,9 +7,9 @@
 - [x]  Registrazione
 - [x]  Login
 - [x]  Visualizzazione spettacoli
-- [ ]  Acquisto biglietto
+- [x]  Acquisto biglietto
 - [ ]  Pagina informazioni personali con modifica
-- [ ]  Visualizzazione e gestione prenotazioni
+- [x]  Visualizzazione e gestione prenotazioni
 - [ ]  Recensione film
 - [ ]  Aggiunta film ai preferiti
 
