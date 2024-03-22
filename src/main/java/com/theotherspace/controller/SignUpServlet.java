@@ -61,16 +61,22 @@ public class SignUpServlet extends HttpServlet {
 		
 
 		if(newUserOk(u)) {
-//			Se i controlli sul nuovo utente ritornano true aggiungo l'utente al DB
-			BusinessLogic.addUser(u);
-			response.sendRedirect("http://localhost:8080/TheOtherSpace/HomePageServlet");
-			return;
+		    // Se i controlli sul nuovo utente ritornano true, aggiungi l'utente al DB
+		    BusinessLogic.addUser(u);
+		    
+		    // Imposta l'utente appena registrato come utente loggato nella sessione
+		    request.getSession().setAttribute("loggedInUser", username);
+		    
+		    // Dopo aver aggiunto l'utente e impostato la sessione, esegui la reindirizzazione alla home page
+		    response.sendRedirect("http://localhost:8080/TheOtherSpace/HomePageServlet");
+		    return;
 		}
 //		Se i controlli falliscono mostro il messaggio di errore
 		request.setAttribute("errorMsg", errorMsg);
 		request.getRequestDispatcher("html/SignUp.jsp").forward(request, response);
 		
 	}
+	
 	
 	public boolean newUserOk(User u) {
 //		Controlli per la creazione e l'aggiunta di un nuovo utente:

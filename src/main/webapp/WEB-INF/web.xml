@@ -30,7 +30,6 @@
     <url-pattern>/SignUpServlet</url-pattern>
   </servlet-mapping>
   <servlet>
-    <description></description>
     <display-name>LogInServlet</display-name>
     <servlet-name>LogInServlet</servlet-name>
     <servlet-class>com.theotherspace.controller.LogInServlet</servlet-class>
@@ -68,5 +67,34 @@
   <servlet-mapping>
     <servlet-name>ConfirmationServlet</servlet-name>
     <url-pattern>/ConfirmationServlet</url-pattern>
+  </servlet-mapping> 
+  <servlet>
+    <description></description>
+    <display-name>HomePageServlet</display-name>
+    <servlet-name>HomePageServlet</servlet-name>
+    <servlet-class>com.theotherspace.controller.HomePageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HomePageServlet</servlet-name>
+    <url-pattern>/HomePageServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LogoutServlet</display-name>
+    <servlet-name>LogoutServlet</servlet-name>
+    <servlet-class>com.theotherspace.controller.LogoutServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LogoutServlet</servlet-name>
+    <url-pattern>/LogoutServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <display-name>MovieDetailsServlet</display-name>
+    <servlet-name>MovieDetailsServlet</servlet-name>
+    <servlet-class>com.theotherspace.controller.MovieDetailsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MovieDetailsServlet</servlet-name>
+    <url-pattern>/MovieDetailsServlet</url-pattern>
   </servlet-mapping>
 </web-app>
