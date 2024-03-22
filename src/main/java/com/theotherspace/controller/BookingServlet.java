@@ -51,6 +51,8 @@ public class BookingServlet extends HttpServlet {
         } else {
         	price = 12.99;
         }
+        
+        
         request.setAttribute("ticketForScreaningBlocked", ticketForScreaningBlocked);
         request.setAttribute("username", LogInServlet.username);
 		request.setAttribute("seatsVariable", seatsVariable);
@@ -82,10 +84,13 @@ public class BookingServlet extends HttpServlet {
 		seatsVariable = theaterVariable.getSeats();
 
 		List<Ticket> ticketForScreaning = BusinessLogic.findAllTicketsForScreening(showing_idVariable);
-		for(Ticket ticket : ticketForScreaning) {
-			int seatBlocked = ticket.getSeat();
-			ticketForScreaningBlocked.add(seatBlocked);
-			
+		
+		if(ticketForScreaning!=null) {
+			for(Ticket ticket : ticketForScreaning) {
+				int seatBlocked = ticket.getSeat();
+				ticketForScreaningBlocked.add(seatBlocked);
+				
+			}
 		}
 		
 		
