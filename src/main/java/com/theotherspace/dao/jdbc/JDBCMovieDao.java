@@ -44,6 +44,7 @@ public class JDBCMovieDao implements MovieDao {
 				int duration = rs.getInt("duration");
 				String description = rs.getString("description");
 				boolean over18 = rs.getBoolean("for_adults");
+				String imageUrl = rs.getString("img_url");
 				
 				m.setId(movieId);
 				m.setGenreId(genreId);
@@ -51,6 +52,7 @@ public class JDBCMovieDao implements MovieDao {
 				m.setDuration(duration);
 				m.setDescription(description);
 				m.setOver18(over18);
+				m.setImageUrl(imageUrl);
 				
 				return m;
 				
@@ -87,6 +89,7 @@ public class JDBCMovieDao implements MovieDao {
 				int duration = rs.getInt("duration");
 				String description = rs.getString("description");
 				boolean over18 = rs.getBoolean("for_adults");
+				String imageUrl = rs.getString("img_url");
 				
 				m.setId(movieId);
 				m.setGenreId(genreId);
@@ -94,6 +97,7 @@ public class JDBCMovieDao implements MovieDao {
 				m.setDuration(duration);
 				m.setDescription(description);
 				m.setOver18(over18);
+				m.setImageUrl(imageUrl);
 				
 				moviesToReturn.add(m);				
 			}
@@ -115,7 +119,8 @@ public class JDBCMovieDao implements MovieDao {
 					+ "title = ?, "
 					+ "duration = ?, "
 					+ "description = ?, "
-					+ "for_adults = ? "
+					+ "for_adults = ?,"
+					+ "img_url = ? "
 					+ "where id = ?");
 			
 			ps.setLong(1, t.getGenreId());
@@ -123,7 +128,8 @@ public class JDBCMovieDao implements MovieDao {
 			ps.setInt(3, t.getDuration());
 			ps.setString(4, t.getDescription());
 			ps.setBoolean(5, t.isOver18());
-			ps.setLong(6, t.getId());
+			ps.setString(6, t.getImageUrl());
+			ps.setLong(7, t.getId());
 			
 			ps.executeUpdate();
 			
@@ -155,14 +161,15 @@ public class JDBCMovieDao implements MovieDao {
 		try (Connection c = JDBCDaoFactory.getConnection()) {
 			
 			PreparedStatement ps = c.prepareStatement("insert into movie("
-					+ "genre_id, title, duration, description, for_adults) "
-					+ "values (?, ?, ?, ?, ?)");
+					+ "genre_id, title, duration, description, for_adults, img_url) "
+					+ "values (?, ?, ?, ?, ?, ?)");
 			
 			ps.setLong(1, t.getGenreId());
 			ps.setString(2, t.getTitle());
 			ps.setInt(3, t.getDuration());
 			ps.setString(4, t.getDescription());
 			ps.setBoolean(5, t.isOver18());
+			ps.setString(6, t.getImageUrl());
 			
 			ps.executeUpdate();
 			
@@ -190,6 +197,7 @@ public class JDBCMovieDao implements MovieDao {
 				int duration = rs.getInt("duration");
 				String description = rs.getString("description");
 				boolean over18 = rs.getBoolean("for_adults");
+				String imageUrl = rs.getString("img_url");
 				
 				m.setId(movieId);
 				m.setGenreId(genreId);
@@ -197,6 +205,7 @@ public class JDBCMovieDao implements MovieDao {
 				m.setDuration(duration);
 				m.setDescription(description);
 				m.setOver18(over18);
+				m.setImageUrl(imageUrl);
 				
 				return m;
 			} else {
@@ -232,6 +241,7 @@ public class JDBCMovieDao implements MovieDao {
 				int duration = rs.getInt("duration");
 				String description = rs.getString("description");
 				boolean over18 = rs.getBoolean("for_adults");
+				String imageUrl = rs.getString("img_url");
 				
 				m.setId(movieId);
 				m.setGenreId(genreId);
@@ -239,6 +249,7 @@ public class JDBCMovieDao implements MovieDao {
 				m.setDuration(duration);
 				m.setDescription(description);
 				m.setOver18(over18);
+				m.setImageUrl(imageUrl);
 				
 				moviesToReturn.add(m);				
 			}

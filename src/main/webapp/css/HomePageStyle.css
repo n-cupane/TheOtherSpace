@@ -142,7 +142,7 @@ p {
 .poster_movie{
 	width: 100%;
 	height: 100%;
-	background-image: url("https://www.themoviedb.org/t/p/w600_and_h900_bestv2/zozGfM5kO9qbx1XSvwDwrh6yTca.jpg");
+	/* background-image: url("https://www.themoviedb.org/t/p/w600_and_h900_bestv2/zozGfM5kO9qbx1XSvwDwrh6yTca.jpg"); */
 	background-size: cover;
 	background-position: center;
 	
