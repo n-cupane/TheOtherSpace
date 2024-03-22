@@ -41,14 +41,16 @@ public class CheckOutServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	
-        
+        // Prelevo i dati dal form con valori hidden
         long screeningId = Long.parseLong(request.getParameter("showing_idVariable"));
+        // Associo i valori alle variabili di classe
         price = Double.parseDouble(request.getParameter("price"));
         String screeningDateTimeString = request.getParameter("screeningDateTimeVariable");
+        // Associo i valori alle variabili di classe
         screeningDateTimeVariable = LocalDateTime.parse(screeningDateTimeString);
-        
+        // Prelevo i posti nella sala dalla variabile statica di booking
         int seatsVariable = BookingServlet.seatsVariable;
-
+        // effettuo i controlli per aggiungere i posti checkkati in una lista seats
         for (int i = 1; i <= seatsVariable; i++) {
         	
             String paramName = "seat" + i;
@@ -60,14 +62,14 @@ public class CheckOutServlet extends HttpServlet {
                 seats.add(seatNumber);
             }
         }
-        
+        //Aggiungo i ticket prenotati su una lista di ticket
         for(int seat : seats) {
         	long i = 1;
         	blockedTicket.add(new Ticket(i,BusinessLogic.findUserByUsername(LogInServlet.username).getId(),screeningId,price,seat));
         	i++;
         	ticketNumber++;
         }
-        
+        // carico la pagina
         response.sendRedirect("CheckOutServlet");
         
         

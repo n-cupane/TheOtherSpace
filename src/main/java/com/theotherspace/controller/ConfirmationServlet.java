@@ -36,7 +36,8 @@ public class ConfirmationServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//List<Ticket> blockedTicket = (List<Ticket>)request.getAttribute("blockedTicket");
+		
+		// prelevo la lista con i ticket e li aggiungo al db
 		List<Ticket> blockedTicket = CheckOutServlet.blockedTicket;
 		for(Ticket userTicket : blockedTicket) {
 			BusinessLogic.addTicket(userTicket);
