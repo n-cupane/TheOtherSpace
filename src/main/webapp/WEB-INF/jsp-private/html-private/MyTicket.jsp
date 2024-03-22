@@ -1,3 +1,4 @@
+<%@page import="com.theotherspace.utilities.BusinessLogic"%>
 <%@page import="com.theotherspace.model.Screening"%>
 <%@page import="com.theotherspace.model.Ticket"%>
 <%@page import="java.util.List"%>
@@ -22,6 +23,7 @@
         		// Prelevo la lista delle proiezioni legate al ticket
                 List<Screening> screeningUser = (List<Screening>)request.getAttribute("screeningUser");
         		// Prelevo il nome e il cognome dell'utente
+        		// Prelevo il nome e il cognome dell'utente
                 String userFirstName = (String)request.getAttribute("userFirstName");
                 String userLastName = (String)request.getAttribute("userLastName");
         		// Prelevo l'id dell'utente
@@ -31,14 +33,14 @@
                 if(userTicket != null && screeningUser != null) {
                     for(int i = 0; i < userTicket.size(); i++) {
                         Ticket ticket = userTicket.get(i);
-                        Screening screening = screeningUser.get(i);
-                        if (screening != null && ticket != null) {
-                            LocalDateTime screeningDateTime = screening.getDateTime();
+                        Screening screeningTicket = BusinessLogic.findScreeningById(ticket.getScreeningId());
+                        if (screeningTicket != null && ticket != null) {
+                            LocalDateTime screeningDateTime = screeningTicket.getDateTime();
                             LocalDateTime currentDateTime = LocalDateTime.now();
                             if (screeningDateTime.isAfter(currentDateTime)) { // Proiezione non ancora avvenuta
             %>
             <div class="ticket">
-			    <form action="AltraServlet" method="POST"> <!-- Sostituisci "AltraServlet" con il nome della tua servlet di destinazione -->
+			    <form action="AltraServlet" method="POST"> 
 			        <label for="userFirstName">User First Name:</label>
 			        <input type="text" id="userFirstName" name="userFirstName" value="<%= userFirstName %>" readonly><br>
 			        
@@ -54,7 +56,7 @@
 			        <label for="seat">Posto:</label>
 			        <input type="text" id="seat" name="seat" value="<%= ticket.getSeat() %>" readonly><br>
 			        
-			        <input type="hidden" name="movieId" value="<%= screening.getMovieId() %>">
+			        <input type="hidden" name="movieId" value="<%= screeningTicket.getMovieId() %>">
 			        <button type="submit">Dettagli biglietto</button>
 			    </form>
 			</div>
@@ -77,9 +79,9 @@
                 if(userTicket != null && screeningUser != null) {
                     for(int i = 0; i < userTicket.size(); i++) {
                         Ticket ticket = userTicket.get(i);
-                        Screening screening = screeningUser.get(i);
-                        if (screening != null && ticket != null) {
-                            LocalDateTime screeningDateTime = screening.getDateTime();
+                        Screening screeningTicket = BusinessLogic.findScreeningById(ticket.getScreeningId());
+                        if (screeningTicket != null && ticket != null) {
+                            LocalDateTime screeningDateTime = screeningTicket.getDateTime();
                             LocalDateTime currentDateTime = LocalDateTime.now();
                             if (screeningDateTime.isBefore(currentDateTime)) { // Proiezione già avvenuta
             %>
@@ -91,7 +93,7 @@
 			    <p>Posto: <%= ticket.getSeat() %></p>
 			    <form action="ReviewServlet" method ="POST">
 			        <input type="hidden" name="userId" value="<%= userId %>">
-			        <input type="hidden" name="movieId" value="<%= screening.getMovieId() %>">
+			        <input type="hidden" name="movieId" value="<%= screeningTicket.getMovieId() %>">
 			        <button type="submit">Scrivi Recensione</button>
 			    </form>
 			</div>
