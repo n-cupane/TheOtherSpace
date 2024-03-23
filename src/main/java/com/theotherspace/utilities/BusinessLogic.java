@@ -91,6 +91,10 @@ public class BusinessLogic {
 		return DaoFactory.getDaoFactory().getTicketDao().findAllTicketsForMovie(movieId);
 	}
 	
+	public static List<Ticket> findAllTicketsOfUserOrderByDate(long userId){
+		return DaoFactory.getDaoFactory().getTicketDao().findAllTicketsOfUserOrderByDate(userId);
+	}
+	
 // 	METODI REVIEW
 	
 	public static Review findReviewById(long id) {

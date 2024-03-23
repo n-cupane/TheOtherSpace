@@ -126,4 +126,34 @@
     <servlet-name>SearchMovieServlet</servlet-name>
     <url-pattern>/SearchMovieServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MyAccountServlet</display-name>
+    <servlet-name>MyAccountServlet</servlet-name>
+    <servlet-class>com.theotherspace.controller.MyAccountServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MyAccountServlet</servlet-name>
+    <url-pattern>/MyAccountServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AccountInfoServlet</display-name>
+    <servlet-name>AccountInfoServlet</servlet-name>
+    <servlet-class>com.theotherspace.controller.AccountInfoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AccountInfoServlet</servlet-name>
+    <url-pattern>/AccountInfoServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MyNextTicketServlet</display-name>
+    <servlet-name>MyNextTicketServlet</servlet-name>
+    <servlet-class>com.theotherspace.controller.MyNextTicketServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MyNextTicketServlet</servlet-name>
+    <url-pattern>/MyNextTicketServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

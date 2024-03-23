@@ -75,7 +75,7 @@ public class MyTicketServlet extends HttpServlet {
 		userId = activeUser.getId();
 		
 		// Ricavo i ticket legati all'utente
-		userTicket = BusinessLogic.findAllTicketsOfUser(userId);
+		userTicket = BusinessLogic.findAllTicketsOfUserOrderByDate(userId);
 		
 		// Ricavo le proiezioni in base ai ticket dell'utente
 		
