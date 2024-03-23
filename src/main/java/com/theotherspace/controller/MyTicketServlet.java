@@ -53,7 +53,7 @@ public class MyTicketServlet extends HttpServlet {
 		request.setAttribute("userTicket", userTicket);
 		request.setAttribute("screeningUser", screeningUser);
 		
-		request.getRequestDispatcher("WEB-INF/jsp-private/html-private/MyTicket.jsp").forward(request, response);
+		request.getRequestDispatcher("WEB-INF/private-jsp/MyTicket.jsp").forward(request, response);
 	}
 
 	/**
