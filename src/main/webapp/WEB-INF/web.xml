@@ -107,4 +107,23 @@
     <servlet-name>MyTicketServlet</servlet-name>
     <url-pattern>/MyTicketServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <display-name>AddMovieServlet</display-name>
+    <servlet-name>AddMovieServlet</servlet-name>
+    <servlet-class>com.theotherspace.controller.AddMovieServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddMovieServlet</servlet-name>
+    <url-pattern>/AddMovieServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SearchMovieServlet</display-name>
+    <servlet-name>SearchMovieServlet</servlet-name>
+    <servlet-class>com.theotherspace.controller.SearchMovieServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SearchMovieServlet</servlet-name>
+    <url-pattern>/SearchMovieServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

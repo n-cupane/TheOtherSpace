@@ -97,12 +97,13 @@
         <div class="container_movies" id="container_movies">
 	            <% 
 	                // Recupero dei film dal database
+	                // TODO Brutto brutto, recuperare la lista dei film nella Servlet e passarla come attributo qui, 
+	                // controllando anche che non sia null!
 	                List<Movie> movies = BusinessLogic.findAllMovies();
 	                for (Movie movie : movies) {
 	            %>
 	            <a href="http://localhost:8080/TheOtherSpace/MovieDetailsServlet?movieId=<%=movie.getId() %>" class="container_poster">
-	                <div class="poster_movie">
-		            </div>
+	                <img class="poster_movie" src="<%=movie.getImageUrl() %>">
 		            <p id="title_movie"><%= movie.getTitle() %></p>
 	            </a>
 	            <% } %>

@@ -1,9 +1,11 @@
 package com.theotherspace.model;
 
+import com.theotherspace.utilities.BusinessLogic;
+
 public class Movie {
 	
 	private long id, genreId;
-	private String title, description;
+	private String title, description, imageUrl;
 	private int duration;
 	private boolean over18;
 	
@@ -33,6 +35,18 @@ public class Movie {
 
 	public void setGenreId(long genreId) {
 		this.genreId = genreId;
+	}
+	
+	public void setGenreFromName(String genreName) {
+		
+		if (BusinessLogic.findGenreByName(genreName) != null) {
+			 this.genreId = BusinessLogic.findGenreByName(genreName).getId();
+		} else {
+			Genre genreToAdd = new Genre();
+			genreToAdd.setName(genreName);
+			BusinessLogic.addGenre(genreToAdd);
+			this.genreId = BusinessLogic.findGenreByName(genreName).getId();
+		}
 	}
 
 	public String getTitle() {
@@ -66,6 +80,15 @@ public class Movie {
 	public void setOver18(boolean over18) {
 		this.over18 = over18;
 	}
-	
 
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+	
+	
+	
 }

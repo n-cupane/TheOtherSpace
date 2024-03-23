@@ -1,0 +1,188 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: black;
+    color: white;
+    font-family: 'Oswald', sans-serif;
+}
+
+#container {
+padding: 0;
+}
+
+#header {
+    height: 10vh;
+    background-color: black;
+}
+
+[alt="Logo The Space"] {
+    padding-bottom: 2%;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+
+}
+
+#logo_other_space{
+    width: 80%;
+}
+
+#btn {
+    background-color: black;
+    border: 3px solid orange;
+    width: 100%;
+}
+
+div.dropdown {
+    width: 35%;
+}
+
+#search-icon {
+    border-left: 1px solid grey;
+    margin-left: 6%;
+    padding-left: 3%;
+}
+
+p {
+    margin: 0;
+}
+
+#main-content-container {
+    margin-top: 20vh;
+}
+
+#movie-search-bar {
+    width: 100%;
+    color: white;
+    background-color: black;
+    border: 2px solid orange;
+    border-radius: 5px;
+    padding: 1%;
+    min-height: 4em;
+}
+
+#search-movie-btn {
+    width: 100%;
+    background-color: orange;
+    height: 3em;
+    border: none;
+    border-radius: 5px;
+    font-weight: bolder;
+    font-size: 20px;
+    margin-top: 2%;
+}
+
+#results-container {
+    margin-top: 20vh;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#number-of-results {
+    width: 100%;
+    margin-bottom: 3%;
+    color: orange;
+}
+
+.result {
+    width: 28%;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1%;
+    border: 1px solid orange;
+    border-radius: 30px;
+    margin-left: 4%;
+    margin-bottom: 2%;
+}
+
+.result-image {
+    margin-top: 4%;
+    max-height: 70%;
+    max-width: 90%;
+}
+
+.result-title {
+    max-width: 90%;
+}
+
+.add-movie {
+    height: 10%;
+    margin-bottom: 5%;
+}
+
+img[alt='Add movie'] {
+    height: 100%;
+}
+
+
+#movie-to-add-container {
+    margin-top: 5vh;
+    height: 75vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.add-element {
+    display: flex;
+    flex-direction: column;
+}
+
+.add-element input, textarea {
+    background-color: black;
+    color: white;
+    border: 2px solid orange;
+    border-radius: 5px;
+    padding: 1%;
+    min-height: 4em;
+}
+
+#add-btn {
+    background-color: orange;
+    font-size: 24px;
+    height: 3em;
+}
+
+.add-element:last-of-type {
+    display: flex;
+    flex-direction: row;
+}
+
+input[type="checkbox"] {
+    appearance: none;
+    color: white;
+    min-height: 0;
+    background-color: black;
+    border: 2px solid orange;
+    margin-left: 1%;
+}
+
+input[type="checkbox"]:checked {
+    appearance: none;
+    min-height: 0;
+    background-color: orange;
+    border: 2px solid white;
+    
+}
+
+.add-element label {
+    font-size: 20px;
+}
+
+textarea {
+    resize: none;
+}
