@@ -1,0 +1,230 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    color: white;
+    font-family: 'Oswald', sans-serif;
+}
+
+#container {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+#left-menu {
+    height: 100%;
+    width: 12%;
+    min-width: 240px;
+    background-color: #030303;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    color: #dddddd;
+}
+
+#left-menu a {
+    text-decoration: none;
+    color: #dddddd;
+}
+
+#main-content {
+    background-color: #0f0f0f;
+    height: 100%;
+    width: 88%;
+    min-width: 1000px;
+
+
+}
+
+#left-menu h3 {
+    margin: 7%;
+}
+
+#below-h3 {
+    width: 85%;
+    height: 1px;
+    margin-bottom: 10%;
+    background-color: #5e5e5e;
+}
+
+.left-menu-element {
+    width: 85%;
+    height: 5%;
+    margin-top: 3%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 5px;
+}
+
+.left-menu-element:hover {
+    cursor: pointer;
+    background-color: orange;
+    color: #030303;
+}
+
+.current {
+    background-color: orange;
+    color: #030303;
+}
+
+.left-menu-element span {
+    margin-right: 5%;
+}
+
+#logout {
+    margin-top: 65vh;
+}
+
+/* =================================== */
+
+#users-main {
+    background-color: #2f2f2f;
+    width: 90%;
+    height: 90%;
+    border-radius: 10px;
+}
+
+#users-search-bar {
+    width: 90%;
+    display: block;
+    margin: auto;
+    margin-top: 2%;
+    resize: none;
+    padding: 15px;
+    padding-left: 30px;
+    font-size: 22px;
+
+    background-color: #030303;
+    border-radius: 100px;
+    color: #dddddd;
+}
+
+#top-users-container {
+    width: 93%;
+    margin: auto;
+    margin-top: 2%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 18px;
+    background-color: #030303;
+    height: 4vh;
+    padding-left: 1.5%;
+    padding-right: 1.5%;
+    font-size: 18px;
+    border-radius: 10px 10px 0 0;
+    padding-top: 18px;
+}
+
+#users-container {
+    width: 93%;
+    height: 80%;
+    margin: auto;
+
+    background-color: #030303;
+    border-radius:  0 0 10px 10px;
+    border-bottom: 10px solid #030303;
+    
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#users-container::-webkit-scrollbar {
+    display: none;
+}
+
+#top-users-container * {
+    min-width: 7%;
+}
+
+#top-users-container div {
+    margin-left: -5%;
+    margin-right: -5%;
+    width: 24px;
+    min-width: 14%;
+    margin-top: -5px;
+}
+
+#add-user {
+    font-size: 36px;
+}
+
+.user {
+    width: 97%;
+    margin-top: 1%;
+    min-height: 7vh;
+
+    background-color: #0f0f0f;
+    border-radius: 100px;
+    font-size: 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.user * {
+    min-width: 7%;
+}
+
+
+.user:last-of-type {
+    margin-bottom: 1%;
+}
+
+.user p {
+    margin-top: 18px;
+}
+
+.user a {
+    text-decoration: none;
+    color: #dddddd;
+    margin-left: -5%;
+    margin-right: -5%;
+}
+
+.user form {
+	    margin-left: -5%;
+    	margin-right: -5%;
+}
+
+.edit {
+    color: orange;
+}
+
+.delete {
+    color: orangered; 
+}
+
+.hideRow {
+	display: none;
+}
+
+button[type="submit"] {
+	background-color: rgba(0, 0, 0, 0);
+	border: none;
+}
+

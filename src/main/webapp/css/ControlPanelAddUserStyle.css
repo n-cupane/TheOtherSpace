@@ -1,0 +1,144 @@
+@charset "ISO-8859-1";@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&display=swap');
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    color: white;
+    font-family: 'Oswald', sans-serif;
+}
+
+#container {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+#left-menu {
+    height: 100%;
+    width: 12%;
+    min-width: 240px;
+    background-color: #030303;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    color: #dddddd;
+}
+
+#left-menu a {
+    text-decoration: none;
+    color: #dddddd;
+}
+
+#main-content {
+    background-color: #0f0f0f;
+    height: 100%;
+    width: 88%;
+    min-width: 1000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#left-menu h3 {
+    margin: 7%;
+}
+
+#below-h3 {
+    width: 85%;
+    height: 1px;
+    margin-bottom: 10%;
+    background-color: #5e5e5e;
+}
+
+.left-menu-element {
+    width: 85%;
+    height: 5%;
+    margin-top: 3%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 5px;
+}
+
+.left-menu-element:hover {
+    cursor: pointer;
+    background-color: orange;
+    color: #030303;
+}
+
+.current {
+    background-color: orange;
+    color: #030303;
+}
+
+.left-menu-element span {
+    margin-right: 5%;
+}
+
+#logout {
+    margin-top: 65vh;
+}
+
+.add-element input {
+    background-color: black;
+    color: white;
+    border: 2px solid orange;
+    border-radius: 5px;
+    padding: 1%;
+    min-height: 4em;
+    width: 100%;
+    margin-bottom: 2%;
+}
+
+#add-btn {
+    background-color: orange;
+    font-size: 24px;
+    height: 3em;
+    width: 100%;
+    border: #030303;
+    border-radius: 5px;
+}
+
+
+input[type="checkbox"] {
+    appearance: none;
+    color: white;
+    min-height: 0;
+    background-color: black;
+    border: 2px solid orange;
+    margin-left: 1%;
+}
+
+input[type="checkbox"]:checked {
+    appearance: none;
+    min-height: 0;
+    background-color: orange;
+    border: 2px solid white;
+    
+}
+
+.add-element label {
+    font-size: 20px;
+}
+
+textarea {
+    resize: none;
+}

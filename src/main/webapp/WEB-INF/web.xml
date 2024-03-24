@@ -156,4 +156,34 @@
     <servlet-name>MyNextTicketServlet</servlet-name>
     <url-pattern>/MyNextTicketServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UserControlPanelServlet</display-name>
+    <servlet-name>UserControlPanelServlet</servlet-name>
+    <servlet-class>com.theotherspace.controller.UserControlPanelServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserControlPanelServlet</servlet-name>
+    <url-pattern>/UserControlPanelServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UserControlPanelAddServlet</display-name>
+    <servlet-name>UserControlPanelAddServlet</servlet-name>
+    <servlet-class>com.theotherspace.controller.UserControlPanelAddServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserControlPanelAddServlet</servlet-name>
+    <url-pattern>/UserControlPanelAddServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UserControlPanelEditServlet</display-name>
+    <servlet-name>UserControlPanelEditServlet</servlet-name>
+    <servlet-class>com.theotherspace.controller.UserControlPanelEditServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserControlPanelEditServlet</servlet-name>
+    <url-pattern>/UserControlPanelEditServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
