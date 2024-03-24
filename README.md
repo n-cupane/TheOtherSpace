@@ -17,7 +17,7 @@
 
 ## Feature da implementare:
 
-- [ ]  CRUD film
+- [x]  CRUD film
 - [ ]  CRUD generi
 - [ ]  CRUD proiezioni
 - [ ]  CRUD sale
