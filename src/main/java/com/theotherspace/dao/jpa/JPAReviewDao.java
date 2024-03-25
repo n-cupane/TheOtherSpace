@@ -10,6 +10,17 @@ import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Query;
 
 public class JPAReviewDao implements ReviewDao{
+	
+	private static JPAReviewDao instance;
+	
+	private JPAReviewDao() {}
+	
+	public static JPAReviewDao getInstance() {
+		if (instance == null) {
+			instance = new JPAReviewDao();
+		}
+		return instance;
+	}
 
 	@Override
 	public Review findById(long id) {
