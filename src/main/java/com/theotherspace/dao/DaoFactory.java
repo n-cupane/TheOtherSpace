@@ -1,15 +1,24 @@
 package com.theotherspace.dao;
 
 import com.theotherspace.dao.jdbc.JDBCDaoFactory;
+import com.theotherspace.dao.jpa.JPADaoFactory;
 
 public abstract class DaoFactory {
 	
 	private static DaoFactory instance;
 	
-	public static DaoFactory getDaoFactory() {
+	public static DaoFactory getDaoFactory(String s) {
 		
 		if (instance == null) {
-			instance = new JDBCDaoFactory();
+			switch (s) {
+			
+				case "JDBC":
+					instance = new JDBCDaoFactory();
+					break;
+				
+				case "JPA":
+					instance = new JPADaoFactory();
+			}
 		}
 		return instance;
 	}
