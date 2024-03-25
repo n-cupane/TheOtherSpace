@@ -186,4 +186,24 @@
     <servlet-name>UserControlPanelEditServlet</servlet-name>
     <url-pattern>/UserControlPanelEditServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ConfirmReviewServlet</display-name>
+    <servlet-name>ConfirmReviewServlet</servlet-name>
+    <servlet-class>com.theotherspace.controller.ConfirmReviewServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ConfirmReviewServlet</servlet-name>
+    <url-pattern>/ConfirmReviewServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ReviewServlet</display-name>
+    <servlet-name>ReviewServlet</servlet-name>
+    <servlet-class>com.theotherspace.controller.ReviewServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ReviewServlet</servlet-name>
+    <url-pattern>/ReviewServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
