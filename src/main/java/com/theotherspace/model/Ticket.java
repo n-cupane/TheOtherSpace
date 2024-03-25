@@ -1,18 +1,37 @@
 package com.theotherspace.model;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+
+@Entity(name = "ticket")
 public class Ticket {
 	
-	private long id, userId, screeningId;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
+	
+	@Column(name = "price")
 	private double price;
+	@Column(name = "seat")
 	private int seat;
+	
+	@ManyToOne
+	private User user;
+	@ManyToOne
+	private Screening screening;
+
 	
 	public Ticket() {}
 
-	public Ticket(long id, long userId, long screeningId, double price, int seat) {
+	public Ticket(long id, User user, Screening screening, double price, int seat) {
 		super();
 		this.id = id;
-		this.userId = userId;
-		this.screeningId = screeningId;
+		this.user = user;
+		this.screening = screening;
 		this.price = price;
 		this.seat = seat;
 	}
@@ -25,20 +44,20 @@ public class Ticket {
 		this.id = id;
 	}
 
-	public long getUserId() {
-		return userId;
+	public User getUser() {
+		return user;
 	}
 
-	public void setUserId(long userId) {
-		this.userId = userId;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
-	public long getScreeningId() {
-		return screeningId;
+	public Screening getScreening() {
+		return screening;
 	}
 
-	public void setScreeningId(long screeningId) {
-		this.screeningId = screeningId;
+	public void setScreening(Screening screeningId) {
+		this.screening = screening;
 	}
 
 	public double getPrice() {
@@ -59,7 +78,7 @@ public class Ticket {
 
 	@Override
 	public String toString() {
-		return "Ticket [id=" + id + ", userId=" + userId + ", screeningId=" + screeningId + ", price=" + price
+		return "Ticket [id=" + id + ", userId=" + user.getId() + ", screeningId=" + screening.getId() + ", price=" + price
 				+ ", seat=" + seat + "]";
 	}
 
