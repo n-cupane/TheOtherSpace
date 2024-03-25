@@ -65,7 +65,7 @@ public class CheckOutServlet extends HttpServlet {
         //Aggiungo i ticket prenotati su una lista di ticket
         for(int seat : seats) {
         	long i = 1;
-        	blockedTicket.add(new Ticket(i,BusinessLogic.findUserByUsername(LogInServlet.username).getId(),screeningId,price,seat));
+        	blockedTicket.add(new Ticket(i,BusinessLogic.findUserByUsername(LogInServlet.username),BusinessLogic.findScreeningById(screeningId),price,seat));
         	i++;
         	ticketNumber++;
         }

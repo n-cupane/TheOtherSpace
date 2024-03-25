@@ -36,7 +36,7 @@ public class AddMovieServlet extends HttpServlet {
 		
 		String title = movie.getTitle();
 		String description = movie.getDescription();
-		String genreString = BusinessLogic.findGenreById(movie.getGenreId()).getName();
+		String genreString = BusinessLogic.findGenreById(movie.getGenre().getId()).getName();
 		String duration = Integer.toString(movie.getDuration());
 		String imageUrl = movie.getImageUrl();
 		boolean over18 = movie.isOver18();

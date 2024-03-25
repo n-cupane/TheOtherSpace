@@ -33,7 +33,7 @@ public class JPAUserDao implements UserDao {
 	@Override
 	public List<User> findAll() {
 		EntityManager em = JPADaoFactory.getEntityManager();
-		Query q = em.createQuery("select u from User u");
+		Query q = em.createQuery("select u from user u");
 		return q.getResultList();
 	}
 
@@ -67,16 +67,21 @@ public class JPAUserDao implements UserDao {
 	@Override
 	public User findUserByEmail(String email) {
 		EntityManager em = JPADaoFactory.getEntityManager();
-		Query q = em.createQuery("select u from User u where u.email = :x");
+		Query q = em.createQuery("select u from user u where u.email = :x");
 		q.setParameter("x", email);
-		return (User) q.getSingleResult();
+		try {
+			return (User) q.getSingleResult();
+		} catch (Exception e) {
+			return null;
+		}
+		
 	}
 
 	@Override
 	public List<User> findAllUsersForScreening(long screeningId) {
 		EntityManager em = JPADaoFactory.getEntityManager();
 		Screening s = BusinessLogic.findScreeningById(screeningId);
-		Query q = em.createQuery("select u from Screening s join s.user u where s = :x");
+		Query q = em.createQuery("select u from screening s join s.user u where s = :x");
 		q.setParameter("x", s);
 		return (List<User>) q.getResultList();
 	}
@@ -84,9 +89,14 @@ public class JPAUserDao implements UserDao {
 	@Override
 	public User findUserByUsername(String username) {
 		EntityManager em = JPADaoFactory.getEntityManager();
-		Query q = em.createQuery("select u from User u where u.username = :x");
+		Query q = em.createQuery("select u from user u where u.username = :x");
 		q.setParameter("x", username);
-		return (User) q.getSingleResult();
+		try {
+			return (User) q.getSingleResult();
+		} catch (Exception e) {
+			return null;
+		}
+		
 	}
 	
 	

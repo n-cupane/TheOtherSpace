@@ -35,7 +35,7 @@ public class JPAGenreDao implements GenreDao{
 	@Override
 	public List<Genre> findAll() {
 		EntityManager em = JPADaoFactory.getEntityManager();
-		Query q = em.createQuery("select g from Genre g");
+		Query q = em.createQuery("select g from genre g");
 		return q.getResultList();
 	}
 
@@ -73,9 +73,13 @@ public class JPAGenreDao implements GenreDao{
 	@Override
 	public Genre findGenreByName(String genreName) {
 		EntityManager em = JPADaoFactory.getEntityManager();
-		Query q = em.createQuery("select g from Genre g where g.name =:x");
+		Query q = em.createQuery("select g from genre g where g.name =:x");
 		q.setParameter("x", genreName);
+		try {
 		return (Genre) q.getSingleResult();
+		} catch (Exception e) {
+			return null;
+		}
 		
 	}
 

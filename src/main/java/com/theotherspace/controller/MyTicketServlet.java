@@ -91,7 +91,7 @@ public class MyTicketServlet extends HttpServlet {
 		// Ricavo le proiezioni in base ai ticket dell'utente
 		
 		for(Ticket userTicket : userTicket) {
-			Long ticketScreeningID = userTicket.getScreeningId();
+			Long ticketScreeningID = userTicket.getScreening().getId();
 			Screening ticketScreening = BusinessLogic.findScreeningById(ticketScreeningID);
 			screeningUser.add(ticketScreening);
 		}

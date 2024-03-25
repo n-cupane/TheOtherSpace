@@ -6,6 +6,11 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.theotherspace.model.Movie;
+import com.theotherspace.utilities.BusinessLogic;
 
 /**
  * Servlet implementation class HomePageServlet
@@ -34,6 +39,15 @@ public class HomePageServlet extends HttpServlet {
             String username = (String) request.getSession().getAttribute("loggedInUser");
             request.setAttribute("username", username);
         }
+        
+        List<Movie> movies = BusinessLogic.findAllMovies();
+        
+        if(movies!=null) {
+        	request.setAttribute("movies", movies);
+        } else {
+        	request.setAttribute("movies", new ArrayList<Movie>());
+        }
+        
         
         // Reindirizza alla pagina JSP
         request.getRequestDispatcher("html/HomePage.jsp").forward(request, response);

@@ -6,6 +6,10 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.time.LocalDate;
+
+import com.theotherspace.model.Review;
+import com.theotherspace.utilities.BusinessLogic;
 
 /**
  * Servlet implementation class ConfirmReviewServlet
@@ -65,8 +69,8 @@ public class ConfirmReviewServlet extends HttpServlet {
     	System.out.println("ratingValue");
 		
 		Review userReview = new Review();
-		userReview.setUserId(userId);
-		userReview.setMovieId(movieId);
+		userReview.setUser(BusinessLogic.findUserById(userId));
+		userReview.setMovie(BusinessLogic.findMovieById(movieId));
 		userReview.setText(textReview);
 		userReview.setRating(ratingValue);
 		userReview.setDate(reviewDate);

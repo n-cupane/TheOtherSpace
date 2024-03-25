@@ -90,7 +90,7 @@
                 if(userTicket != null && screeningUser != null) {
                     for(int i = 0; i < userTicket.size(); i++) {
                         Ticket ticket = userTicket.get(i);
-                        Screening screeningTicket = BusinessLogic.findScreeningById(ticket.getScreeningId());
+                        Screening screeningTicket = BusinessLogic.findScreeningById(ticket.getScreening().getId());
                         if (screeningTicket != null && ticket != null) {
                             LocalDateTime screeningDateTime = screeningTicket.getDateTime();
                             LocalDateTime currentDateTime = LocalDateTime.now();
@@ -113,7 +113,7 @@
 			        <label for="seat">Posto:</label>
 			        <input type="text" id="seat" name="seat" value="<%= ticket.getSeat() %>" readonly><br>
 			        
-			        <input type="hidden" name="movieId" value="<%= screeningTicket.getMovieId() %>">
+			        <input type="hidden" name="movieId" value="<%= screeningTicket.getMovie().getId() %>">
 			        <button type="submit">Dettagli biglietto</button>
 			    </form>
 			</div>
@@ -136,7 +136,7 @@
                 if(userTicket != null && screeningUser != null) {
                     for(int i = 0; i < userTicket.size(); i++) {
                         Ticket ticket = userTicket.get(i);
-                        Screening screeningTicket = BusinessLogic.findScreeningById(ticket.getScreeningId());
+                        Screening screeningTicket = BusinessLogic.findScreeningById(ticket.getScreening().getId());
                         if (screeningTicket != null && ticket != null) {
                             LocalDateTime screeningDateTime = screeningTicket.getDateTime();
                             LocalDateTime currentDateTime = LocalDateTime.now();
@@ -159,12 +159,12 @@
 			        <label for="seat">Posto:</label>
 			        <input type="text" id="seat" name="seat" value="<%= ticket.getSeat() %>" readonly><br>
 			        
-			        <input type="hidden" name="movieId" value="<%= screeningTicket.getMovieId() %>">
+			        <input type="hidden" name="movieId" value="<%= screeningTicket.getMovie().getId() %>">
 			        <button type="submit">Dettagli biglietto</button>
 			    </form>
 			    <form action="ReviewServlet" method ="POST">
 			        <input type="hidden" name="userId" value="<%= userId %>">
-			        <input type="hidden" name="movieId" value="<%= screeningTicket.getMovieId() %>">
+			        <input type="hidden" name="movieId" value="<%= screeningTicket.getMovie().getId() %>">
 			        <button type="submit">Scrivi Recensione</button>
 			    </form>
 			</div>

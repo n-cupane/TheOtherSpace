@@ -54,7 +54,7 @@ public class MyNextTicketServlet extends HttpServlet {
 		List<Ticket> activeUserTicketList = BusinessLogic.findAllTicketsOfUserOrderByDate(activeUserId);
 		
 		for(Ticket ticket : activeUserTicketList) {
-			long screeningId = ticket.getScreeningId();
+			long screeningId = ticket.getScreening().getId();
 			Screening nextScreening = BusinessLogic.findScreeningById(screeningId);
 			this.nextScreening = nextScreening;
 			if(nextScreening.getDateTime().isAfter(activeUserDateTIme)) {

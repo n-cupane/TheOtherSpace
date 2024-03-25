@@ -88,7 +88,7 @@ public class BookingServlet extends HttpServlet {
 		// associo la data e l'orario della proiezione ad una variabile della classe
 		screeningDateTimeVariable = screeningDateTime;
 		// Prelevo la sala per la proiezione e la associo alla variabile di classe
-		theaterVariableId = screeningReservation.getTheaterId();
+		theaterVariableId = screeningReservation.getTheater().getId();
 		// Prelevo l'id dell'utente attivo e lo associo ad una variabile
 		idVariable = activeUser.getId();
 		// Associo l'id della proiezione ad una variabile

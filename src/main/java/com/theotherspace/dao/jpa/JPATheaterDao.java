@@ -32,7 +32,7 @@ public class JPATheaterDao implements TheaterDao {
 	@Override
 	public List<Theater> findAll() {
 		EntityManager em = JPADaoFactory.getEntityManager();
-		Query q = em.createQuery("select t from Theater t");
+		Query q = em.createQuery("select t from theater t");
 		return q.getResultList();
 	}
 

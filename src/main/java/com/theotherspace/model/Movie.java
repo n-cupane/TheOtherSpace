@@ -15,8 +15,11 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 
 @Entity(name = "movie")
+@Table( )
 public class Movie {
 	
 	@Id
@@ -36,7 +39,8 @@ public class Movie {
 	@ManyToMany()
 	@JoinTable(name = "user_movie",
 				joinColumns = @JoinColumn(name = "movie_id"),
-				inverseJoinColumns = @JoinColumn(name = "user_id"))
+				inverseJoinColumns = @JoinColumn(name = "user_id"),
+				uniqueConstraints = {@UniqueConstraint(columnNames = {"movie_id","user_id"})})
 	private List<User> users;
 	
 	@OneToMany(mappedBy = "movie")

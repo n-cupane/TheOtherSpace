@@ -89,7 +89,7 @@
 			        <label for="seat">Posto:</label>
 			        <input type="text" id="seat" name="seat" value="<%= userNextTicket.getSeat() %>" readonly><br>
 			        
-			        <input type="hidden" name="movieId" value="<%= nextScreening.getMovieId() %>">
+			        <input type="hidden" name="movieId" value="<%= nextScreening.getMovie().getId() %>">
 			        <button type="submit">Dettagli biglietto</button>
 			    </form>
 		</div>

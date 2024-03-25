@@ -32,7 +32,7 @@ public class JPAReviewDao implements ReviewDao{
 	@Override
 	public List<Review> findAll() {
 		EntityManager em = JPADaoFactory.getEntityManager();
-		Query q = em.createQuery("select r from Review r");
+		Query q = em.createQuery("select r from review r");
 		return q.getResultList();
 	}
 

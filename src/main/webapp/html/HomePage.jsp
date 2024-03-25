@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/HomePageStyle.css"/>
 </head>
 <body>
+	<% List<Movie> movies = (List<Movie>)request.getAttribute("movies");%>
     <div id="container" class="container-fluid">
 
         <header id="header" class="row justify-content-center">
@@ -99,7 +100,7 @@
 	                // Recupero dei film dal database
 	                // TODO Brutto brutto, recuperare la lista dei film nella Servlet e passarla come attributo qui, 
 	                // controllando anche che non sia null!
-	                List<Movie> movies = BusinessLogic.findAllMovies();
+	                
 	                for (Movie movie : movies) {
 	            %>
 	            <a href="http://localhost:8080/TheOtherSpace/MovieDetailsServlet?movieId=<%=movie.getId() %>" class="container_poster">

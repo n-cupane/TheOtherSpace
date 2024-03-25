@@ -49,7 +49,7 @@ public class MovieDetailsServlet extends HttpServlet {
 		 request.setAttribute("movieTitle", movieToDisplay.getTitle());
 		 request.setAttribute("over18", movieToDisplay.isOver18());
 		 request.setAttribute("movieDescription", movieToDisplay.getDescription());
-		 request.setAttribute("movieGenre", BusinessLogic.findGenreById(movieToDisplay.getGenreId()).getName() );
+		 request.setAttribute("movieGenre", BusinessLogic.findGenreById(movieToDisplay.getGenre().getId()).getName() );
 		 request.setAttribute("imgUrl", movieToDisplay.getImageUrl());
 		 List<Screening> screeningsOfMovie = BusinessLogic.findAllScreningsByMovieId(movieId);
 		 request.setAttribute("screeningsOfMovie", screeningsOfMovie);

@@ -32,7 +32,7 @@ public class JPAMovieDao implements MovieDao{
 	@Override
 	public List<Movie> findAll() {
 		EntityManager em = JPADaoFactory.getEntityManager();
-		Query q = em.createQuery("select m from Movie m");
+		Query q = em.createQuery("select m from movie m");
 		return q.getResultList();
 	}
 
@@ -67,15 +67,20 @@ public class JPAMovieDao implements MovieDao{
 	@Override
 	public Movie findMovieByTitle(String title) {
 		EntityManager em = JPADaoFactory.getEntityManager();
-		Query q = em.createQuery("select m from Movie m where movie.title=:x");
+		Query q = em.createQuery("select m from movie m where movie.title=:x");
 		q.setParameter("x", title);
-		return (Movie)q.getSingleResult();
+		try {
+			return (Movie)q.getSingleResult();
+		} catch (Exception e) {
+			return null;
+		}
+		
 	}
 
 	@Override
 	public List<Movie> findAllMoviesForGenre(Genre g) {
 	    EntityManager em = JPADaoFactory.getEntityManager();
-	    Query q = em.createQuery("SELECT m FROM Movie m JOIN m.genre genre WHERE genre = :genre", Movie.class);
+	    Query q = em.createQuery("SELECT m FROM movie m JOIN m.genre genre WHERE genre = :genre", Movie.class);
 	    q.setParameter("genre", g);
 	    return q.getResultList();
 	}

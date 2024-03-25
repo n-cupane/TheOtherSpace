@@ -35,7 +35,7 @@ public class JPATicketDao implements TicketDao{
 	@Override
 	public List<Ticket> findAll() {
 		EntityManager em = JPADaoFactory.getEntityManager();
-		Query q = em.createQuery("select t from Ticket t");
+		Query q = em.createQuery("select t from ticket t");
 		return q.getResultList();
 	}
 
@@ -72,7 +72,7 @@ public class JPATicketDao implements TicketDao{
 	public List<Ticket> findAllTicketsOfUser(long userId) {
 		EntityManager em = JPADaoFactory.getEntityManager();
 		User u = BusinessLogic.findUserById(userId);
-		Query q = em.createQuery("select t from Ticket t where t.user = :x");
+		Query q = em.createQuery("select t from ticket t where t.user = :x");
 		q.setParameter("x", u);
 		return (List<Ticket>) q.getResultList();
 	}
@@ -81,7 +81,7 @@ public class JPATicketDao implements TicketDao{
 	public List<Ticket> findAllTicketsForScreening(long screeningId) {
 		EntityManager em = JPADaoFactory.getEntityManager();
 		Screening s = BusinessLogic.findScreeningById(screeningId);
-		Query q = em.createQuery("select t from Ticket t join t.screening s where s = :x");
+		Query q = em.createQuery("select t from ticket t join t.screening s where s = :x");
 		q.setParameter("x", s);
 		return (List<Ticket>) q.getResultList();
 	}
@@ -90,7 +90,7 @@ public class JPATicketDao implements TicketDao{
 	public List<Ticket> findAllTicketsForMovie(long movieId) {
 		EntityManager em = JPADaoFactory.getEntityManager();
 		Movie m = BusinessLogic.findMovieById(movieId);
-		Query q = em.createQuery("select t from Ticket t join t.movie m where m = :x");
+		Query q = em.createQuery("select t from ticket t join t.movie m where m = :x");
 		q.setParameter("x", m);
 		return (List<Ticket>) q.getResultList();
 	}
@@ -99,7 +99,7 @@ public class JPATicketDao implements TicketDao{
 	public List<Ticket> findAllTicketsOfUserOrderByDate(long userId) {
 		EntityManager em = JPADaoFactory.getEntityManager();
 		User u = BusinessLogic.findUserById(userId);
-		Query q = em.createQuery("select t from Ticket join t.screening s join t.user u where u = :x order by s.date_time");
+		Query q = em.createQuery("select t from ticket join t.screening s join t.user u where u = :x order by s.date_time");
 		q.setParameter("x", u);
 		return (List<Ticket>) q.getResultList();
 	}
