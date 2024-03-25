@@ -239,16 +239,16 @@ p {
     background-color: white;
     justify-content: center;
     flex-wrap: wrap;
-    width: 100%; 
+    width: 100%; /* Imposta la larghezza del modulo */
     height: 100vh;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 10%;
+    margin-bottom: auto;
     
 }
 
 .form h2{
-	margin-top:5%;
+	margin-top:10%;
 	width: 100%;
 	text-align: center;
 	margin-bottom: 4%;
@@ -259,6 +259,7 @@ form {
     justify-content: space-between;
     text-align: center; 
     margin-bottom: 2%;
+    color: black;
 }
 
 form label,
@@ -326,8 +327,8 @@ footer {
     background-image: url("/TheOtherSpace/res/Ticket_template.jpeg");
     background-size: cover; 
     background-position: center; 
-    width: 50%;
-    margin-left: 25%;
+    width: 70%;
+    margin-left: 15%;
     border-radius: 30px;
     display: flex;
     flex-wrap:wrap;
@@ -343,6 +344,15 @@ footer {
     margin-left: 25%;
   
 }
+
+h2{
+	color: black;
+	margin-top: 2%;
+	margin-bottom: 5%;
+}
+
+
+
 
 
 
