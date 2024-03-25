@@ -18,9 +18,15 @@ import jakarta.persistence.Persistence;
 
 public class JPADaoFactory extends DaoFactory {
 
+
+	private static EntityManager instance;
 	
-	protected static EntityManager getEntityManager() {
-		return Persistence.createEntityManagerFactory("TheOtherSpace").createEntityManager();
+	public static EntityManager getEntityManager() {
+		if(instance == null) {
+			instance =  Persistence.createEntityManagerFactory("TheOtherSpace").createEntityManager();
+		}
+		return instance;
+		
 	}
 	
 	@Override

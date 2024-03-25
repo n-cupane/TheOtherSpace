@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+import com.theotherspace.dao.jpa.JPADaoFactory;
 import com.theotherspace.model.Review;
 import com.theotherspace.model.Screening;
 import com.theotherspace.model.Theater;
@@ -37,6 +38,7 @@ public class ProvaServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		JPADaoFactory.getEntityManager();
 		request.getRequestDispatcher("html/Prova.jsp").forward(request, response);
 	}
 

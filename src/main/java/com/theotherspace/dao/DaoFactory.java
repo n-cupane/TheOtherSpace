@@ -1,27 +1,21 @@
 package com.theotherspace.dao;
 
 import com.theotherspace.dao.jdbc.JDBCDaoFactory;
-import com.theotherspace.dao.jpa.JPADaoFactory;
 
 public abstract class DaoFactory {
 	
 	private static DaoFactory instance;
 	
-	public static DaoFactory getDaoFactory(String s) {
+	public static DaoFactory getDaoFactory() {
 		
 		if (instance == null) {
-			switch (s) {
-			
-				case "JDBC":
-					instance = new JDBCDaoFactory();
-					break;
-				
-				case "JPA":
-					instance = new JPADaoFactory();
-			}
+			instance = new JDBCDaoFactory();
 		}
 		return instance;
+		
 	}
+	
+
 	
 //	Aggiungere getter astratti dei Dao specifici
 
