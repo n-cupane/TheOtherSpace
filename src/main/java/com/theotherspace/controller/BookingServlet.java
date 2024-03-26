@@ -27,7 +27,7 @@ public class BookingServlet extends HttpServlet {
 	long showing_idVariable;
 	double price;
 	Long theaterVariableId;
-	static int seatsVariable;
+	int seatsVariable;
 	List<Integer> ticketForScreaningBlocked = new ArrayList<>();
 	
 	

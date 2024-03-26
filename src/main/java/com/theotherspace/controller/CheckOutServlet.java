@@ -19,7 +19,7 @@ import com.theotherspace.utilities.BusinessLogic;
 public class CheckOutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	static List<Ticket> blockedTicket = new ArrayList<>();
+	List<Ticket> blockedTicket = new ArrayList<>();
 	int ticketNumber = 0;
 	List<Integer> seats = new ArrayList<>();
 	LocalDateTime screeningDateTimeVariable;
@@ -51,7 +51,7 @@ public class CheckOutServlet extends HttpServlet {
         // Associo i valori alle variabili di classe
         screeningDateTimeVariable = LocalDateTime.parse(screeningDateTimeString);
         // Prelevo i posti nella sala dalla variabile statica di booking
-        int seatsVariable = BookingServlet.seatsVariable;
+        int seatsVariable = (int) request.getAttribute("seatsVariable");
         // effettuo i controlli per aggiungere i posti checkkati in una lista seats
         for (int i = 1; i <= seatsVariable; i++) {
         	

@@ -34,7 +34,7 @@ public class JPAScreeningDao implements ScreeningDao{
 	@Override
 	public List<Screening> findAll() {
 		EntityManager em = JPADaoFactory.getEntityManager();
-		Query q = em.createQuery("select s from screening s");
+		Query q = em.createQuery("select s from showing s");
 		return q.getResultList();
 	}
 
@@ -69,7 +69,7 @@ public class JPAScreeningDao implements ScreeningDao{
 	public List<Screening> findAllScreeningsByMovieId(long movieId) {
 		EntityManager em = JPADaoFactory.getEntityManager();
 		Movie m = BusinessLogic.findMovieById(movieId);
-		Query q = em.createQuery("select s from screening s join s.movie m where m = :x");
+		Query q = em.createQuery("select s from showing s join s.movie m where m = :x");
 		q.setParameter("x", m);
 		return (List<Screening>) q.getResultList();
 	}
