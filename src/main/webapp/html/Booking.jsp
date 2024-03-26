@@ -21,7 +21,7 @@
                 	List<Integer> ticketForScreaningBlocked = (List<Integer>)request.getAttribute("ticketForScreaningBlocked");
                 	
                     for (int i = 1; i <= seatsVariable; i++) {
-                        boolean isBlocked = ticketForScreaningBlocked.contains(i); // Verifica se il posto è bloccato
+                        boolean isBlocked = ticketForScreaningBlocked.contains(i); // Verifico se il posto è bloccato
                 %>
                     <div class="seat">
                         <input type="checkbox" id="seat<%= i %>" name="seat<%= i %>" value="<%= i %>" <%= isBlocked ? "disabled" : "" %>>

@@ -64,7 +64,8 @@ public class LogInServlet extends HttpServlet {
         // Creo una lista prelevando gli utenti presenti nel DB
         
         List<User> users = BusinessLogic.findAllUsers();
-
+        
+        System.out.print(users);
         // Per ogni utente nel DB verifico se le credenziali inserite appratengono ad uno di essi
         
         for (User user : users) {

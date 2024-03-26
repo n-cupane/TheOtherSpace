@@ -12,7 +12,7 @@ public class Ticket {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	
 	@Column(name = "price")
 	private double price;
@@ -27,7 +27,7 @@ public class Ticket {
 	
 	public Ticket() {}
 
-	public Ticket(long id, User user, Screening screening, double price, int seat) {
+	public Ticket(Long id, User user, Screening screening, double price, int seat) {
 		super();
 		this.id = id;
 		this.user = user;
@@ -35,12 +35,20 @@ public class Ticket {
 		this.price = price;
 		this.seat = seat;
 	}
+	
+	public Ticket(User user, Screening screening, double price, int seat) {
+		super();
+		this.user = user;
+		this.screening = screening;
+		this.price = price;
+		this.seat = seat;
+	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

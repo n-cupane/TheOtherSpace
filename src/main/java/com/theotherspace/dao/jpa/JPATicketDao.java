@@ -97,10 +97,13 @@ public class JPATicketDao implements TicketDao{
 
 	@Override
 	public List<Ticket> findAllTicketsOfUserOrderByDate(long userId) {
-		EntityManager em = JPADaoFactory.getEntityManager();
-		User u = BusinessLogic.findUserById(userId);
-		Query q = em.createQuery("select t from ticket join t.screening s join t.user u where u = :x order by s.date_time");
-		q.setParameter("x", u);
-		return (List<Ticket>) q.getResultList();
+	    EntityManager em = JPADaoFactory.getEntityManager();
+	    User u = BusinessLogic.findUserById(userId);
+	    
+	    Query q = em.createQuery("SELECT t FROM ticket t JOIN FETCH t.screening s JOIN t.user u WHERE u = :user ORDER BY s.dateTime");
+	    q.setParameter("user", u);
+	    
+	    return q.getResultList();
 	}
+
 }

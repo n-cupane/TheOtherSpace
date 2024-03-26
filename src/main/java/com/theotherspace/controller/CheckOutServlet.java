@@ -10,7 +10,9 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.theotherspace.model.Screening;
 import com.theotherspace.model.Ticket;
+import com.theotherspace.model.User;
 import com.theotherspace.utilities.BusinessLogic;
 
 
@@ -64,9 +66,10 @@ public class CheckOutServlet extends HttpServlet {
         }
         //Aggiungo i ticket prenotati su una lista di ticket
         for(int seat : seats) {
-        	long i = 1;
-        	blockedTicket.add(new Ticket(i,BusinessLogic.findUserByUsername(LogInServlet.username),BusinessLogic.findScreeningById(screeningId),price,seat));
-        	i++;
+        	User userTicket = BusinessLogic.findUserByUsername(LogInServlet.username);
+        	Screening userScreening = BusinessLogic.findScreeningById(screeningId);
+        	
+        	blockedTicket.add(new Ticket(userTicket,userScreening,price,seat));
         	ticketNumber++;
         }
         // carico la pagina

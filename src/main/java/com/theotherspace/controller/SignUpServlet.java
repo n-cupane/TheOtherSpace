@@ -67,6 +67,9 @@ public class SignUpServlet extends HttpServlet {
 		    // Imposta l'utente appena registrato come utente loggato nella sessione
 		    request.getSession().setAttribute("loggedInUser", username);
 		    
+		    LogInServlet.username=username;
+		    LogInServlet.logged=true;
+		    
 		    // Dopo aver aggiunto l'utente e impostato la sessione, esegui la reindirizzazione alla home page
 		    response.sendRedirect("http://localhost:8080/TheOtherSpace/HomePageServlet");
 		    return;

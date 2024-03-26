@@ -73,25 +73,22 @@
     </div>
 	<div class="container-next-ticket">
 		<div class="nextTicket">
+		<% if (nextScreening != null && userNextTicket != null) { %>
 			<form id="myNextTicket" action="AltraServlet" method="POST"> 
 			        <label for="userFirstName">User First Name:</label>
 			        <input type="text" id="userFirstName" name="userFirstName" value="<%= activeUser.getFirstName() %>" readonly><br>
-			        
 			        <label for="userLastName">User Last Name:</label>
 			        <input type="text" id="userLastName" name="userLastName" value="<%= activeUser.getLastName() %>" readonly><br>
-			        
-			        <label for="screeningDateTime">Screening Date Time:</label>
-			        <input type="text" id="screeningDateTime" name="screeningDateTime" value="<%= nextScreening.getDateTime() %>" readonly><br>
-			        
-			        <label for="price">Prezzo:</label>
-			        <input type="text" id="price" name="price" value="<%= userNextTicket.getPrice() %>" readonly><br>
-			        
-			        <label for="seat">Posto:</label>
-			        <input type="text" id="seat" name="seat" value="<%= userNextTicket.getSeat() %>" readonly><br>
-			        
-			        <input type="hidden" name="movieId" value="<%= nextScreening.getMovie().getId() %>">
+					    <label for="screeningDateTime">Screening Date Time:</label>
+					    <input type="text" id="screeningDateTime" name="screeningDateTime" value="<%= nextScreening.getDateTime() %>" readonly><br>
+					    <label for="price">Prezzo:</label>
+					    <input type="text" id="price" name="price" value="<%= userNextTicket.getPrice() %>" readonly><br>
+				        <label for="seat">Posto:</label>
+				        <input type="text" id="seat" name="seat" value="<%= userNextTicket.getSeat() %>" readonly><br>
+			            <input type="hidden" name="movieId" value="<%= nextScreening.getMovie().getId() %>">
 			        <button type="submit">Dettagli biglietto</button>
 			    </form>
+		<% } %> 
 		</div>
 		<div>
 			<form action="MyTicketServlet" method="POST">
