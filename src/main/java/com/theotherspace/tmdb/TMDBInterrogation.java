@@ -101,17 +101,49 @@ public class TMDBInterrogation {
 			
 			if (result != null) {
 				
-				String title = result.getString("title");
+				String title = "";
 				String posterPath = "";
+				String genre = "";
+				String description = "";
+				int duration = 0;
+				boolean forAdults = false;
+				
+				try {
+					title = result.getString("title");
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				
 				try {
 					posterPath = result.getString("poster_path");
 				} catch (Exception e) {
 					System.out.println("ERROR FOR MOVIE " + title + ": " + e.getMessage());
 				}
-				String genre = result.getJSONArray("genres").getJSONObject(0).getString("name");
-				boolean forAdults = result.getBoolean("adult");
-				String description = result.getString("overview");
-				int duration = result.getInt("runtime");
+				
+				try {
+					genre = result.getJSONArray("genres").getJSONObject(0).getString("name");
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				
+				try {
+					forAdults = result.getBoolean("adult");
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+					
+				try {
+					description = result.getString("overview");
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				
+				try {	
+					duration = result.getInt("runtime");
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				
 				
 				movie.setTitle(title);
 				movie.setImageUrl("https://image.tmdb.org/t/p/w600_and_h900_bestv2/" + posterPath);
