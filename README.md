@@ -8,9 +8,9 @@
 - [x]  Login
 - [x]  Visualizzazione spettacoli
 - [x]  Acquisto biglietto
-- [ ]  Pagina informazioni personali con modifica
+- [x]  Pagina informazioni personali con modifica
 - [x]  Visualizzazione e gestione prenotazioni
-- [ ]  Recensione film
+- [x]  Recensione film
 - [ ]  Aggiunta film ai preferiti
 
 # Lato Admin:
