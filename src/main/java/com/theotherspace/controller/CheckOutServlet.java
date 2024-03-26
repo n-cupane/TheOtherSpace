@@ -31,6 +31,15 @@ public class CheckOutServlet extends HttpServlet {
     }
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//Aggiunto test
+		boolean isLoggedIn = (request.getSession().getAttribute("loggedInUser") != null);
+        request.setAttribute("isLoggedIn",isLoggedIn);
+        
+        if(isLoggedIn) {
+            // Se l'utente è loggato, mostro solo username e logout nel dropdown
+            String username = (String) request.getSession().getAttribute("loggedInUser");
+            request.setAttribute("username", username);
+        }
 		
 			request.setAttribute("price", price);
 			request.setAttribute("screeningDateTimeVariable", screeningDateTimeVariable);
@@ -51,7 +60,7 @@ public class CheckOutServlet extends HttpServlet {
         // Associo i valori alle variabili di classe
         screeningDateTimeVariable = LocalDateTime.parse(screeningDateTimeString);
         // Prelevo i posti nella sala dalla variabile statica di booking
-        int seatsVariable = (int) request.getAttribute("seatsVariable");
+        int seatsVariable = Integer.parseInt(request.getParameter("seatsVariable"));
         // effettuo i controlli per aggiungere i posti checkkati in una lista seats
         for (int i = 1; i <= seatsVariable; i++) {
         	
