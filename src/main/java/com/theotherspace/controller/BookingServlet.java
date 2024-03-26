@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.theotherspace.model.Movie;
 import com.theotherspace.model.Screening;
 import com.theotherspace.model.Theater;
 import com.theotherspace.model.Ticket;
@@ -29,6 +30,7 @@ public class BookingServlet extends HttpServlet {
 	Long theaterVariableId;
 	int seatsVariable;
 	List<Integer> ticketForScreaningBlocked = new ArrayList<>();
+	String imgMovie;
 	
 	
     /**
@@ -71,6 +73,7 @@ public class BookingServlet extends HttpServlet {
 		request.setAttribute("seatsVariable", seatsVariable);
 		request.setAttribute("screeningDateTimeVariable", screeningDateTimeVariable);
 		request.setAttribute("price", price);
+		request.setAttribute("imgMovie", imgMovie);
 		request.setAttribute("showing_idVariable", showing_idVariable);
 		request.getRequestDispatcher("html/Booking.jsp").forward(request, response);
 		
@@ -117,6 +120,10 @@ public class BookingServlet extends HttpServlet {
 				
 			}
 		}
+		
+		Screening screeningScreening = BusinessLogic.findScreeningById(screeningId);
+		Movie bookingMovie = BusinessLogic.findMovieById(screeningScreening.getMovie().getId());
+		imgMovie = bookingMovie.getImageUrl();
 		
 		
 		//Faccio una chiamata get per caricare la pagina

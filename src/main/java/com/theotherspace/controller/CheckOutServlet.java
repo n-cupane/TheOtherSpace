@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.theotherspace.model.Movie;
 import com.theotherspace.model.Screening;
 import com.theotherspace.model.Ticket;
 import com.theotherspace.model.User;
@@ -24,6 +25,7 @@ public class CheckOutServlet extends HttpServlet {
 	List<Integer> seats = new ArrayList<>();
 	LocalDateTime screeningDateTimeVariable;
 	double price;
+
 	
     public CheckOutServlet() {
         super();
@@ -81,6 +83,9 @@ public class CheckOutServlet extends HttpServlet {
         	blockedTicket.add(new Ticket(userTicket,userScreening,price,seat));
         	ticketNumber++;
         }
+        
+       
+        
         // carico la pagina
         response.sendRedirect("CheckOutServlet");
         

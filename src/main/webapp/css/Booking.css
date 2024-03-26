@@ -384,6 +384,7 @@ footer {
 .room-movie-info{
 	height: 45vh;
 	text-align: center;
+	width: 30%;
 }
 
 .room-movie-info p{
@@ -391,8 +392,7 @@ footer {
 }
 
 #conferma{
-	margin-left: 40%;
-	margin-top: 10%;
+	width: 100%;
 }
 
 
@@ -417,11 +417,26 @@ footer {
 }
 
 
+.testo-img {
+	border-top:1px solid orange;
+
+	margin-top: 10%;
+    display: flex;
+    justify-content: center; /* Allinea i div interni al centro orizzontalmente */
+    height: 60vh;
+}
 
 
 
+.room-movie-info {
+    display: flex;
+    flex-direction: column; /* Imposta il layout dei suoi figli in una colonna */
+    align-items: center; /* Allinea gli elementi al centro verticalmente */
+}
 
-
+img{
+    height: 70%;
+}
 
 
 
