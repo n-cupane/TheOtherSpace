@@ -77,7 +77,7 @@ public class ConfirmReviewServlet extends HttpServlet {
 		
 		BusinessLogic.addReview(userReview);
 		
-		System.out.println(ratingValue);
+		response.sendRedirect("MyAccountServlet");
 	}
 
 }

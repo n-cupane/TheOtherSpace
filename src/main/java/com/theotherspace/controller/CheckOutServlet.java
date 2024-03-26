@@ -20,7 +20,7 @@ import com.theotherspace.utilities.BusinessLogic;
 public class CheckOutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	List<Ticket> blockedTicket = new ArrayList<>();
+	static List<Ticket> blockedTicket = new ArrayList<>();
 	int ticketNumber = 0;
 	List<Integer> seats = new ArrayList<>();
 	LocalDateTime screeningDateTimeVariable;

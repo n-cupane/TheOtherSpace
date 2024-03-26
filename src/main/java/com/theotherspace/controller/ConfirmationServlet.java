@@ -38,7 +38,7 @@ public class ConfirmationServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		// prelevo la lista con i ticket e li aggiungo al db
-		List<Ticket> blockedTicket = (List<Ticket>) request.getAttribute("blockedTicket");
+		List<Ticket> blockedTicket = CheckOutServlet.blockedTicket;
 		for(Ticket userTicket : blockedTicket) {
 			BusinessLogic.addTicket(userTicket);
 		}

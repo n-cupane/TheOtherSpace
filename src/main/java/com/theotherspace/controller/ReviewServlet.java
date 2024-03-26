@@ -18,7 +18,7 @@ public class ReviewServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setAttribute("movieId", movieId);
 		request.setAttribute("userId", userId);
-		request.getRequestDispatcher("/html/Review.jsp").forward(request, response);
+		request.getRequestDispatcher("WEB-INF/private-jsp/Review.jsp").forward(request, response);
     }
 	
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
