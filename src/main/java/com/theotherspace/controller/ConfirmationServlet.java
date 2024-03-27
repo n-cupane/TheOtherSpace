@@ -21,7 +21,7 @@ public class ConfirmationServlet extends HttpServlet {
        
 	boolean haveCard = false;
 	
-	double discount= 0.0;
+	double discount= 1.0;
 	
 	double blockedTicketPrice;
     /**
@@ -59,27 +59,31 @@ public class ConfirmationServlet extends HttpServlet {
         int blockedTicketListSize = Integer.parseInt(request.getParameter("blockedTicketSize"));
         
 		for(int i = 0; i<blockedTicketListSize; i++) {
-			blockedTicketPrice = Double.parseDouble(request.getParameter("blockedTicketPrice"+i));  //10
+			
 			// Verifica se l'utente ha più di 1000 punti sulla carta e se vuole utilizzare i punti per lo sconto
 		    if(userTicket.getCardPoints()>=1000 && haveCard && usePoints) {
 		        // Aggiorna i punti della carta sottraendo 1000
-		    	System.out.print(userTicket.getCardPoints());
+		    	
 		    	userTicket.setCardPoints(-1000);
-		    	System.out.print(userTicket.getCardPoints());
+
 		        blockedTicketPrice = 0.0; 
-		    } else if(userTicket.getCardPoints()<1000 && haveCard && usePoints) {
+		    } else if(userTicket.getCardPoints()<1000 && userTicket.getCardPoints()>0 && haveCard && usePoints) {
 		        // Se l'utente ha meno di 1000 punti sulla carta e vuole utilizzarli per lo sconto
-		        for (Integer j = 100; userTicket.getCardPoints() - j >= 0; j += 100) { 
-		            // Calcola lo sconto in base ai punti sulla carta
-		            discount += 1.0;
-		            userTicket.setCardPoints(userTicket.getCardPoints()-j);
-		            
-		        } 
+		    	int multiplier = (userTicket.getCardPoints()/100);
+
 		        // Calcola il prezzo del biglietto scontato
-		        blockedTicketPrice = Double.parseDouble(request.getParameter("blockedTicketPrice"+i))-discount;
+		    	discount = discount * multiplier;
+		        Double blockedTicketPriceUnfixed = Double.parseDouble(request.getParameter("blockedTicketPrice"+i));
+		        blockedTicketPrice = blockedTicketPriceUnfixed-discount;
+		        userTicket.setCardPoints(-userTicket.getCardPoints());
 		        // Reimposta lo sconto a 0 per il prossimo biglietto
 		        discount=0.0;
+		        
+		        
+		    } else if(!haveCard && !usePoints) {
+		    	blockedTicketPrice = Double.parseDouble(request.getParameter("blockedTicketPrice"+i));  //10
 		    }
+		    
 			int blockedTicketSeat = Integer.parseInt(request.getParameter("blockedTicketSeat"+i));
 			Long blockedTicketUserId = Long.parseLong(request.getParameter("blockedTicketUserId"+i));
 			Long blockedTicketScreeningId = Long.parseLong(request.getParameter("blockedTicketScreening"+i));

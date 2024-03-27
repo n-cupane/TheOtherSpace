@@ -124,7 +124,7 @@ public class User {
 	}
 
 	public Integer getCardPoints() {
-		return cardPoints;
+		return cardPoints != null ? cardPoints : 0;
 	}
 
 	public void setCardPoints(Integer cardPoints) {

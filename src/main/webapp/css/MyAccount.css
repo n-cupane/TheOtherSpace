@@ -408,20 +408,24 @@ footer {
     align-items: center;
 }
 
-.my-card{
-	width: 80%;
-	display: flex;
-	flex-wrap: wrap;
-	background: black;
-	justify-content: center;
+.my-card {
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    background-image: url('https://w.wallha.com/ws/15/TdHetnsS.png'); /* Aggiungi l'URL dell'immagine di sfondo */
+    background-size: cover; /* Scala l'immagine per coprire l'intero elemento */
+    background-position: center; /* Centra l'immagine all'interno dell'elemento */
+    justify-content: center;
     align-items: center;
-	height: 25%;
-	border-radius: 20px;
+    height: 25%;
+    border-radius: 20px;
+    color: white;
 }
+
 
 .my-card p{
 	width: 100%;
-	margin-left: 10%;
+	margin-left: 60%;
 }
 
 
