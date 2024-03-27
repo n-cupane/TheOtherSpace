@@ -1,3 +1,6 @@
+<%@page import="java.sql.Date"%>
+<%@page import="java.time.format.DateTimeFormatter"%>
+<%@page import="com.theotherspace.model.Review"%>
 <%@page import="com.theotherspace.model.Screening"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -68,6 +71,7 @@
         String movieGenre = (String) request.getAttribute("movieGenre");
         String imgUrl = (String) request.getAttribute("imgUrl");
         List<Screening> screeningsOfMovie = (List<Screening>) request.getAttribute("screeningsOfMovie");
+        List<Review> movieReviews = (List<Review>) request.getAttribute("movieReviews");
         %>
         
         <div id="left-movie-container">
@@ -118,7 +122,28 @@
         
         
     </div>
+    <div class = "reviews">
+    	<%for (Review reviews :  movieReviews) {%>
+    	<div class = "container-review">
+	    	<div class = "review-user">
+	    	    <span class="material-icons">&#xe853;</span>
+	    		<p><%=reviews.getUser().getUsername() %> </p>
+	    		
+	    	</div>
+	    	<div class = "review-date">
+	    		<p><%=reviews.getDateFormatted() %></p>
+	    	</div>
+	    	<div class = "review-text">
+	    		<p><%=reviews.getText() %></p>
+	    	</div>
+	    	<div class = "review-rating">
+	    		<p>Voto: <%=reviews.getRating() %>/5</p>
+	    	</div>
+    	</div>
+    	<%}%>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
+
 </html>

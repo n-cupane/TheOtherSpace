@@ -116,6 +116,10 @@ public class BusinessLogic {
 	public static void addReview(Review rw) {
 		DaoFactory.getDaoFactory().getReviewDao().insert(rw);
 	}
+	public static List<Review> findAllReviewsOfMovie(long id) {
+		return DaoFactory.getDaoFactory().getReviewDao().findAllReviewsOfMovie(id);
+	}
+	
 	
 // METODI THEATER
 	

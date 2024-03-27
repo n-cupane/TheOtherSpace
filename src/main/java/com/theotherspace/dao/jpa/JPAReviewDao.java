@@ -3,7 +3,11 @@ package com.theotherspace.dao.jpa;
 import java.util.List;
 
 import com.theotherspace.dao.ReviewDao;
+import com.theotherspace.model.Movie;
 import com.theotherspace.model.Review;
+import com.theotherspace.model.Ticket;
+import com.theotherspace.model.User;
+import com.theotherspace.utilities.BusinessLogic;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
@@ -65,6 +69,15 @@ public class JPAReviewDao implements ReviewDao{
 		em.persist(t);
 		tr.commit();
 		
+	}
+	
+	@Override
+	public List<Review> findAllReviewsOfMovie(long userId) {
+		EntityManager em = JPADaoFactory.getEntityManager();
+		Movie m = BusinessLogic.findMovieById(userId);
+		Query q = em.createQuery("select r from review r where r.movie = :x");
+		q.setParameter("x", m);
+		return (List<Review>) q.getResultList();
 	}
 
 }

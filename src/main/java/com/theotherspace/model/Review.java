@@ -1,6 +1,8 @@
 package com.theotherspace.model;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -88,6 +90,15 @@ public class Review {
 	public void setDate(LocalDate date) {
 		this.date = date;
 	}
+	
+	public String getDateFormatted() {
+		String dateFormatted  = this.date.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+		return dateFormatted;
+	}
+
+	
+	
+	
 	
 	
 	

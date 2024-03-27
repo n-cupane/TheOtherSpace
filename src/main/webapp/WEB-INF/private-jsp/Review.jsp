@@ -19,9 +19,9 @@
       <form action="ConfirmReviewServlet" method="POST" id="ratingForm">
       		<input type="hidden" name="movieId" value="<%=movieId%>">
       		<input type="hidden" name="userId" value="<%=userId%>">
-      		<textarea id="reviewText" name="reviewText" class="area_review" placeholder="La tua recensione"></textarea>
+      		<textarea id="reviewText" name="reviewText" class="area_review" placeholder="La tua recensione" required="required"></textarea>
       		<div class="rating">
-	      		<input type="radio" name="rating" value="a" id="rating1">
+	      		<input type="radio" name="rating" value="a" id="rating1" required="required">
 	      		<label for="rating1"></label>
 	      		<input type="radio" name="rating" value="b" id="rating2">
 	      		<label for="rating2"></label>
@@ -40,4 +40,45 @@
 
 
 </body>
+<footer>
+    <div class="footer-content">
+        <div class="contact-section">
+            <h4>CONTATTI</h4>
+            <ul>
+                <li>FAQ e Contattaci</li>
+            </ul>
+        </div>
+        <div class="space-cinema-section">
+            <h4>THE OTHER SPACE CINEMA</h4>
+            <ul>
+                <li>Chi siamo</li>
+                <li>PNRR</li>
+                <li>Lavora con noi</li>
+                <li>I nostri cinema</li>
+            </ul>
+        </div>
+        <div class="legal-section">
+            <h4>NOTE LEGALI</h4>
+            <ul>
+                <li>Privacy policy</li>
+                <li>Cookie policy</li>
+                <li>Condizioni di utilizzo</li>
+                <li>Regolamenti</li>
+            </ul>
+        </div>
+        <div class="social-section">
+            <h4>SOCIAL</h4>
+            <ul>
+                <li>Facebook</li>
+                <li>Youtube</li>
+                <li>Twitter</li>
+                <li>Instagram</li>
+            </ul>
+        </div>
+        <div class="app-section">
+            <h4>LA NOSTRA APP</h4>
+            <p>Scopri di più</p>
+        </div>
+    </div>
+</footer>
 </html>

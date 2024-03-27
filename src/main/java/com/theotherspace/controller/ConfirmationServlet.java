@@ -50,6 +50,7 @@ public class ConfirmationServlet extends HttpServlet {
 			Screening blockedTicketScreening = BusinessLogic.findScreeningById(blockedTicketScreeningId);
 			Ticket blockedTicketConfirmed = new Ticket(blockedTicketUser,blockedTicketScreening,blockedTicketPrice,blockedTicketSeat);
 			BusinessLogic.addTicket(blockedTicketConfirmed);
+			response.sendRedirect("AccountInfoServlet");
 		}
 	}
 

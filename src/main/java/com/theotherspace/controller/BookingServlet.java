@@ -45,15 +45,18 @@ public class BookingServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//Aggiunto test
-				boolean isLoggedIn = (request.getSession().getAttribute("loggedInUser") != null);
-		        request.setAttribute("isLoggedIn",isLoggedIn);
-		        
-		        if(isLoggedIn) {
-		            // Se l'utente è loggato, mostro solo username e logout nel dropdown
-		            String username = (String) request.getSession().getAttribute("loggedInUser");
-		            request.setAttribute("username", username);
-		        }
+		//Test
+		boolean isLoggedIn = (request.getSession().getAttribute("loggedInUser") != null);
+        request.setAttribute("isLoggedIn",isLoggedIn);
+        
+        if(isLoggedIn) {
+            // Se l'utente è loggato, mostro solo username e logout nel dropdown
+            String username = (String) request.getSession().getAttribute("loggedInUser");
+            request.setAttribute("username", username);
+        } else {
+        	LogInServlet.username = null;
+        	LogInServlet.logged = false;
+        }
 		
 		//Prelevo l'orario della proiezione
 		int hour = screeningDateTimeVariable.getHour();

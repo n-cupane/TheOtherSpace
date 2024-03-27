@@ -33,7 +33,7 @@ public class CheckOutServlet extends HttpServlet {
     }
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//Aggiunto test
+		//Test
 		boolean isLoggedIn = (request.getSession().getAttribute("loggedInUser") != null);
         request.setAttribute("isLoggedIn",isLoggedIn);
         
@@ -41,6 +41,9 @@ public class CheckOutServlet extends HttpServlet {
             // Se l'utente è loggato, mostro solo username e logout nel dropdown
             String username = (String) request.getSession().getAttribute("loggedInUser");
             request.setAttribute("username", username);
+        } else {
+        	LogInServlet.username = null;
+        	LogInServlet.logged = false;
         }
 			
 			request.setAttribute("price", price);

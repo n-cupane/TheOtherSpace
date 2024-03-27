@@ -38,6 +38,9 @@ public class HomePageServlet extends HttpServlet {
             // Se l'utente è loggato, mostro solo username e logout nel dropdown
             String username = (String) request.getSession().getAttribute("loggedInUser");
             request.setAttribute("username", username);
+        } else {
+        	LogInServlet.username = null;
+        	LogInServlet.logged = false;
         }
         
         List<Movie> movies = BusinessLogic.findAllMovies();

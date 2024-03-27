@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.List;
 
 import com.theotherspace.model.Movie;
+import com.theotherspace.model.Review;
 import com.theotherspace.model.Screening;
 import com.theotherspace.utilities.BusinessLogic;
 
@@ -44,6 +45,9 @@ public class MovieDetailsServlet extends HttpServlet {
 		 int movieId = Integer.parseInt(request.getParameter("movieId"));
 		 Movie movieToDisplay = BusinessLogic.findMovieById(movieId);
 		 
+//		 Recupero Lista Recensioni per film
+		 List<Review> movieReviews = BusinessLogic.findAllReviewsOfMovie(movieId);
+		 
 		 if (movieToDisplay != null) {
 //		 Passo gli attributi da mostrare sulla jsp
 		 request.setAttribute("movieTitle", movieToDisplay.getTitle());
@@ -53,6 +57,7 @@ public class MovieDetailsServlet extends HttpServlet {
 		 request.setAttribute("imgUrl", movieToDisplay.getImageUrl());
 		 List<Screening> screeningsOfMovie = BusinessLogic.findAllScreningsByMovieId(movieId);
 		 request.setAttribute("screeningsOfMovie", screeningsOfMovie);
+		 request.setAttribute("movieReviews", movieReviews);
 		 
 		 request.getRequestDispatcher("html/MovieDetails.jsp").forward(request, response);
 		 }
