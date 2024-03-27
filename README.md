@@ -36,3 +36,4 @@
 - [ ] Creare servlet di logout e gestire tutti i logout reindirizzandoli a questa
 - [ ] Aggiungere link a home tramite logo in tutte le servlet
 - [ ] Valutare, come suggerito da Filippo, di non eliminare del tutto gli utenti dal DB ma di cambiarne solo la visibilità (forse anche altro come screening)
+- [ ] Nell'aggiunta e nella modifica di una proiezione controllare che lo slot orario scelto per quella sala sia libero (query da aggiungere) --Niccolò
