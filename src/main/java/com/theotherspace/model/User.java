@@ -31,6 +31,10 @@ public class User {
 	private String password;
 	@Column(name = "dob")
 	private LocalDate dateOfBirth;
+	@Column(name = "card_code")
+	private String cardCode;
+	@Column(name = "card_points")
+	private Integer cardPoints;
 	
 	@ManyToMany(mappedBy = "users")
 	List<Movie> movies;
@@ -107,6 +111,28 @@ public class User {
 
 	public void setDateOfBirth(LocalDate dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
+	}
+	
+	
+
+	public String getCardCode() {
+		return cardCode;
+	}
+
+	public void setCardCode(String cardCode) {
+		this.cardCode = cardCode;
+	}
+
+	public Integer getCardPoints() {
+		return cardPoints;
+	}
+
+	public void setCardPoints(Integer cardPoints) {
+	    if (this.cardPoints == null) {
+	        this.cardPoints = cardPoints;
+	    } else {
+	        this.cardPoints += cardPoints;
+	    }
 	}
 
 	@Override

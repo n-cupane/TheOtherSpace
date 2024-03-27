@@ -15,5 +15,11 @@ public interface UserDao extends GeneralDao<User> {
 	abstract public User findUserByUsername(String username);
 	
 	abstract public List<Movie> findAllFavoritesOfUser(long userId);
+	
+	abstract public void updateCardInsert(User user, String newCardCode);
+	
+	abstract public void updateCardPointInsert(User user, Integer newCardCode);
+	
+	
 
 }

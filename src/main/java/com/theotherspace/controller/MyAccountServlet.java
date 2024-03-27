@@ -7,11 +7,16 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import com.theotherspace.model.User;
+import com.theotherspace.utilities.BusinessLogic;
+
 /**
  * Servlet implementation class MyAccountServlet
  */
 public class MyAccountServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	boolean haveCard=false;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -37,7 +42,17 @@ public class MyAccountServlet extends HttpServlet {
         	LogInServlet.username = null;
         	LogInServlet.logged = false;
         }
-		
+        
+        User activeUser = BusinessLogic.findUserByUsername(LogInServlet.username);
+        
+        if(activeUser.getCardCode()!=null) {
+        	haveCard = true;
+        } else {
+        	haveCard = false;
+        }
+        
+        request.setAttribute("activeUser", activeUser);
+        request.setAttribute("haveCard", haveCard);
 		request.getRequestDispatcher("WEB-INF/private-jsp/MyAccount.jsp").forward(request, response);
 	}
 

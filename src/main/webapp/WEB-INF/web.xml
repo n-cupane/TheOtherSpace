@@ -206,4 +206,14 @@
     <servlet-name>ReviewServlet</servlet-name>
     <url-pattern>/ReviewServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AcceptCardServlet</display-name>
+    <servlet-name>AcceptCardServlet</servlet-name>
+    <servlet-class>com.theotherspace.controller.AcceptCardServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AcceptCardServlet</servlet-name>
+    <url-pattern>/AcceptCardServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

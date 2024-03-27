@@ -64,8 +64,13 @@
         
     </div>
     <h1>Checkout Summary</h1>
-    <% List<Ticket> blockedTicket = (List<Ticket>)request.getAttribute("blockedTicket");%>
+    <% List<Ticket> blockedTicket = (List<Ticket>)request.getAttribute("blockedTicket");
+    	boolean haveCard = (boolean)request.getAttribute("haveCard");
+    %>
     <div class="checkout">
+    		<%if(haveCard) {%>
+	        	<p>L'acquisto aggiungera' 100 punti al saldo della tua carta</p>
+        	<%} %>
         <p>Price: <%= request.getAttribute("price") %></p>
         <p>Screening Date and Time: <%= request.getAttribute("screeningDateTimeVariable") %></p>
         <p>Ticket Number: <%= request.getAttribute("ticketNumber") %></p>
@@ -88,10 +93,17 @@
 		        <input type="hidden" name="blockedTicketSeat<%= i %>" value="<%= ticket.getSeat() %>">
 		        <input type="hidden" name="blockedTicketUserId<%= i %>" value="<%= ticket.getUser().getId() %>">
 		        <input type="hidden" name="blockedTicketScreening<%= i %>" value="<%= ticket.getScreening().getId() %>">
+
 		    <% 
 		        i++;
 		        } 
 		    %>
+		    <%if(haveCard) {%>
+		    	<p>Un saldo inferiore ai 1000 punti comporterà uno sconto di 1 euro ogni 100 punti</p>
+		    	<p>Un saldo pari a 1000 punti comporterà l'emissione di un biglietto omaggio</p>
+	        	<input type="checkbox" name="usePoints" value="true">
+
+        	<%} %>
 		    <button type="submit">Confirm Checkout</button>
 		</form>
 

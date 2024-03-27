@@ -59,6 +59,13 @@ public class BusinessLogic {
 		return DaoFactory.getDaoFactory().getUserDao().findAllFavoritesOfUser(id);
 	}
 	
+	public static void updateUserCard(User u, String s) {
+		DaoFactory.getDaoFactory().getUserDao().updateCardInsert(u, s);
+	}
+	
+	public static void updateUserCardPoint(User u, Integer p) {
+		DaoFactory.getDaoFactory().getUserDao().updateCardPointInsert(u, p);
+	}
 	
 	
 //	METODI TICKET

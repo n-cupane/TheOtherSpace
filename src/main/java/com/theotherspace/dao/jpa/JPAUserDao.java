@@ -108,6 +108,26 @@ public class JPAUserDao implements UserDao {
 		return (List<Movie>) q.getResultList();
 	}
 	
+	@Override
+	public void updateCardInsert(User user, String newCardCode) {
+	    EntityManager em = JPADaoFactory.getEntityManager();
+	    EntityTransaction tr = em.getTransaction();
+	    tr.begin();
+	    user.setCardCode(newCardCode);
+	    em.merge(user);
+	    tr.commit();
+	}
+	
+	@Override
+	public void updateCardPointInsert(User user, Integer newCardPoint) {
+	    EntityManager em = JPADaoFactory.getEntityManager();
+	    EntityTransaction tr = em.getTransaction();
+	    tr.begin();
+	    user.setCardPoints(newCardPoint);
+	    em.merge(user);
+	    tr.commit();
+	}
+	
 	
 
 }

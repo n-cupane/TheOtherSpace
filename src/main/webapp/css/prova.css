@@ -1,5 +1,39 @@
-@charset "UTF-8";
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&display=swap');
+.container {
+    width: 100%;
+    height:80vh;
+    display: flex;
+    margin-bottom: 10%;
+}
+
+.left-half {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image {
+    width: 80%;
+}
+
+.right-half {
+    width: 50%;
+	color:black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.inner-div {
+    flex: 1;
+    margin: 5px;
+    padding: 10px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
 
 * {
     box-sizing: border-box;
@@ -371,58 +405,6 @@ footer {
   margin-top: 100px; 
 }
 
-.container {
-    width: 100%;
-    height:80vh;
-    display: flex;
-    margin-bottom: 10%;
-}
-
-.left-half {
-    width: 50%;
-    display: flex;
-    flex-wrap:wrap;
-    justify-content: center;
-    align-items: center;
-}
-
-.image {
-    width: 80%;
-}
-
-.right-half {
-    width: 50%;
-	color:black;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.inner-div {
-    flex: 1;
-    margin: 5px;
-    padding: 10px;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.my-card{
-	width: 80%;
-	display: flex;
-	flex-wrap: wrap;
-	background: black;
-	justify-content: center;
-    align-items: center;
-	height: 25%;
-	border-radius: 20px;
-}
-
-.my-card p{
-	width: 100%;
-	margin-left: 10%;
-}
 
 
 

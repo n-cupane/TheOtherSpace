@@ -24,6 +24,7 @@ public class CheckOutServlet extends HttpServlet {
 	int ticketNumber = 0;
 	List<Integer> seats = new ArrayList<>();
 	LocalDateTime screeningDateTimeVariable;
+	boolean haveCard = false;
 	double price;
 
 	
@@ -51,11 +52,13 @@ public class CheckOutServlet extends HttpServlet {
 			request.setAttribute("ticketNumber", ticketNumber);
 			request.setAttribute("blockedTicket", blockedTicket);
 			request.setAttribute("seats", seats);
+			request.setAttribute("haveCard", haveCard);
 			request.getRequestDispatcher("html/CheckOut.jsp").forward(request, response);
 			blockedTicket.clear();
 			seats.clear();
 			screeningDateTimeVariable = null;
 			price = 0;
+			haveCard = false;
 			
 			
 			
@@ -91,6 +94,11 @@ public class CheckOutServlet extends HttpServlet {
         	
         	blockedTicket.add(new Ticket(userTicket,userScreening,price,seat));
         	ticketNumber++;
+        }
+      //verifico se l'utente ha una card
+        User userTicket = BusinessLogic.findUserByUsername(LogInServlet.username);
+        if(userTicket.getCardCode()!=null) {
+        	haveCard = true;
         }
         
        

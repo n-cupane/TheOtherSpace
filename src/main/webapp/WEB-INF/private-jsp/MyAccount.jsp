@@ -1,3 +1,4 @@
+<%@page import="com.theotherspace.model.User"%>
 <%@ page import="java.util.List" %>
 <%@ page import="com.theotherspace.model.Movie" %>
 <%@ page import="com.theotherspace.utilities.BusinessLogic" %>
@@ -65,10 +66,79 @@
         
         
         <div class="container_movies" id="container_movies">
-	            <a href="AccountInfoServlet">Vai a AccountInfoServlet</a>
-				<a href="MyNextTicketServlet">Vai a MyNextTicket</a>
+        		<a href="MyAccountServlet">La mia Card</a>
+	            <a href="AccountInfoServlet">Le mie info</a>
+				<a href="MyNextTicketServlet">Le mie proiezioni</a>
     	</div>
     </div>
+    <% boolean haveCard = (boolean)request.getAttribute("haveCard"); 
+       User activeUser = (User)request.getAttribute("activeUser");
+    %>
+    
+    <%if(!haveCard){ %>
+    <div class="conditions-form">
+		  <form action="AcceptCardServlet" method="post">
+			    <div>
+			      <input type="checkbox" id="condition1" name="conditions" value="condition1" required="required">
+			      <label for="condition1">Utilizzo Responsabile della Carta TheOtherSpace:</label>
+			    </div>
+				    <p>
+				      L'utente accetta di utilizzare la propria carta TheOtherSpace in modo responsabile e rispettoso delle norme dell'organizzazione.
+				      Si impegna a fare un uso appropriato dei vantaggi offerti dalla carta TheOtherSpace e a non recare disturbo agli altri utenti durante l'accesso ai servizi.
+				      Qualsiasi utilizzo improprio potrebbe comportare la revoca dei privilegi associati alla carta TheOtherSpace dell'utente.
+				    </p>
+			    <div>
+			      <input type="checkbox" id="condition2" name="conditions" value="condition2" required="required">
+			      <label for="condition2">Condivisione di Informazioni Personali:</label>
+			    </div>
+				    <p>
+				      L'utente comprende che, per registrare e utilizzare la carta TheOtherSpace, potrebbe essere necessario fornire alcune informazioni personali.
+				      Si impegna a fornire solo informazioni accurate e veritiere durante il processo di registrazione e a rispettare la privacy dei propri dati.
+				      Le informazioni fornite verranno trattate nel rispetto delle leggi sulla privacy e non saranno divulgate a terzi senza il consenso dell'utente.
+				    </p>
+			    <div>
+			      <input type="checkbox" id="condition3" name="conditions" value="condition3" required="required">
+			      <label for="condition3">Sicurezza della Carta TheOtherSpace:</label>
+			    </div>
+				    <p>
+				      L'utente riconosce che la sua carta TheOtherSpace è di sua responsabilità e si impegna a mantenerla al sicuro da smarrimenti o utilizzi non autorizzati.
+				      In caso di smarrimento o furto della carta TheOtherSpace, l'utente è tenuto a segnalarlo tempestivamente all'assistenza clienti per evitare un uso non autorizzato.
+				      TheOtherSpace non sarà responsabile per eventuali utilizzi non autorizzati della carta da parte di terzi.
+				    </p>
+		    	<input type="submit" value="Accetta Condizioni">
+		  </form>
+	</div>
+	<%} else { %>
+			<div class="container">
+		    <div class="left-half">
+		        <img src="https://i0.wp.com/www.tariffando.it/wp-content/uploads/2021/05/Immagine.png?fit=794%2C410&ssl=1" alt="Image" class="image">
+		        <div class="my-card">
+		    	<p>Username: <%=activeUser.getUsername() %></p>
+		    	<p>Codice carta: <%=activeUser.getCardCode()%></p>
+		    	<%if(activeUser.getCardPoints()!=null){ %>
+		    	<p>Saldo punti: <%=activeUser.getCardPoints()%></p>
+		    	<%} else { %>
+		    	<p>Saldo punti: 0</p>
+		    	<%} %>
+		    </div>
+		    </div>
+		    
+		    <div class="right-half">
+		        <div class="inner-div">
+		            <p>Risparmio sugli acquisti: Con la carta TheOtherSpace, hai accesso a sconti esclusivi presso una vasta gamma di partner convenzionati. Che tu stia acquistando cibo, vestiti o intrattenimento, la tua carta ti garantisce prezzi ridotti e offerte speciali.</p>
+		        </div>
+		        <div class="inner-div">
+		            <p>Accumulo punti per premi speciali: Ogni volta che utilizzi la tua carta TheOtherSpace, accumuli punti che possono essere convertiti in fantastici premi. Ad esempio, ogni 1000 punti guadagnati ti danno diritto a un biglietto gratuito per il tuo prossimo acquisto.</p>
+		        </div>
+		        <div class="inner-div">
+		            <p>Offerte esclusive per i membri: Essere titolare della carta TheOtherSpace ti dà accesso a promozioni e offerte speciali riservate esclusivamente ai membri. Da sconti a sorprese inaspettate, ci sono sempre vantaggi da scoprire utilizzando la tua carta TheOtherSpace.</p>
+		        </div>
+		    </div>
+		</div>
+		<%} %>
+
+
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>

@@ -61,8 +61,9 @@
         
         
         <div class="container_movies" id="container_movies">
-	            <a href="AccountInfoServlet">Vai a AccountInfoServlet</a>
-				<a href="MyNextTicketServlet">Vai a MyNextTicket</a>
+	            <a href="MyAccountServlet">La mia Card</a>
+	            <a href="AccountInfoServlet">Le mie info</a>
+				<a href="MyNextTicketServlet">Le mie proiezioni</a>
     	</div>
     </div>
     <div class="form">
