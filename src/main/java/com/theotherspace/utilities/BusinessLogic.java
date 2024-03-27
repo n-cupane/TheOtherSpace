@@ -55,6 +55,10 @@ public class BusinessLogic {
 		return DaoFactory.getDaoFactory().getUserDao().findUserByUsername(username);
 	}
 	
+	public static List<Movie> findAllFavoritesOfUser(long id) {
+		return DaoFactory.getDaoFactory().getUserDao().findAllFavoritesOfUser(id);
+	}
+	
 	
 	
 //	METODI TICKET

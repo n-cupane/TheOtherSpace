@@ -3,6 +3,7 @@ package com.theotherspace.dao.jpa;
 import java.util.List;
 
 import com.theotherspace.dao.UserDao;
+import com.theotherspace.model.Movie;
 import com.theotherspace.model.Screening;
 import com.theotherspace.model.User;
 import com.theotherspace.utilities.BusinessLogic;
@@ -97,6 +98,14 @@ public class JPAUserDao implements UserDao {
 			return null;
 		}
 		
+	}
+
+	@Override
+	public List<Movie> findAllFavoritesOfUser(long userId) {
+		EntityManager em = JPADaoFactory.getEntityManager();
+		Query q = em.createQuery("select m from movie m join m.users u where u.id = :x");
+		q.setParameter("x", userId);
+		return (List<Movie>) q.getResultList();
 	}
 	
 	
