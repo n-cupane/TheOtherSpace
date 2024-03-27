@@ -75,13 +75,26 @@
                 List<Integer> seats = (List<Integer>)request.getAttribute("seats");
                 for (Integer seat : seats) { 
             %>
-                <li>Seat: <%= seat %></li>
+                <p>Seat: <%= seat %></p>
             <% } %>
         </ul>
         <form action="ConfirmationServlet" method="post">
-            <input type="hidden" name="blockedTicket" value="<%= blockedTicket %>">
-            <button type="submit">Confirm Checkout</button>
-        </form>
+		    <% 
+		        int i = 0;
+		        for (Ticket ticket : blockedTicket) { 
+		    %>
+		        <input type="hidden" name="blockedTicketSize" value="<%= blockedTicket.size() %>">
+		        <input type="hidden" name="blockedTicketPrice<%= i %>" value="<%= ticket.getPrice() %>">
+		        <input type="hidden" name="blockedTicketSeat<%= i %>" value="<%= ticket.getSeat() %>">
+		        <input type="hidden" name="blockedTicketUserId<%= i %>" value="<%= ticket.getUser().getId() %>">
+		        <input type="hidden" name="blockedTicketScreening<%= i %>" value="<%= ticket.getScreening().getId() %>">
+		    <% 
+		        i++;
+		        } 
+		    %>
+		    <button type="submit">Confirm Checkout</button>
+		</form>
+
     </div>
 </body>
 <footer>

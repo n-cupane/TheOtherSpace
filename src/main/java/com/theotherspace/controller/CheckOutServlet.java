@@ -20,7 +20,7 @@ import com.theotherspace.utilities.BusinessLogic;
 public class CheckOutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	static List<Ticket> blockedTicket = new ArrayList<>();
+	List<Ticket> blockedTicket = new ArrayList<>();
 	int ticketNumber = 0;
 	List<Integer> seats = new ArrayList<>();
 	LocalDateTime screeningDateTimeVariable;
@@ -42,13 +42,19 @@ public class CheckOutServlet extends HttpServlet {
             String username = (String) request.getSession().getAttribute("loggedInUser");
             request.setAttribute("username", username);
         }
-		
+			
 			request.setAttribute("price", price);
 			request.setAttribute("screeningDateTimeVariable", screeningDateTimeVariable);
 			request.setAttribute("ticketNumber", ticketNumber);
 			request.setAttribute("blockedTicket", blockedTicket);
 			request.setAttribute("seats", seats);
 			request.getRequestDispatcher("html/CheckOut.jsp").forward(request, response);
+			blockedTicket.clear();
+			seats.clear();
+			screeningDateTimeVariable = null;
+			price = 0;
+			
+			
 			
 		}
 

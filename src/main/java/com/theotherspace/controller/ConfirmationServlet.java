@@ -8,7 +8,9 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
+import com.theotherspace.model.Screening;
 import com.theotherspace.model.Ticket;
+import com.theotherspace.model.User;
 import com.theotherspace.utilities.BusinessLogic;
 
 /**
@@ -37,10 +39,17 @@ public class ConfirmationServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		// prelevo la lista con i ticket e li aggiungo al db
-		List<Ticket> blockedTicket = CheckOutServlet.blockedTicket;
-		for(Ticket userTicket : blockedTicket) {
-			BusinessLogic.addTicket(userTicket);
+		
+		int blockedTicketListSize = Integer.parseInt(request.getParameter("blockedTicketSize"));
+		for(int i = 0; i<blockedTicketListSize; i++) {
+			double blockedTicketPrice = Double.parseDouble(request.getParameter("blockedTicketPrice"+i));
+			int blockedTicketSeat = Integer.parseInt(request.getParameter("blockedTicketSeat"+i));
+			Long blockedTicketUserId = Long.parseLong(request.getParameter("blockedTicketUserId"+i));
+			Long blockedTicketScreeningId = Long.parseLong(request.getParameter("blockedTicketScreening"+i));
+			User blockedTicketUser = BusinessLogic.findUserById(blockedTicketUserId);
+			Screening blockedTicketScreening = BusinessLogic.findScreeningById(blockedTicketScreeningId);
+			Ticket blockedTicketConfirmed = new Ticket(blockedTicketUser,blockedTicketScreening,blockedTicketPrice,blockedTicketSeat);
+			BusinessLogic.addTicket(blockedTicketConfirmed);
 		}
 	}
 

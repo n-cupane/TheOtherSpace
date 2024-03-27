@@ -134,8 +134,6 @@ p {
 .container_poster{
 	width: 10vw;
 	height: 40vh;
-	margin-bottom: 40px;
-	padding: 30px;
 	margin-left:0.5vw;
 	margin-right:0.5vw;
 }
@@ -143,7 +141,6 @@ p {
 .poster_movie{
 	max-width:100%;
 	max-height: 100%;
-	/* background-image: url("https://www.themoviedb.org/t/p/w600_and_h900_bestv2/zozGfM5kO9qbx1XSvwDwrh6yTca.jpg"); */
 	background-size: cover;
 	background-position: center;
 	
