@@ -147,6 +147,10 @@ public class BusinessLogic {
 		DaoFactory.getDaoFactory().getTheaterDao().insert(tr);
 	}
 	
+	public static Theater findTheaterByNumber(int theaterNumber) {
+		return DaoFactory.getDaoFactory().getTheaterDao().findTheaterByNumber(theaterNumber);
+	}
+	
 // METODI SCREENING
 	
 	public static Screening findScreeningById(long id) {

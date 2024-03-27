@@ -18,7 +18,18 @@
 ## Feature da implementare:
 
 - [x]  CRUD film
-- [ ]  CRUD generi
+- [x]  CRUD utenti
 - [ ]  CRUD proiezioni
-- [ ]  CRUD sale
+- [x]  CRUD sale
 - [ ]  Moderazione recensioni
+
+
+
+#Da fixare:
+
+- [ ] Caratteri accentati nella descrizione dei film (deriva da DB) 
+- [ ] Utilizzare session in tutte le servlet per controllare se l'utente è loggato
+- [ ] Non mostrare proiezioni passate all'utente
+- [ ] Permettere solo a utenti loggati di arrivare alla scelta del posto
+- [ ] L'accesso come admin deve rimandare al pannello di controllo
+- [ ] Impostare vincoli not null e unique nel DB tramite JPA

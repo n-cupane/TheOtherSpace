@@ -5,6 +5,7 @@ import java.util.List;
 import com.theotherspace.dao.TheaterDao;
 import com.theotherspace.model.Theater;
 import com.theotherspace.model.Ticket;
+import com.theotherspace.model.User;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
@@ -32,7 +33,7 @@ public class JPATheaterDao implements TheaterDao {
 	@Override
 	public List<Theater> findAll() {
 		EntityManager em = JPADaoFactory.getEntityManager();
-		Query q = em.createQuery("select t from theater t");
+		Query q = em.createQuery("select r from room r");
 		return q.getResultList();
 	}
 
@@ -61,6 +62,18 @@ public class JPATheaterDao implements TheaterDao {
 		tr.begin();
 		em.persist(t);
 		tr.commit();
+	}
+
+	@Override
+	public Theater findTheaterByNumber(int theaterNumber) {
+		EntityManager em = JPADaoFactory.getEntityManager();
+		Query q = em.createQuery("select r from room r where r.number = :x");
+		q.setParameter("x", theaterNumber);
+		try {
+			return (Theater) q.getSingleResult();
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 }

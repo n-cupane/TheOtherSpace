@@ -1,3 +1,5 @@
+<%@page import="com.theotherspace.utilities.BusinessLogic"%>
+<%@page import="com.theotherspace.model.Movie"%>
 <%@page import="java.time.format.DateTimeFormatter"%>
 <%@page import="com.theotherspace.model.User"%>
 <%@page import="java.util.List"%>
@@ -18,9 +20,9 @@
 <body>
 
 	<%
-		List<User> users = (List<User>) request.getAttribute("users");
-		Integer userRemovedId = null;
-		userRemovedId = (Integer) request.getAttribute("userRemovedId");
+	List<Movie> movies = (List<Movie>) request.getAttribute("movies");
+		Integer movieRemovedId = null;
+		movieRemovedId = (Integer) request.getAttribute("movieRemovedId");
 		
 	%>
 
@@ -31,12 +33,12 @@
         <h3>Pannello di controllo</h3>
         <span id="below-h3"></span>
 
-        <a href="http://localhost:8080/TheOtherSpace/UserControlPanelServlet" class="left-menu-element current">
+        <a href="http://localhost:8080/TheOtherSpace/UserControlPanelServlet" class="left-menu-element">
             <span class="material-icons">&#xe7ef;</span>
             <h5>Utenti</h5>
         </a>
 
-        <a href="http://localhost:8080/TheOtherSpace/MovieControlPanelServlet" class="left-menu-element">
+        <a href="http://localhost:8080/TheOtherSpace/MovieControlPanelServlet" class="left-menu-element current">
             <span class="material-icons">&#xe02c;</span>
             <h5>Film</h5>
         </a>
@@ -52,42 +54,38 @@
 
        <div id="main-content">
 
-            <textarea name="users-search-bar" id="users-search-bar" rows="1"></textarea>
+            <textarea name="movie-search-bar" id="users-search-bar" rows="1"></textarea>
 
             <div id="top-users-container">
               
                     <p class="uh-id">ID </p>
-                    <p class="uh-fullname">NOME E COGNOME</p>
-                    <p class="uh-email">EMAIL</p>
-                    <p class="uhname">USERNAME</p>
-                    <p class="uh-dob">DATA DI NASCITA</p>
+                    <p class="uh-fullname">TITOLO</p>
+                    <p class="uh-email">GENERE</p>
+                    <p class="uhname">DURATA</p>
+                    <p class="uh-dob">PER ADULTI</p>
                     <div>
-                        <a href="http://localhost:8080/TheOtherSpace/UserControlPanelAddServlet">
-                        <span id="add-user" class="material-icons edit">&#xe7f0;</span>
+                        <a href="http://localhost:8080/TheOtherSpace/SearchMovieServlet">
+                        <span id="add-user" class="material-icons edit">&#xe02c;</span>
                          </a>
                     </div>
               
             </div>
             <div id="users-container">
 			<%
-			for (User user: users) {
+			for (Movie movie: movies) {
 			%>
                 <div class="user">
-                    <p class="user-id" name="user-id"><%=user.getId() %></p>
-                    <p class="user-fullname"><%=user.getFirstName() + " "  + user.getLastName() %></p>
-                    <p class="user-email"><%=user.getEmail() %></p>
-                    <p class="username"><%=user.getUsername() %></p>
-                    <p class="user-dob"><%=user.getDateOfBirth().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")) %></p>
-                    <a href="http://localhost:8080/TheOtherSpace/UserControlPanelEditServlet?userId=<%=user.getId()%>">
-                    <%if (user.getId() != 1) { %>
+                    <p class="user-id" name="movie-id"><%=movie.getId() %></p>
+                    <p class="user-fullname"><%=movie.getTitle() %></p>
+                    <p class="user-email"><%=movie.getGenre().getName() %></p>
+                    <p class="username"><%=movie.getDuration() %></p>
+                    <p class="user-dob"><%=(movie.isOver18()) ? "SÌ" : "NO" %></p>
+                    <a href="http://localhost:8080/TheOtherSpace/AddMovieServlet?movieToEditId=<%=movie.getId()%>">
                         <span class="material-icons edit">&#xe3c9;</span>
-                        <%} %>
                     </a>
-                    <form action="http://localhost:8080/TheOtherSpace/UserControlPanelServlet" method="POST">
-                    <%if (user.getId() != 1) { %>
-                    	<input type='text' style="display:none" name="userId" value="<%=user.getId() %>">
+                    <form action="http://localhost:8080/TheOtherSpace/MovieControlPanelServlet" method="POST">
+                    	<input type='text' style="display:none" name="movieId" value="<%=movie.getId() %>">
                         <button type="submit" class="material-icons delete">&#xe872;</button>
-                       <%} %>
                     </form>
                 </div>
                 
@@ -104,16 +102,16 @@
     
 	<script>
 	// Logica per la ricerca in tempo reale
-	let usersArray = [];
-	let person;
-	<%for (int i = 0; i < users.size(); i++) { %>
-		person = {id: <%=users.get(i).getId()%>,
-				fullName: "<%=users.get(i).getFirstName().toLowerCase() + " " + users.get(i).getLastName().toLowerCase() %>",
-				username: "<%=users.get(i).getUsername().toLowerCase() %>",
-				email: "<%=users.get(i).getEmail().toLowerCase() %>"};
-		usersArray[<%=i%>] = person;
+	let moviesArray = [];
+	let movie;
+	<%for (int i = 0; i < movies.size(); i++) { %>
+		movie = {id: <%=movies.get(i).getId()%>,
+				genre: "<%=movies.get(i).getGenre().getName().toLowerCase() %>",
+				title: "<%=movies.get(i).getTitle().toLowerCase() %>",
+				};
+		moviesArray[<%=i%>] = movie;
 	<%}%>
-	console.log(usersArray);
+	console.log(moviesArray);
 	
 	let searchBar = document.getElementById("users-search-bar");
 	let rows = document.querySelectorAll('.user');
@@ -125,10 +123,10 @@
 			rows[j].classList.add('hideRow');
 		}
 		
-		for (let i = 0; i < usersArray.length; i++) {
-			if (usersArray[i].fullName.includes(query) || usersArray[i].username.includes(query) || usersArray[i].email.includes(query)) {
+		for (let i = 0; i < moviesArray.length; i++) {
+			if (moviesArray[i].title.includes(query) || moviesArray[i].genre.includes(query)) {
 				for (let j = 0; j < rows.length; j++) {
-					if (rows[j].querySelector('.user-id').innerText == usersArray[i].id) {
+					if (rows[j].querySelector('.user-id').innerText == moviesArray[i].id) {
 						rows[j].classList.remove('hideRow');
 					}
 				}
