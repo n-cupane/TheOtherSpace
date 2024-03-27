@@ -33,3 +33,4 @@
 - [ ] Permettere solo a utenti loggati di arrivare alla scelta del posto
 - [ ] L'accesso come admin deve rimandare al pannello di controllo
 - [ ] Impostare vincoli not null e unique nel DB tramite JPA
+- [ ] Creare servlet di logout e gestire tutti i logout reindirizzandoli a questa
