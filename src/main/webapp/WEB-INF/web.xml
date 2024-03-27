@@ -265,4 +265,34 @@
     <servlet-name>TheaterControlPanelAddServlet</servlet-name>
     <url-pattern>/TheaterControlPanelAddServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ScreeningControlPanelServlet</display-name>
+    <servlet-name>ScreeningControlPanelServlet</servlet-name>
+    <servlet-class>com.theotherspace.controller.ScreeningControlPanelServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ScreeningControlPanelServlet</servlet-name>
+    <url-pattern>/ScreeningControlPanelServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ScreeningControlPanelAddServlet</display-name>
+    <servlet-name>ScreeningControlPanelAddServlet</servlet-name>
+    <servlet-class>com.theotherspace.controller.ScreeningControlPanelAddServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ScreeningControlPanelAddServlet</servlet-name>
+    <url-pattern>/ScreeningControlPanelAddServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ScreeningControlPanelEditServlet</display-name>
+    <servlet-name>ScreeningControlPanelEditServlet</servlet-name>
+    <servlet-class>com.theotherspace.controller.ScreeningControlPanelEditServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ScreeningControlPanelEditServlet</servlet-name>
+    <url-pattern>/ScreeningControlPanelEditServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -60,7 +60,7 @@ public class Screening {
 		return movie;
 	}
 
-	public void setMovieId(Movie movie) {
+	public void setMovie(Movie movie) {
 		this.movie = movie;
 	}
 

@@ -1,3 +1,4 @@
+<%@page import="com.theotherspace.model.Screening"%>
 <%@page import="java.time.format.DateTimeFormatter"%>
 <%@page import="com.theotherspace.model.User"%>
 <%@page import="java.util.List"%>
@@ -18,10 +19,9 @@
 <body>
 
 	<%
-		List<User> users = (List<User>) request.getAttribute("users");
-		Integer userRemovedId = null;
-		userRemovedId = (Integer) request.getAttribute("userRemovedId");
-		
+		List<Screening> screenings = (List<Screening>) request.getAttribute("screenings");
+		Integer screeningRemovedId = null;
+		screeningRemovedId = (Integer) request.getAttribute("screeningRemovedId");
 	%>
 
     <div id="container" class="container-fluid">
@@ -31,7 +31,7 @@
         <h3>Pannello di controllo</h3>
         <span id="below-h3"></span>
 
-        <a href="http://localhost:8080/TheOtherSpace/UserControlPanelServlet" class="left-menu-element current">
+        <a href="http://localhost:8080/TheOtherSpace/UserControlPanelServlet" class="left-menu-element">
             <span class="material-icons">&#xe7ef;</span>
             <h5>Utenti</h5>
         </a>
@@ -46,7 +46,7 @@
             <h5>Sale</h5>
         </a>
         
-        <a href="http://localhost:8080/TheOtherSpace/ScreeningControlPanelServlet" class="left-menu-element">
+        <a href="http://localhost:8080/TheOtherSpace/ScreeningControlPanelServlet" class="left-menu-element current">
             <span class="material-icons">&#xe04b;</span>
             <h5>Proiezioni</h5>
         </a>
@@ -62,37 +62,33 @@
             <div id="top-users-container">
               
                     <p class="uh-id">ID </p>
-                    <p class="uh-fullname">NOME E COGNOME</p>
-                    <p class="uh-email">EMAIL</p>
-                    <p class="uhname">USERNAME</p>
-                    <p class="uh-dob">DATA DI NASCITA</p>
+                    <p class="uh-fullname">FILM</p>
+                    <p class="uh-email">SALA</p>
+                    <p class="uhname">DATA E ORA</p>
+                    <p class="uh-dob"></p>
                     <div>
-                        <a href="http://localhost:8080/TheOtherSpace/UserControlPanelAddServlet">
-                        <span id="add-user" class="material-icons edit">&#xe7f0;</span>
+                        <a href="http://localhost:8080/TheOtherSpace/ScreeningControlPanelAddServlet">
+                        <span id="add-user" class="material-icons edit">&#xe04b;</span>
                          </a>
                     </div>
               
             </div>
             <div id="users-container">
 			<%
-			for (User user: users) {
+			for (Screening screening: screenings) {
 			%>
                 <div class="user">
-                    <p class="user-id" name="user-id"><%=user.getId() %></p>
-                    <p class="user-fullname"><%=user.getFirstName() + " "  + user.getLastName() %></p>
-                    <p class="user-email"><%=user.getEmail() %></p>
-                    <p class="username"><%=user.getUsername() %></p>
-                    <p class="user-dob"><%=user.getDateOfBirth().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")) %></p>
-                    <a href="http://localhost:8080/TheOtherSpace/UserControlPanelEditServlet?userId=<%=user.getId()%>">
-                    <%if (user.getId() != 1) { %>
+                    <p class="user-id" name="screening-id"><%=screening.getId() %></p>
+                    <p class="user-fullname"><%=screening.getMovie().getTitle() %></p>
+                    <p class="user-email"><%=screening.getTheater().getNumber() %></p>
+                    <p class="username"><%=screening.getDateTime().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm")) %></p>
+                    <p class="user-dob"></p>
+                    <a href="http://localhost:8080/TheOtherSpace/ScreeningControlPanelEditServlet?screeningId=<%=screening.getId()%>">
                         <span class="material-icons edit">&#xe3c9;</span>
-                        <%} %>
                     </a>
-                    <form action="http://localhost:8080/TheOtherSpace/UserControlPanelServlet" method="POST">
-                    <%if (user.getId() != 1) { %>
-                    	<input type='text' style="display:none" name="userId" value="<%=user.getId() %>">
+                    <form action="http://localhost:8080/TheOtherSpace/ScreeningControlPanelServlet" method="POST">
+                    	<input type='text' style="display:none" name="screeningId" value="<%=screening.getId() %>">
                         <button type="submit" class="material-icons delete">&#xe872;</button>
-                       <%} %>
                     </form>
                 </div>
                 
@@ -109,16 +105,16 @@
     
 	<script>
 	// Logica per la ricerca in tempo reale
-	let usersArray = [];
-	let person;
-	<%for (int i = 0; i < users.size(); i++) { %>
-		person = {id: <%=users.get(i).getId()%>,
-				fullName: "<%=users.get(i).getFirstName().toLowerCase() + " " + users.get(i).getLastName().toLowerCase() %>",
-				username: "<%=users.get(i).getUsername().toLowerCase() %>",
-				email: "<%=users.get(i).getEmail().toLowerCase() %>"};
-		usersArray[<%=i%>] = person;
+	let screeningsArray = [];
+	let screening;
+	<%for (int i = 0; i < screenings.size(); i++) { %>
+	screening = {id: <%=screenings.get(i).getId()%>,
+				title: "<%=screenings.get(i).getMovie().getTitle().toLowerCase() %>",
+				theater: "<%=screenings.get(i).getTheater().getNumber() %>",
+				dateTime: "<%=screenings.get(i).getDateTime().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")) %>"};
+		screeningsArray[<%=i%>] = screening;
 	<%}%>
-	console.log(usersArray);
+	console.log(screeningsArray);
 	
 	let searchBar = document.getElementById("users-search-bar");
 	let rows = document.querySelectorAll('.user');
@@ -130,10 +126,10 @@
 			rows[j].classList.add('hideRow');
 		}
 		
-		for (let i = 0; i < usersArray.length; i++) {
-			if (usersArray[i].fullName.includes(query) || usersArray[i].username.includes(query) || usersArray[i].email.includes(query)) {
+		for (let i = 0; i < screeningsArray.length; i++) {
+			if (screeningsArray[i].title.includes(query) || ("sala:" + screeningsArray[i].theater).includes(query) || screeningsArray[i].dateTime.includes(query)) {
 				for (let j = 0; j < rows.length; j++) {
-					if (rows[j].querySelector('.user-id').innerText == usersArray[i].id) {
+					if (rows[j].querySelector('.user-id').innerText == screeningsArray[i].id) {
 						rows[j].classList.remove('hideRow');
 					}
 				}

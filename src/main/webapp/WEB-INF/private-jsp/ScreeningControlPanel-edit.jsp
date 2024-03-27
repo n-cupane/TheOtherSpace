@@ -1,3 +1,7 @@
+<%@page import="com.theotherspace.model.Screening"%>
+<%@page import="com.theotherspace.model.Theater"%>
+<%@page import="com.theotherspace.utilities.BusinessLogic"%>
+<%@page import="com.theotherspace.model.Movie"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -12,6 +16,9 @@
     <link rel="stylesheet" href="<%=request.getContextPath() + "/css/ControlPanelAddUserStyle.css"%>">
 </head>
 <body>
+	<%
+		Screening screening = (Screening) request.getAttribute("screeningToEdit");
+	%>
     <div id="container" class="container-fluid">
 
         <div id="left-menu">
@@ -29,12 +36,12 @@
 	            <h5>Film</h5>
 	        </a>
 	
-	        <a href="http://localhost:8080/TheOtherSpace/TheaterControlPanelServlet" class="left-menu-element current">
+	        <a href="http://localhost:8080/TheOtherSpace/TheaterControlPanelServlet" class="left-menu-element">
 	            <span class="material-icons">&#xefed;</span>
 	            <h5>Sale</h5>
 	        </a>
 	        
-	        <a href="http://localhost:8080/TheOtherSpace/ScreeningControlPanelServlet" class="left-menu-element">
+	        <a href="http://localhost:8080/TheOtherSpace/ScreeningControlPanelServlet" class="left-menu-element current">
             <span class="material-icons">&#xe04b;</span>
             <h5>Proiezioni</h5>
         </a>
@@ -45,25 +52,47 @@
         
         <div id="main-content">
 
-            <form action="http://localhost:8080/TheOtherSpace/TheaterControlPanelAddServlet" method="POST" id="movie-to-add-container" class="container">
+            <form action="http://localhost:8080/TheOtherSpace/ScreeningControlPanelEditServlet" method="POST" id="movie-to-add-container" class="container">
 
                 <div class="add-element">
-                    <label for="add-username">Numero:</label>
+                    <label for="edit-movie-id">Film:</label>
                     
-                        <input type="text" name="add-number" class="add-username" required>
-                    
+                        <select name="edit-movie-id" class="add-first-name" required>
+                        	<option value="<%=screening.getMovie().getId() %>"><%=screening.getMovie().getTitle() %></option>
+                        <%
+                        for (Movie movie: BusinessLogic.findAllMovies()) {
+                        	%>
+                        		<option value="<%=movie.getId() %>"><%=movie.getTitle() %></option>
+                        	<%
+                        }
+                        %>                        
+                        </select>
                 </div>
 
                 
 
                 <div class="add-element">
-                    <label for="add-first-name">Posti:</label>
+                    <label for="edit-theater-id">Sala:</label>
                     
-                        <input type="text" name="add-seats" class="add-first-name" required>
+                        <select name="edit-theater-id" class="add-first-name" required>
+                        	<option value="<%=screening.getTheater().getId() %>"><%=screening.getTheater().getNumber() %></option>
+                        <%
+                        for (Theater theater: BusinessLogic.findAllTheaters()) {
+                        	%>
+                        		<option value="<%=theater.getId() %>"><%=theater.getNumber() %></option>
+                        	<%
+                        }
+                        %>                        
+                        </select>
+                </div>
                 
+                <div class="add-element">
+                    <label for="edit-date-time">Data e ora:</label>
+                    <input value="<%=screening.getDateTime() %>" type="datetime-local" name="edit-date-time" class="add-first-name" required>
                 </div>
 
-                <input id="add-btn" type="submit" value="CREA SALA">
+				<input name="edit-screening-id" type="text" value="<%=screening.getId() %>" style="display:none">
+                <input id="add-btn" type="submit" value="CONFERMA MODIFICHE">
                 
                 <%
 				    	String errorMsg = (String) request.getAttribute("errorMsg");

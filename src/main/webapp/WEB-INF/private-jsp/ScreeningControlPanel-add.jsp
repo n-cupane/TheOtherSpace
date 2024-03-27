@@ -1,3 +1,6 @@
+<%@page import="com.theotherspace.model.Theater"%>
+<%@page import="com.theotherspace.utilities.BusinessLogic"%>
+<%@page import="com.theotherspace.model.Movie"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -29,12 +32,12 @@
 	            <h5>Film</h5>
 	        </a>
 	
-	        <a href="http://localhost:8080/TheOtherSpace/TheaterControlPanelServlet" class="left-menu-element current">
+	        <a href="http://localhost:8080/TheOtherSpace/TheaterControlPanelServlet" class="left-menu-element">
 	            <span class="material-icons">&#xefed;</span>
 	            <h5>Sale</h5>
 	        </a>
 	        
-	        <a href="http://localhost:8080/TheOtherSpace/ScreeningControlPanelServlet" class="left-menu-element">
+	        <a href="http://localhost:8080/TheOtherSpace/ScreeningControlPanelServlet" class="left-menu-element current">
             <span class="material-icons">&#xe04b;</span>
             <h5>Proiezioni</h5>
         </a>
@@ -45,25 +48,44 @@
         
         <div id="main-content">
 
-            <form action="http://localhost:8080/TheOtherSpace/TheaterControlPanelAddServlet" method="POST" id="movie-to-add-container" class="container">
+            <form action="http://localhost:8080/TheOtherSpace/ScreeningControlPanelAddServlet" method="POST" id="movie-to-add-container" class="container">
 
                 <div class="add-element">
-                    <label for="add-username">Numero:</label>
+                    <label for="add-movie-id">Film:</label>
                     
-                        <input type="text" name="add-number" class="add-username" required>
-                    
+                        <select name="add-movie-id" class="add-first-name" required>
+                        <%
+                        for (Movie movie: BusinessLogic.findAllMovies()) {
+                        	%>
+                        		<option value="<%=movie.getId() %>"><%=movie.getTitle() %></option>
+                        	<%
+                        }
+                        %>                        
+                        </select>
                 </div>
 
                 
 
                 <div class="add-element">
-                    <label for="add-first-name">Posti:</label>
+                    <label for="add-theater-id">Sala:</label>
                     
-                        <input type="text" name="add-seats" class="add-first-name" required>
+                        <select name="add-theater-id" class="add-first-name" required>
+                        <%
+                        for (Theater theater: BusinessLogic.findAllTheaters()) {
+                        	%>
+                        		<option value="<%=theater.getId() %>"><%=theater.getNumber() %></option>
+                        	<%
+                        }
+                        %>                        
+                        </select>
+                </div>
                 
+                <div class="add-element">
+                    <label for="add-date-time">Data e ora:</label>
+                    <input type="datetime-local" name="add-date-time" class="add-first-name" required>
                 </div>
 
-                <input id="add-btn" type="submit" value="CREA SALA">
+                <input id="add-btn" type="submit" value="AGGIUNGI PROIEZIONE">
                 
                 <%
 				    	String errorMsg = (String) request.getAttribute("errorMsg");

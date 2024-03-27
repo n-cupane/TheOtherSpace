@@ -47,6 +47,11 @@
             <span class="material-icons">&#xefed;</span>
             <h5>Sale</h5>
         </a>
+        
+        <a href="http://localhost:8080/TheOtherSpace/ScreeningControlPanelServlet" class="left-menu-element">
+            <span class="material-icons">&#xe04b;</span>
+            <h5>Proiezioni</h5>
+        </a>
 
         <a id="logout" href="">logout</a>
 
