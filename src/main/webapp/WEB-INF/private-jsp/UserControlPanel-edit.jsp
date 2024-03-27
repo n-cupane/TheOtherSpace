@@ -24,20 +24,20 @@
             <h3>Pannello di controllo</h3>
             <span id="below-h3"></span>
     
-            <a href="http://localhost:8080/TheOtherSpace/UserControlPanelServlet" class="left-menu-element current">
-                <span class="material-icons">&#xe7ef;</span>
-                <h5>Utenti</h5>
-            </a>
-    
-            <a class="left-menu-element">
-                <span class="material-icons">&#xe02c;</span>
-                <h5>Film</h5>
-            </a>
-    
-            <a class="left-menu-element">
-                <span class="material-icons">&#xefed;</span>
-                <h5>Sale</h5>
-            </a>
+            <a href="http://localhost:8080/TheOtherSpace/UserControlPanelServlet" class="left-menu-element">
+            <span class="material-icons">&#xe7ef;</span>
+            <h5>Utenti</h5>
+        </a>
+
+        <a href="http://localhost:8080/TheOtherSpace/MovieControlPanelServlet" class="left-menu-element">
+            <span class="material-icons">&#xe02c;</span>
+            <h5>Film</h5>
+        </a>
+
+        <a href="http://localhost:8080/TheOtherSpace/TheaterControlPanelServlet" class="left-menu-element current">
+            <span class="material-icons">&#xefed;</span>
+            <h5>Sale</h5>
+        </a>
     
             <a id="logout" href="">logout</a>
     

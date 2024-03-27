@@ -64,6 +64,7 @@
         String duration = (String) request.getAttribute("duration");
         String imageUrl = (String) request.getAttribute("imageUrl");
         Boolean over18 = (Boolean) request.getAttribute("over18");
+        Long oldMovieId = (Long) request.getAttribute("oldMovieId");
         %>
 
         <form action="http://localhost:8080/TheOtherSpace/AddMovieServlet" method="POST" id="movie-to-add-container" class="container">
@@ -158,6 +159,7 @@
                 %>
             </div>
 
+			<input name="oldMovieId" style="display:none" value="<%=oldMovieId %>">
             <input id="add-btn" type="submit" value="AGGIUNGI">
 
         </form>

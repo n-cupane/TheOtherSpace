@@ -1,3 +1,4 @@
+<%@page import="com.theotherspace.model.Theater"%>
 <%@page import="java.time.format.DateTimeFormatter"%>
 <%@page import="com.theotherspace.model.User"%>
 <%@page import="java.util.List"%>
@@ -18,9 +19,9 @@
 <body>
 
 	<%
-		List<User> users = (List<User>) request.getAttribute("users");
-		Integer userRemovedId = null;
-		userRemovedId = (Integer) request.getAttribute("userRemovedId");
+		List<Theater> theaters = (List<Theater>) request.getAttribute("theaters");
+		Integer theaterRemovedId = null;
+		theaterRemovedId = (Integer) request.getAttribute("theaterRemovedId");
 		
 	%>
 
@@ -31,7 +32,7 @@
         <h3>Pannello di controllo</h3>
         <span id="below-h3"></span>
 
-        <a href="http://localhost:8080/TheOtherSpace/UserControlPanelServlet" class="left-menu-element current">
+        <a href="http://localhost:8080/TheOtherSpace/UserControlPanelServlet" class="left-menu-element">
             <span class="material-icons">&#xe7ef;</span>
             <h5>Utenti</h5>
         </a>
@@ -41,7 +42,7 @@
             <h5>Film</h5>
         </a>
 
-        <a href="http://localhost:8080/TheOtherSpace/TheaterControlPanelServlet" class="left-menu-element">
+        <a href="http://localhost:8080/TheOtherSpace/TheaterControlPanelServlet" class="left-menu-element current">
             <span class="material-icons">&#xefed;</span>
             <h5>Sale</h5>
         </a>
@@ -57,37 +58,33 @@
             <div id="top-users-container">
               
                     <p class="uh-id">ID </p>
-                    <p class="uh-fullname">NOME E COGNOME</p>
-                    <p class="uh-email">EMAIL</p>
-                    <p class="uhname">USERNAME</p>
-                    <p class="uh-dob">DATA DI NASCITA</p>
+                    <p class="uh-fullname">NUMERO</p>
+                    <p class="uh-email">POSTI</p>
+                    <p class="uhname"></p>
+                    <p class="uh-dob"></p>
                     <div>
-                        <a href="http://localhost:8080/TheOtherSpace/UserControlPanelAddServlet">
-                        <span id="add-user" class="material-icons edit">&#xe7f0;</span>
+                        <a href="http://localhost:8080/TheOtherSpace/TheaterControlPanelAddServlet">
+                        <span id="add-user" class="material-icons edit">&#xe146;</span>
                          </a>
                     </div>
               
             </div>
             <div id="users-container">
 			<%
-			for (User user: users) {
+			for (Theater theater: theaters) {
 			%>
                 <div class="user">
-                    <p class="user-id" name="user-id"><%=user.getId() %></p>
-                    <p class="user-fullname"><%=user.getFirstName() + " "  + user.getLastName() %></p>
-                    <p class="user-email"><%=user.getEmail() %></p>
-                    <p class="username"><%=user.getUsername() %></p>
-                    <p class="user-dob"><%=user.getDateOfBirth().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")) %></p>
-                    <a href="http://localhost:8080/TheOtherSpace/UserControlPanelEditServlet?userId=<%=user.getId()%>">
-                    <%if (user.getId() != 1) { %>
+                    <p class="user-id" name="user-id"><%=theater.getId() %></p>
+                    <p class="user-fullname"><%=theater.getNumber() %></p>
+                    <p class="user-email"><%=theater.getSeats() %></p>
+                    <p class="username"></p>
+                    <p class="user-dob"></p>
+                    <a href="http://localhost:8080/TheOtherSpace/TheaterControlPanelEditServlet?theaterId=<%=theater.getId() %>">
                         <span class="material-icons edit">&#xe3c9;</span>
-                        <%} %>
                     </a>
-                    <form action="http://localhost:8080/TheOtherSpace/UserControlPanelServlet" method="POST">
-                    <%if (user.getId() != 1) { %>
-                    	<input type='text' style="display:none" name="userId" value="<%=user.getId() %>">
+                    <form action="http://localhost:8080/TheOtherSpace/TheaterControlPanelServlet" method="POST">
+                    	<input type='text' style="display:none" name="theaterId" value="<%=theater.getId() %>">
                         <button type="submit" class="material-icons delete">&#xe872;</button>
-                       <%} %>
                     </form>
                 </div>
                 
@@ -104,16 +101,16 @@
     
 	<script>
 	// Logica per la ricerca in tempo reale
-	let usersArray = [];
-	let person;
-	<%for (int i = 0; i < users.size(); i++) { %>
-		person = {id: <%=users.get(i).getId()%>,
-				fullName: "<%=users.get(i).getFirstName().toLowerCase() + " " + users.get(i).getLastName().toLowerCase() %>",
-				username: "<%=users.get(i).getUsername().toLowerCase() %>",
-				email: "<%=users.get(i).getEmail().toLowerCase() %>"};
-		usersArray[<%=i%>] = person;
+	let theatersArray = [];
+	let theater;
+	<%for (int i = 0; i < theaters.size(); i++) { %>
+	theater = {id: <%=theaters.get(i).getId()%>,
+			number: "<%=theaters.get(i).getNumber() %>",
+				seats: "<%=theaters.get(i).getSeats() %>",
+				};
+		theatersArray[<%=i%>] = theater;
 	<%}%>
-	console.log(usersArray);
+	console.log(theatersArray);
 	
 	let searchBar = document.getElementById("users-search-bar");
 	let rows = document.querySelectorAll('.user');
@@ -125,10 +122,10 @@
 			rows[j].classList.add('hideRow');
 		}
 		
-		for (let i = 0; i < usersArray.length; i++) {
-			if (usersArray[i].fullName.includes(query) || usersArray[i].username.includes(query) || usersArray[i].email.includes(query)) {
+		for (let i = 0; i < theatersArray.length; i++) {
+			if (theatersArray[i].number.includes(query)) {
 				for (let j = 0; j < rows.length; j++) {
-					if (rows[j].querySelector('.user-id').innerText == usersArray[i].id) {
+					if (rows[j].querySelector('.user-id').innerText == theatersArray[i].id) {
 						rows[j].classList.remove('hideRow');
 					}
 				}

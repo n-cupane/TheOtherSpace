@@ -216,4 +216,53 @@
     <servlet-name>AcceptCardServlet</servlet-name>
     <url-pattern>/AcceptCardServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <display-name>MovieControlPanelServlet</display-name>
+    <servlet-name>MovieControlPanelServlet</servlet-name>
+    <servlet-class>com.theotherspace.controller.MovieControlPanelServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MovieControlPanelServlet</servlet-name>
+    <url-pattern>/MovieControlPanelServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MovieControlPanelEditServlet</display-name>
+    <servlet-name>MovieControlPanelEditServlet</servlet-name>
+    <servlet-class>com.theotherspace.controller.MovieControlPanelEditServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MovieControlPanelEditServlet</servlet-name>
+    <url-pattern>/MovieControlPanelEditServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>TheaterControlPanelServlet</display-name>
+    <servlet-name>TheaterControlPanelServlet</servlet-name>
+    <servlet-class>com.theotherspace.controller.TheaterControlPanelServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TheaterControlPanelServlet</servlet-name>
+    <url-pattern>/TheaterControlPanelServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>TheaterControlPanelEditServlet</display-name>
+    <servlet-name>TheaterControlPanelEditServlet</servlet-name>
+    <servlet-class>com.theotherspace.controller.TheaterControlPanelEditServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TheaterControlPanelEditServlet</servlet-name>
+    <url-pattern>/TheaterControlPanelEditServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>TheaterControlPanelAddServlet</display-name>
+    <servlet-name>TheaterControlPanelAddServlet</servlet-name>
+    <servlet-class>com.theotherspace.controller.TheaterControlPanelAddServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TheaterControlPanelAddServlet</servlet-name>
+    <url-pattern>/TheaterControlPanelAddServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

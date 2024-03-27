@@ -67,7 +67,7 @@ public class JPAMovieDao implements MovieDao{
 	@Override
 	public Movie findMovieByTitle(String title) {
 		EntityManager em = JPADaoFactory.getEntityManager();
-		Query q = em.createQuery("select m from movie m where movie.title=:x");
+		Query q = em.createQuery("select m from movie m where m.title=:x");
 		q.setParameter("x", title);
 		try {
 			return (Movie)q.getSingleResult();
