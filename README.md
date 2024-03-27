@@ -35,3 +35,4 @@
 - [ ] Impostare vincoli not null e unique nel DB tramite JPA
 - [ ] Creare servlet di logout e gestire tutti i logout reindirizzandoli a questa
 - [ ] Aggiungere link a home tramite logo in tutte le servlet
+- [ ] Valutare, come suggerito da Filippo, di non eliminare del tutto gli utenti dal DB ma di cambiarne solo la visibilità (forse anche altro come screening)
