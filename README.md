@@ -34,3 +34,4 @@
 - [ ] L'accesso come admin deve rimandare al pannello di controllo
 - [ ] Impostare vincoli not null e unique nel DB tramite JPA
 - [ ] Creare servlet di logout e gestire tutti i logout reindirizzandoli a questa
+- [ ] Aggiungere link a home tramite logo in tutte le servlet
