@@ -21,7 +21,6 @@ public class ConfirmationServlet extends HttpServlet {
        
 	boolean haveCard = false;
 	
-	double discount= 1.0;
 	
 	double blockedTicketPrice;
     /**
@@ -50,7 +49,7 @@ public class ConfirmationServlet extends HttpServlet {
 		//verifico se l'utente ha una card
         User userTicket = BusinessLogic.findUserByUsername(LogInServlet.username);
         if(userTicket.getCardCode()!=null) {
-        	BusinessLogic.updateUserCardPoint(userTicket, 100);
+        	userTicket.setCardPoints(100);
         	haveCard = true;
         }
         
@@ -65,19 +64,26 @@ public class ConfirmationServlet extends HttpServlet {
 		        // Aggiorna i punti della carta sottraendo 1000
 		    	
 		    	userTicket.setCardPoints(-1000);
-
 		        blockedTicketPrice = 0.0; 
+		        
 		    } else if(userTicket.getCardPoints()<1000 && userTicket.getCardPoints()>0 && haveCard && usePoints) {
 		        // Se l'utente ha meno di 1000 punti sulla carta e vuole utilizzarli per lo sconto
 		    	int multiplier = (userTicket.getCardPoints()/100);
-
+		    	System.out.println(userTicket.getCardPoints());
+		    	
+		    	double discount= 1.0;
 		        // Calcola il prezzo del biglietto scontato
-		    	discount = discount * multiplier;
-		        Double blockedTicketPriceUnfixed = Double.parseDouble(request.getParameter("blockedTicketPrice"+i));
-		        blockedTicketPrice = blockedTicketPriceUnfixed-discount;
+		    	double totalDiscount = discount * multiplier;
+		        String blockedTicketPriceUnfixed = request.getParameter("blockedTicketPrice"+i);
+		        double blockedTicketPricefixed = Double.parseDouble(blockedTicketPriceUnfixed);
+		        System.out.println(blockedTicketPricefixed);
+		        blockedTicketPrice = blockedTicketPricefixed-totalDiscount;
+		        System.out.println(blockedTicketPrice);
+		        //blockedTicketPrice = blockedTicketPriceUnfixed-discount;
 		        userTicket.setCardPoints(-userTicket.getCardPoints());
+		        System.out.println(userTicket.getCardPoints());
 		        // Reimposta lo sconto a 0 per il prossimo biglietto
-		        discount=0.0;
+		        
 		        
 		        
 		    } else if(!haveCard && !usePoints) {

@@ -80,6 +80,14 @@ public class BookingServlet extends HttpServlet {
 		request.setAttribute("showing_idVariable", showing_idVariable);
 		request.getRequestDispatcher("html/Booking.jsp").forward(request, response);
 		
+		screeningDateTimeVariable=null;
+		idVariable = 0;
+		showing_idVariable = 0;
+		price=0.0;
+		theaterVariableId = null;
+		seatsVariable = 0;
+		ticketForScreaningBlocked.clear();
+		imgMovie="";
 		
 		
 		
