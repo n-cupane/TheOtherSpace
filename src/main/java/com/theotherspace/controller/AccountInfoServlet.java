@@ -70,8 +70,17 @@ public class AccountInfoServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		LocalDate dob = LocalDate.parse(request.getParameter("dateOfBirth"));
-
+		
+		User userBeforeChanges = (User)request.getSession().getAttribute("activeUser"); 
+		
+		String cardNumber = userBeforeChanges.getCardCode();
+		int cardPoints = userBeforeChanges.getCardPoints();
+		
+		
 		User updatedUser = new User(userId,username,firstName,lastName,email,password,dob);
+		
+		updatedUser.setCardCode(cardNumber);
+		updatedUser.setCardPoints(cardPoints);
 		
 		request.getSession().setAttribute("activeUser",updatedUser);
 		
