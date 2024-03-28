@@ -29,6 +29,12 @@ public class UserControlPanelServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		//Controllo Aggiuntivo
+		if(request.getSession().getAttribute("activeUser")==null) {
+			response.sendRedirect("LogInServlet");
+			return;
+		}
 	
 		List<User> users = BusinessLogic.findAllUsers();
 		request.setAttribute("users", users);
@@ -39,6 +45,12 @@ public class UserControlPanelServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		//Controllo Aggiuntivo
+		if(request.getSession().getAttribute("activeUser")==null) {
+			response.sendRedirect("LogInServlet");
+			return;
+		}
 		
 		int userToRemoveId = Integer.valueOf(request.getParameter("userId"));
 		BusinessLogic.deleteUser(userToRemoveId);

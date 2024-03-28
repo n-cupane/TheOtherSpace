@@ -38,18 +38,22 @@ public class ProvaServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//Test
-				boolean isLoggedIn = (request.getSession().getAttribute("loggedInUser") != null);
-		        request.setAttribute("isLoggedIn",isLoggedIn);
-		        
-		        if(isLoggedIn) {
-		            // Se l'utente è loggato, mostro solo username e logout nel dropdown
-		            String username = (String) request.getSession().getAttribute("loggedInUser");
-		            request.setAttribute("username", username);
-		        } else {
-		        	LogInServlet.username = null;
-		        	LogInServlet.logged = false;
-		        }
+		
+		//Controllo Aggiuntivo
+		if(request.getSession().getAttribute("activeUser")==null) {
+			response.sendRedirect("LogInServlet");
+			return;
+		}
+		
+		boolean isLoggedIn = (request.getSession().getAttribute("activeUser") != null);
+        request.setAttribute("isLoggedIn",isLoggedIn);
+        
+        if(isLoggedIn) {
+            // Se l'utente è loggato, mostro solo username e logout nel dropdown
+            User activeUser =  (User)request.getSession().getAttribute("activeUser");
+            String activeUserUsername = activeUser.getUsername();
+            request.setAttribute("username", activeUserUsername);
+        } 
 		JPADaoFactory.getEntityManager();
 		request.getRequestDispatcher("html/Prova.jsp").forward(request, response);
 	}
@@ -58,6 +62,13 @@ public class ProvaServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		//Controllo Aggiuntivo
+		if(request.getSession().getAttribute("activeUser")==null) {
+			response.sendRedirect("LogInServlet");
+			return;
+		}
+		
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

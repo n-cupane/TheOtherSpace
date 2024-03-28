@@ -29,6 +29,12 @@ public class ScreeningControlPanelServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		//Controllo Aggiuntivo
+		if(request.getSession().getAttribute("activeUser")==null) {
+			response.sendRedirect("LogInServlet");
+			return;
+		}
 
 		List<Screening> screenings = BusinessLogic.findAllScreenings();
 		request.setAttribute("screenings", screenings);
@@ -39,6 +45,12 @@ public class ScreeningControlPanelServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		//Controllo Aggiuntivo
+		if(request.getSession().getAttribute("activeUser")==null) {
+			response.sendRedirect("LogInServlet");
+			return;
+		}
 		
 		int screeningToRemoveId = Integer.valueOf(request.getParameter("screeningId"));
 		BusinessLogic.deleteScreening(screeningToRemoveId);

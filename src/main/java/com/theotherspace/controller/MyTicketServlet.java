@@ -45,18 +45,21 @@ public class MyTicketServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//Test
-		boolean isLoggedIn = (request.getSession().getAttribute("loggedInUser") != null);
+		//Controllo Aggiuntivo
+		if(request.getSession().getAttribute("activeUser")==null) {
+			response.sendRedirect("LogInServlet");
+			return;
+		}
+		
+		boolean isLoggedIn = (request.getSession().getAttribute("activeUser") != null);
         request.setAttribute("isLoggedIn",isLoggedIn);
         
         if(isLoggedIn) {
             // Se l'utente è loggato, mostro solo username e logout nel dropdown
-            String username = (String) request.getSession().getAttribute("loggedInUser");
-            request.setAttribute("username", username);
-        } else {
-        	LogInServlet.username = null;
-        	LogInServlet.logged = false;
-        }
+            User activeUser =  (User)request.getSession().getAttribute("activeUser");
+            String activeUserUsername = activeUser.getUsername();
+            request.setAttribute("username", activeUserUsername);
+        } 
 	
 		
 		//Passo alla jsp la lista dei ticket
@@ -74,10 +77,14 @@ public class MyTicketServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		// Prelevo l'utente
-		userActriveUsername = LogInServlet.username;
-		// Costruisco l'utente loggato tramite la business logic
-		User activeUser = BusinessLogic.findUserByUsername(LogInServlet.username);
+		//Controllo Aggiuntivo
+		if(request.getSession().getAttribute("activeUser")==null) {
+			response.sendRedirect("LogInServlet");
+			return;
+		}
+		
+		
+		User activeUser =  (User)request.getSession().getAttribute("activeUser");
 		
 		// Prelevo l'id dell'utente con nome e cognome
 		

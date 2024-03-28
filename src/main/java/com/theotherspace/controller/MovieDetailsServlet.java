@@ -11,6 +11,7 @@ import java.util.List;
 import com.theotherspace.model.Movie;
 import com.theotherspace.model.Review;
 import com.theotherspace.model.Screening;
+import com.theotherspace.model.User;
 import com.theotherspace.utilities.BusinessLogic;
 
 /**
@@ -31,15 +32,17 @@ public class MovieDetailsServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		Logica per mostrare contenuti diversi sulla toolbar superiore a seconda che l'utente sia loggato o meno
-		boolean isLoggedIn = (request.getSession().getAttribute("loggedInUser") != null);
+		
+		
+     	boolean isLoggedIn = (request.getSession().getAttribute("activeUser") != null);
         request.setAttribute("isLoggedIn",isLoggedIn);
         
         if(isLoggedIn) {
             // Se l'utente è loggato, mostro solo username e logout nel dropdown
-            String username = (String) request.getSession().getAttribute("loggedInUser");
-            request.setAttribute("username", username);
-        }
+            User activeUser =  (User)request.getSession().getAttribute("activeUser");
+            String activeUserUsername = activeUser.getUsername();
+            request.setAttribute("username", activeUserUsername);
+        } 
 		
 //		 Recupero l'id del film passato come parametro dalla home page e poi recupero il film stesso
 		 int movieId = Integer.parseInt(request.getParameter("movieId"));
@@ -67,6 +70,8 @@ public class MovieDetailsServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
 		
 		long screeningId = Long.parseLong(request.getParameter("movie-screening"));
 		System.out.println("Screening id: " + screeningId);

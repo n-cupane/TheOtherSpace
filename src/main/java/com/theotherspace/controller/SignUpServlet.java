@@ -31,6 +31,8 @@ public class SignUpServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		
+		
 		response.sendRedirect("html/SignUp.jsp");
 	}
 
@@ -38,6 +40,8 @@ public class SignUpServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
 	
 		
 //		Recupero i dati dal form di registrazione
@@ -63,12 +67,9 @@ public class SignUpServlet extends HttpServlet {
 		if(newUserOk(u)) {
 		    // Se i controlli sul nuovo utente ritornano true, aggiungi l'utente al DB
 		    BusinessLogic.addUser(u);
-		    
+		    User activeUser = BusinessLogic.findUserByEmail(u.getEmail());
 		    // Imposta l'utente appena registrato come utente loggato nella sessione
-		    request.getSession().setAttribute("loggedInUser", username);
-		    
-		    LogInServlet.username=username;
-		    LogInServlet.logged=true;
+		    request.getSession().setAttribute("activeUser", activeUser);
 		    
 		    // Dopo aver aggiunto l'utente e impostato la sessione, esegui la reindirizzazione alla home page
 		    response.sendRedirect("HomePageServlet");

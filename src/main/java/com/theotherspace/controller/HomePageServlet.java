@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.theotherspace.model.Movie;
+import com.theotherspace.model.User;
 import com.theotherspace.utilities.BusinessLogic;
 
 /**
@@ -31,17 +32,18 @@ public class HomePageServlet extends HttpServlet {
 	 */
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        boolean isLoggedIn = (request.getSession().getAttribute("loggedInUser") != null);
+    	
+    	
+		
+        boolean isLoggedIn = (request.getSession().getAttribute("activeUser") != null);
         request.setAttribute("isLoggedIn",isLoggedIn);
         
         if(isLoggedIn) {
             // Se l'utente è loggato, mostro solo username e logout nel dropdown
-            String username = (String) request.getSession().getAttribute("loggedInUser");
-            request.setAttribute("username", username);
-        } else {
-        	LogInServlet.username = null;
-        	LogInServlet.logged = false;
-        }
+            User activeUser =  (User)request.getSession().getAttribute("activeUser");
+            String activeUserUsername = activeUser.getUsername();
+            request.setAttribute("username", activeUserUsername);
+        } 
         
         List<Movie> movies = BusinessLogic.findAllMovies();
         
@@ -61,6 +63,9 @@ public class HomePageServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
+		
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

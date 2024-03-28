@@ -28,6 +28,13 @@ public class TheaterControlPanelAddServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		//Controllo Aggiuntivo
+		if(request.getSession().getAttribute("activeUser")==null) {
+			response.sendRedirect("LogInServlet");
+			return;
+		}
+		
 		request.getRequestDispatcher("WEB-INF/private-jsp/TheaterControlPanel-add.jsp").forward(request, response);
 	}
 
@@ -35,6 +42,12 @@ public class TheaterControlPanelAddServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		//Controllo Aggiuntivo
+		if(request.getSession().getAttribute("activeUser")==null) {
+			response.sendRedirect("LogInServlet");
+			return;
+		}
 		
 		String errorMsg;
 		int number, seats;

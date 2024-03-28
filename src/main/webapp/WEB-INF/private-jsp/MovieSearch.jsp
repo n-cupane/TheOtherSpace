@@ -1,3 +1,4 @@
+<%@page import="com.theotherspace.model.User"%>
 <%@page import="com.theotherspace.model.Movie"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -36,10 +37,10 @@
                     <button id="btn" class="btn btn-secondary dropdown-toggle d-flex justify-content-evenly align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                       <span id="person-img" class="material-icons">&#xe7fd;</span>
                       <% if((Boolean)request.getAttribute("isLoggedIn")){ %>
-                      	<p><%= session.getAttribute("loggedInUser") %></p>
+                      	<p><%= ((User)request.getSession().getAttribute("activeUser")).getUsername() %></p>
                    	 <% }else{ %>
                    	 	<p>Login</p>
-                     <% } %>
+                     <% }  %>
                      
                       
                     </button>

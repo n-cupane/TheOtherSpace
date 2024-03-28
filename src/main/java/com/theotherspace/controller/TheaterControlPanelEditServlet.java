@@ -31,6 +31,12 @@ public class TheaterControlPanelEditServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		//Controllo Aggiuntivo
+		if(request.getSession().getAttribute("activeUser")==null) {
+			response.sendRedirect("LogInServlet");
+			return;
+		}
+		
 		long theaterId = Long.parseLong(request.getParameter("theaterId"));
 		Theater theaterToEdit = BusinessLogic.findTheaterById(theaterId);
 		request.setAttribute("theaterToEdit", theaterToEdit);
@@ -41,6 +47,13 @@ public class TheaterControlPanelEditServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
+		//Controllo Aggiuntivo
+		if(request.getSession().getAttribute("activeUser")==null) {
+			response.sendRedirect("LogInServlet");
+			return;
+		}
 
 		String errorMsg;
 //		Recupero i dati dal form

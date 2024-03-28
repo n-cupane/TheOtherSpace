@@ -29,20 +29,24 @@ public class AccountInfoServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		//Controllo Aggiuntivo
+				if(request.getSession().getAttribute("activeUser")==null) {
+					response.sendRedirect("LogInServlet");
+					return;
+				}
 		//Test
-		boolean isLoggedIn = (request.getSession().getAttribute("loggedInUser") != null);
+		boolean isLoggedIn = (request.getSession().getAttribute("activeUser") != null);
         request.setAttribute("isLoggedIn",isLoggedIn);
         
         if(isLoggedIn) {
-            // Se l'utente è loggato, mostro solo username e logout nel dropdown
-            String username = (String) request.getSession().getAttribute("loggedInUser");
-            request.setAttribute("username", username);
-        } else {
-        	LogInServlet.username = null;
-        	LogInServlet.logged = false;
+        	User activeUser =  (User)request.getSession().getAttribute("activeUser");
+            String activeUserUsername = activeUser.getUsername();
+            request.setAttribute("username", activeUserUsername);
+          
         }
 		
-		User activeUser = BusinessLogic.findUserByUsername(LogInServlet.username);
+		User activeUser = (User)request.getSession().getAttribute("activeUser");
 		request.setAttribute("activeUser", activeUser);
 		request.getRequestDispatcher("WEB-INF/private-jsp/AccountInfo.jsp").forward(request, response);
 
@@ -52,6 +56,13 @@ public class AccountInfoServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		//Controllo Aggiuntivo
+				if(request.getSession().getAttribute("activeUser")==null) {
+					response.sendRedirect("LogInServlet");
+					return;
+				}
+				
 		long userId = Long.parseLong(request.getParameter("userId"));
 		String username = request.getParameter("username");
 		String firstName = request.getParameter("firstName");
@@ -59,12 +70,11 @@ public class AccountInfoServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		LocalDate dob = LocalDate.parse(request.getParameter("dateOfBirth"));
-		
-		if(username != LogInServlet.username) {
-			LogInServlet.username = username;
-		}
-		
+
 		User updatedUser = new User(userId,username,firstName,lastName,email,password,dob);
+		
+		request.getSession().setAttribute("activeUser",updatedUser);
+		
 		BusinessLogic.updateUser(updatedUser);
 		response.sendRedirect("AccountInfoServlet");
 		

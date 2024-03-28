@@ -34,18 +34,22 @@ public class CheckOutServlet extends HttpServlet {
     }
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		//Controllo Aggiuntivo
+		if(request.getSession().getAttribute("activeUser")==null) {
+			response.sendRedirect("LogInServlet");
+			return;
+		}
 		//Test
-		boolean isLoggedIn = (request.getSession().getAttribute("loggedInUser") != null);
+		boolean isLoggedIn = (request.getSession().getAttribute("activeUser") != null);
         request.setAttribute("isLoggedIn",isLoggedIn);
         
         if(isLoggedIn) {
-            // Se l'utente è loggato, mostro solo username e logout nel dropdown
-            String username = (String) request.getSession().getAttribute("loggedInUser");
-            request.setAttribute("username", username);
-        } else {
-        	LogInServlet.username = null;
-        	LogInServlet.logged = false;
-        }
+        	User activeUser =  (User)request.getSession().getAttribute("activeUser");
+            String activeUserUsername = activeUser.getUsername();
+            request.setAttribute("username", activeUserUsername);
+          
+        }  
 			
 			request.setAttribute("price", price);
 			request.setAttribute("screeningDateTimeVariable", screeningDateTimeVariable);
@@ -65,6 +69,12 @@ public class CheckOutServlet extends HttpServlet {
 		}
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	
+    	//Controllo Aggiuntivo
+		if(request.getSession().getAttribute("activeUser")==null) {
+			response.sendRedirect("LogInServlet");
+			return;
+		}
     	
         // Prelevo i dati dal form con valori hidden
         long screeningId = Long.parseLong(request.getParameter("showing_idVariable"));
@@ -89,14 +99,14 @@ public class CheckOutServlet extends HttpServlet {
         }
         //Aggiungo i ticket prenotati su una lista di ticket
         for(int seat : seats) {
-        	User userTicket = BusinessLogic.findUserByUsername(LogInServlet.username);
+        	User userTicket = (User)request.getSession().getAttribute("activeUser");
         	Screening userScreening = BusinessLogic.findScreeningById(screeningId);
         	
         	blockedTicket.add(new Ticket(userTicket,userScreening,price,seat));
         	ticketNumber++;
         }
       //verifico se l'utente ha una card
-        User userTicket = BusinessLogic.findUserByUsername(LogInServlet.username);
+        User userTicket = (User)request.getSession().getAttribute("activeUser");
         if(userTicket.getCardCode()!=null) {
         	haveCard = true;
         }

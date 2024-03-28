@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 import com.theotherspace.model.Movie;
+import com.theotherspace.model.User;
 import com.theotherspace.tmdb.TMDBInterrogation;
 import com.theotherspace.utilities.BusinessLogic;
 
@@ -29,7 +30,23 @@ public class AddMovieServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute("isLoggedIn", true);
+		
+		//Controllo Aggiuntivo
+		if(request.getSession().getAttribute("activeUser")==null) {
+			response.sendRedirect("LogInServlet");
+			return;
+		}
+		
+		boolean isLoggedIn = (request.getSession().getAttribute("activeUser") != null);
+        request.setAttribute("isLoggedIn",isLoggedIn);
+        
+        if(isLoggedIn) {
+            // Se l'utente è loggato, mostro solo username e logout nel dropdown
+            User activeUser =  (User)request.getSession().getAttribute("activeUser");
+            String activeUserUsername = activeUser.getUsername();
+            request.setAttribute("username", activeUserUsername);
+        }
+        
 		Movie movie = new Movie();
 		Long movieId = null;
 		Long movieToEditId = null;
@@ -82,6 +99,12 @@ public class AddMovieServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		//Controllo Aggiuntivo
+		if(request.getSession().getAttribute("activeUser")==null) {
+			response.sendRedirect("LogInServlet");
+			return;
+		}
 		
 		Long oldMovieId = null;
 		try {

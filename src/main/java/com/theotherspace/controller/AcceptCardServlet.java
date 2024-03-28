@@ -56,6 +56,13 @@ public class AcceptCardServlet extends HttpServlet {
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	
+    	//Controllo Aggiuntivo
+    			if(request.getSession().getAttribute("activeUser")==null) {
+    				response.sendRedirect("LogInServlet");
+    				return;
+    			}
+    	
         // TODO Auto-generated method stub
         response.getWriter().append("Served at: ").append(request.getContextPath());
     }
@@ -65,8 +72,14 @@ public class AcceptCardServlet extends HttpServlet {
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	
+    	//Controllo Aggiuntivo
+    			if(request.getSession().getAttribute("activeUser")==null) {
+    				response.sendRedirect("LogInServlet");
+    				return;
+    			}
+    	
         String randomString = generateRandomString();
-        User activeUser = BusinessLogic.findUserByUsername(LogInServlet.username);
+        User activeUser = (User)request.getSession().getAttribute("activeUser");
         BusinessLogic.updateUserCard(activeUser, "");
         BusinessLogic.updateUserCard(activeUser, randomString);
         response.sendRedirect("AccountInfoServlet");

@@ -45,18 +45,22 @@ public class BookingServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		//Controllo Aggiuntivo
+		if(request.getSession().getAttribute("activeUser")==null) {
+			response.sendRedirect("LogInServlet");
+			return;
+		}
+		
 		//Test
-		boolean isLoggedIn = (request.getSession().getAttribute("loggedInUser") != null);
+		boolean isLoggedIn = (request.getSession().getAttribute("activeUser") != null);
         request.setAttribute("isLoggedIn",isLoggedIn);
         
         if(isLoggedIn) {
-            // Se l'utente è loggato, mostro solo username e logout nel dropdown
-            String username = (String) request.getSession().getAttribute("loggedInUser");
-            request.setAttribute("username", username);
-        } else {
-        	LogInServlet.username = null;
-        	LogInServlet.logged = false;
-        }
+        	User activeUser =  (User)request.getSession().getAttribute("activeUser");
+            String activeUserUsername = activeUser.getUsername();
+            request.setAttribute("username", activeUserUsername);
+          
+        } 
 		
 		//Prelevo l'orario della proiezione
 		int hour = screeningDateTimeVariable.getHour();
@@ -69,10 +73,12 @@ public class BookingServlet extends HttpServlet {
         } else {
         	price = 15.99;
         }
+        User u = (User)request.getSession().getAttribute("activeUser");
+        String username = u.getUsername();
         
         // Fornisco i dati necessari al form per la prenotazione del posto
         request.setAttribute("ticketForScreaningBlocked", ticketForScreaningBlocked);
-        request.setAttribute("username", LogInServlet.username);
+        request.setAttribute("username", username);
 		request.setAttribute("seatsVariable", seatsVariable);
 		request.setAttribute("screeningDateTimeVariable", screeningDateTimeVariable);
 		request.setAttribute("price", price);
@@ -98,8 +104,17 @@ public class BookingServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		//Controllo Aggiuntivo
+		if(request.getSession().getAttribute("activeUser")==null) {
+			response.sendRedirect("LogInServlet");
+			return;
+		}
+		
+		
+				
 		// Prelevo l'utente attivo
-		User activeUser = BusinessLogic.findUserByUsername(LogInServlet.username);
+		User activeUser = (User)request.getSession().getAttribute("activeUser");
+
 		
 		// Prelevo dalla Servlet di descrizione film l'id della proiezione selezionata
 		long screeningId = Long.parseLong(request.getParameter("movie-screening"));

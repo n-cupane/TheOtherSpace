@@ -17,6 +17,7 @@ padding: 0;
 }
 
 #header {
+	width:100vw;
     height: 10vh;
     background-color: black;
 }
@@ -279,6 +280,7 @@ form label{
 }
 
 footer {
+	width:100vw;
     background-color: #333;
     color: white;
     padding: 30px;

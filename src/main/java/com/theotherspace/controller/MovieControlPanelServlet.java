@@ -29,6 +29,13 @@ public class MovieControlPanelServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		//Controllo Aggiuntivo
+		if(request.getSession().getAttribute("activeUser")==null) {
+			response.sendRedirect("LogInServlet");
+			return;
+		}
+		
 		List<Movie> movies = BusinessLogic.findAllMovies();
 		request.setAttribute("movies", movies);
 		request.getRequestDispatcher("WEB-INF/private-jsp/MovieControlPanel.jsp").forward(request, response);
@@ -38,6 +45,13 @@ public class MovieControlPanelServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		//Controllo Aggiuntivo
+		if(request.getSession().getAttribute("activeUser")==null) {
+			response.sendRedirect("LogInServlet");
+			return;
+		}
+		
 		int movieToRemoveId = Integer.valueOf(request.getParameter("movieId"));
 		BusinessLogic.deleteMovie(movieToRemoveId);
 		List<Movie> movies = BusinessLogic.findAllMovies();

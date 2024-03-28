@@ -35,6 +35,12 @@ public class ScreeningControlPanelEditServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		//Controllo Aggiuntivo
+		if(request.getSession().getAttribute("activeUser")==null) {
+			response.sendRedirect("LogInServlet");
+			return;
+		}
+		
 		long screeningId = Long.parseLong(request.getParameter("screeningId"));
 		Screening screeningToEdit = BusinessLogic.findScreeningById(screeningId);
 		request.setAttribute("screeningToEdit", screeningToEdit);
@@ -45,6 +51,13 @@ public class ScreeningControlPanelEditServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		//Controllo Aggiuntivo
+		if(request.getSession().getAttribute("activeUser")==null) {
+			response.sendRedirect("LogInServlet");
+			return;
+		} 
+		
 		String errorMsg;
 		
 		long movieId, theaterId, screeningId;

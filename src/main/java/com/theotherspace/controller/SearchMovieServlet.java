@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.List;
 
 import com.theotherspace.model.Movie;
+import com.theotherspace.model.User;
 import com.theotherspace.tmdb.TMDBInterrogation;
 
 /**
@@ -30,7 +31,21 @@ public class SearchMovieServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.setAttribute("isLoggedIn", true);
+		//Controllo Aggiuntivo
+		if(request.getSession().getAttribute("activeUser")==null) {
+			response.sendRedirect("LogInServlet");
+			return;
+		}
+		
+		boolean isLoggedIn = (request.getSession().getAttribute("activeUser") != null);
+        request.setAttribute("isLoggedIn",isLoggedIn);
+        
+        if(isLoggedIn) {
+            // Se l'utente è loggato, mostro solo username e logout nel dropdown
+            User activeUser =  (User)request.getSession().getAttribute("activeUser");
+            String activeUserUsername = activeUser.getUsername();
+            request.setAttribute("username", activeUserUsername);
+        } 
 		request.getRequestDispatcher("WEB-INF/private-jsp/MovieSearch.jsp").forward(request, response);
 	}
 
@@ -38,7 +53,22 @@ public class SearchMovieServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute("isLoggedIn", true);
+		
+		//Controllo Aggiuntivo
+		if(request.getSession().getAttribute("activeUser")==null) {
+			response.sendRedirect("LogInServlet");
+			return;
+		} 
+		
+		boolean isLoggedIn = (request.getSession().getAttribute("activeUser") != null);
+        request.setAttribute("isLoggedIn",isLoggedIn);
+        
+        if(isLoggedIn) {
+            // Se l'utente è loggato, mostro solo username e logout nel dropdown
+            User activeUser =  (User)request.getSession().getAttribute("activeUser");
+            String activeUserUsername = activeUser.getUsername();
+            request.setAttribute("username", activeUserUsername);
+        } 
 		String query = request.getParameter("movie-search-bar");
 		List<Movie> moviesFound = TMDBInterrogation.searchMovies(query);
 		request.setAttribute("moviesFound", moviesFound);

@@ -31,6 +31,12 @@ public class UserControlPanelEditServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		//Controllo Aggiuntivo
+		if(request.getSession().getAttribute("activeUser")==null) {
+			response.sendRedirect("LogInServlet");
+			return;
+		}
+		
 		long userId = Long.parseLong(request.getParameter("userId"));
 		User userToEdit = BusinessLogic.findUserById(userId);
 		request.setAttribute("userToEdit", userToEdit);
@@ -41,6 +47,12 @@ public class UserControlPanelEditServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		//Controllo Aggiuntivo
+		if(request.getSession().getAttribute("activeUser")==null) {
+			response.sendRedirect("LogInServlet");
+			return;
+		}
 		
 //		Recupero i dati dal form
 		String firstName, lastName, username, email, password;

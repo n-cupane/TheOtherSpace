@@ -29,6 +29,12 @@ public class TheaterControlPanelServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		//Controllo Aggiuntivo
+		if(request.getSession().getAttribute("activeUser")==null) {
+			response.sendRedirect("LogInServlet");
+			return;
+		}
 
 		List<Theater> theaters = BusinessLogic.findAllTheaters();
 		request.setAttribute("theaters", theaters);
@@ -39,6 +45,12 @@ public class TheaterControlPanelServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		//Controllo Aggiuntivo
+		if(request.getSession().getAttribute("activeUser")==null) {
+			response.sendRedirect("LogInServlet");
+			return;
+		}
 		
 		int theaterToRemoveId = Integer.valueOf(request.getParameter("theaterId"));
 		BusinessLogic.deleteTheater(theaterToRemoveId);
