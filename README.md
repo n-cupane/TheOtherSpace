@@ -19,7 +19,7 @@
 
 - [x]  CRUD film
 - [x]  CRUD utenti
-- [ ]  CRUD proiezioni
+- [x]  CRUD proiezioni
 - [x]  CRUD sale
 - [ ]  Moderazione recensioni
 
