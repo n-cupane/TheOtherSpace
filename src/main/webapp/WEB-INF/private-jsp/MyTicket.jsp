@@ -21,7 +21,7 @@
         <header id="header" class="row justify-content-center">
             
             <div class="col-2 d-flex align-items-end justify-content-end">
-                <img src="<%=request.getContextPath()%>/res/logo_other_space.png" alt="Logo The Other" id="logo_other_space">
+                <a href="<%=request.getContextPath()%>/HomePageServlet"><img src="<%=request.getContextPath()%>/res/logo_other_space.png" alt="Logo The Other" id="logo_other_space"></a>
             </div>
             
             <nav class="col-3 d-flex align-items-center justify-content-evenly">
@@ -48,12 +48,12 @@
                     <ul class="dropdown-menu">
                     <% if((Boolean)request.getAttribute("isLoggedIn")){ %>
                     <!-- Se l'utente è loggato, mostra solo l'username e l'opzione Logout -->
-                      <li><a class="dropdown-item" href="/TheOtherSpace/MyAccountServlet">My account</a></li>
-                      <li><a class="dropdown-item" href="/TheOtherSpace/LogoutServlet">Logout</a></li>
+                      <li><a class="dropdown-item" href="<%= request.getContextPath() %>/MyAccountServlet">My account</a></li>
+                      <li><a class="dropdown-item" href="<%= request.getContextPath() %>/LogoutServlet">Logout</a></li>
                     <% }else{ %>
                      <!-- Se l'utente non è loggato, mostra le opzioni Signin e Login -->
-                      <li><a class="dropdown-item" href="/TheOtherSpace/SignUpServlet">Registrati</a></li>
-                      <li><a class="dropdown-item" href="/TheOtherSpace/LogInServlet">Login</a></li>
+                      <li><a class="dropdown-item" href="<%= request.getContextPath() %>/SignUpServlet">Registrati</a></li>
+                      <li><a class="dropdown-item" href="<%= request.getContextPath() %>/LogInServlet">Login</a></li>
                      <% } %>
                     </ul>
 
@@ -65,8 +65,9 @@
         
         
         <div class="container_movies" id="container_movies">
-	            <a href="AccountInfoServlet">Vai a AccountInfoServlet</a>
-				<a href="MyNextTicketServlet">Vai a MyNextTicket</a>
+	            <a href="<%= request.getContextPath() %>/MyAccountServlet">La mia Card</a>
+	            <a href="<%= request.getContextPath() %>/AccountInfoServlet">Le mie info</a>
+				<a href="<%= request.getContextPath() %>/MyNextTicketServlet">Le mie proiezioni</a>
     	</div>
     </div>
     <div class="container">
@@ -97,7 +98,7 @@
                             if (screeningDateTime.isAfter(currentDateTime)) { // Proiezione non ancora avvenuta
             %>
             <div class="ticket">
-			    <form id="myNextTicket" action="AltraServlet" method="POST"> 
+			    <form id="myNextTicket" action="<%= request.getContextPath() %>/AltraServlet" method="POST"> 
 			        <label for="userFirstName">User First Name:</label>
 			        <input type="text" id="userFirstName" name="userFirstName" value="<%= userFirstName %>" readonly><br>
 			        
@@ -143,7 +144,7 @@
                             if (screeningDateTime.isBefore(currentDateTime)) { // Proiezione già avvenuta
             %>
             <div class="ticket">
-			    <form id="myNextTicket" action="AltraServlet" method="POST"> 
+			    <form id="myNextTicket" action="<%= request.getContextPath() %>/AltraServlet" method="POST"> 
 			        <label for="userFirstName">User First Name:</label>
 			        <input type="text" id="userFirstName" name="userFirstName" value="<%= userFirstName %>" readonly><br>
 			        
@@ -162,7 +163,7 @@
 			        <input type="hidden" name="movieId" value="<%= screeningTicket.getMovie().getId() %>">
 			        <button type="submit">Dettagli biglietto</button>
 			    </form>
-			    <form action="ReviewServlet" method ="POST">
+			    <form action="<%= request.getContextPath() %>/ReviewServlet" method ="POST">
 			        <input type="hidden" name="userId" value="<%= userId %>">
 			        <input type="hidden" name="movieId" value="<%= screeningTicket.getMovie().getId() %>">
 			        <button type="submit">Scrivi Recensione</button>
@@ -184,5 +185,46 @@
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     
 </body>
+<footer>
+    <div class="footer-content">
+        <div class="contact-section">
+            <h4>CONTATTI</h4>
+            <ul>
+                <li>FAQ e Contattaci</li>
+            </ul>
+        </div>
+        <div class="space-cinema-section">
+            <h4>THE SPACE CINEMA</h4>
+            <ul>
+                <li>Chi siamo</li>
+                <li>PNRR</li>
+                <li>Lavora con noi</li>
+                <li>I nostri cinema</li>
+            </ul>
+        </div>
+        <div class="legal-section">
+            <h4>NOTE LEGALI</h4>
+            <ul>
+                <li>Privacy policy</li>
+                <li>Cookie policy</li>
+                <li>Condizioni di utilizzo</li>
+                <li>Regolamenti</li>
+            </ul>
+        </div>
+        <div class="social-section">
+            <h4>SOCIAL</h4>
+            <ul>
+                <li>Facebook</li>
+                <li>Youtube</li>
+                <li>Twitter</li>
+                <li>Instagram</li>
+            </ul>
+        </div>
+        <div class="app-section">
+            <h4>LA NOSTRA APP</h4>
+            <p>Scopri di più</p>
+        </div>
+    </div>
+</footer>
 
 </html>

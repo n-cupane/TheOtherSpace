@@ -12,7 +12,7 @@
         <div class="container_total">
             <div class="container_login">
                 <h2 id="title">LOGIN</h2>
-                <form action="LogInServlet" method="POST">
+                <form action="<%= request.getContextPath() %>/LogInServlet" method="POST">
                     <div class="container_input">
                         <input type="text" id="email" name="email" placeholder="E-mail" required><br><br>
                         <input type="password" id="password" name="password" placeholder="Password" ><br><br>

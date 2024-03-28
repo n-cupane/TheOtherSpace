@@ -88,6 +88,8 @@ public class ConfirmationServlet extends HttpServlet {
 		        
 		    } else if(!haveCard && !usePoints) {
 		    	blockedTicketPrice = Double.parseDouble(request.getParameter("blockedTicketPrice"+i));  //10
+		    } else if(haveCard && !usePoints) {
+		    	blockedTicketPrice = Double.parseDouble(request.getParameter("blockedTicketPrice"+i));  //10
 		    }
 		    
 			int blockedTicketSeat = Integer.parseInt(request.getParameter("blockedTicketSeat"+i));

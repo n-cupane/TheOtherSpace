@@ -20,7 +20,7 @@
         <header id="header" class="row justify-content-center">
             
             <div class="col-2 d-flex align-items-end justify-content-end">
-                <img src="<%=request.getContextPath() + "/res/logo_other_space.png"%>" alt="Logo The Other" id="logo_other_space">
+                <a href="<%=request.getContextPath()%>/HomePageServlet"><img src="<%=request.getContextPath()%>/res/logo_other_space.png" alt="Logo The Other" id="logo_other_space"></a>
             </div>
             
             <nav class="col-3 d-flex align-items-center justify-content-evenly">
@@ -47,11 +47,11 @@
                     <% if((Boolean)request.getAttribute("isLoggedIn")){ %>
                     <!-- Se l'utente è loggato, mostra solo l'username e l'opzione Logout -->
                       <li><a class="dropdown-item" href="#"><%= session.getAttribute("loggedInUser") %></a></li>
-                      <li><a class="dropdown-item" href="/TheOtherSpace/LogoutServlet">Logout</a></li>
+                      <li><a class="dropdown-item" href="<%= request.getContextPath() %>/LogoutServlet">Logout</a></li>
                     <% }else{ %>
                      <!-- Se l'utente non è loggato, mostra le opzioni Signin e Login -->
-                      <li><a class="dropdown-item" href="/TheOtherSpace/SignUpServlet">Registrati</a></li>
-                      <li><a class="dropdown-item" href="/TheOtherSpace/LogInServlet">Login</a></li>
+                      <li><a class="dropdown-item" href="<%= request.getContextPath() %>/SignUpServlet">Registrati</a></li>
+                      <li><a class="dropdown-item" href="<%= request.getContextPath() %>/LogInServlet">Login</a></li>
                      <% } %>
                     </ul>
 
@@ -64,7 +64,7 @@
 		if ( moviesFound == null) {
 			// La richiesta a TMDB non è andata a buon fine o non è ancora stata effettuata
 		%>
-        <form action="http://localhost:8080/TheOtherSpace/SearchMovieServlet" method="post" id="main-content-container" class="container">
+        <form action="<%= request.getContextPath() %>/SearchMovieServlet" method="post" id="main-content-container" class="container">
             <h2>Ricerca film per titolo</h2>
             <input type="text" name="movie-search-bar" id="movie-search-bar" autofocus>
             <input type="submit" value="CERCA IN TMDB" id="search-movie-btn">
@@ -73,7 +73,7 @@
 		} else if (moviesFound.size() == 0) {
 			// La richiesta a TMDB è andata a buon fine ma il result set è vuoto
         %>
-        <form action="http://localhost:8080/TheOtherSpace/AddMovieServlet" method="get" id="main-content-container" class="container">
+        <form action="<%= request.getContextPath() %>/AddMovieServlet" method="get" id="main-content-container" class="container">
             <h2>La ricerca non ha dato risultati</h2>
             <input type="submit" value="AGGIUNGI MANUALMENTE" id="search-movie-btn">
         </form>
@@ -90,7 +90,7 @@
             <div class="result">
                 <img class="result-image" src="<%=movie.getImageUrl() %>">
                 <h3 class="result-title"><%=movie.getTitle() %> </h3>
-                <a class="add-movie" href="http://localhost:8080/TheOtherSpace/AddMovieServlet?movieId=<%=movie.getId()%>">
+                <a class="add-movie" href="<%= request.getContextPath() %>/AddMovieServlet?movieId=<%=movie.getId()%>">
                     <img src="<%=request.getContextPath() + "/res/plus.png"%>" alt="Add movie">
                 </a>
             </div>

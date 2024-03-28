@@ -12,7 +12,7 @@
         <div class="container_total">
             <div class="container_signup">
                 <h2 id="title">SIGN UP</h2>
-                <form action="http://localhost:8080/TheOtherSpace/SignUpServlet" method="POST">
+                <form action="<%= request.getContextPath() %>/SignUpServlet" method="POST">
                     <div class="container_input">
                         <input type="text" id="name" name="firstName" placeholder="Nome"  required><br><br>
                         <input type="text" id="surname" name="lastName" placeholder="Cognome"  required><br><br>

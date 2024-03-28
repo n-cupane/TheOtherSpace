@@ -18,7 +18,7 @@
         <header id="header" class="row justify-content-center">
             
             <div class="col-2 d-flex align-items-end justify-content-end">
-                <img src="<%=request.getContextPath()%>/res/logo_other_space.png" alt="Logo The Other" id="logo_other_space">
+                <a href="<%=request.getContextPath()%>/HomePageServlet"><img src="<%=request.getContextPath()%>/res/logo_other_space.png" alt="Logo The Other" id="logo_other_space"></a>
             </div>
             
             <nav class="col-3 d-flex align-items-center justify-content-evenly">
@@ -69,7 +69,7 @@
     </div>
     <div class="container-room">
         <div class="seats-container">
-            <form action="CheckOutServlet" method="post">
+            <form action="<%= request.getContextPath() %>/CheckOutServlet" method="post">
                 <% 
                     int seatsVariable = (int)request.getAttribute("seatsVariable"); 
                 	double price = (double)request.getAttribute("price");

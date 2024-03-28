@@ -71,7 +71,7 @@ public class SignUpServlet extends HttpServlet {
 		    LogInServlet.logged=true;
 		    
 		    // Dopo aver aggiunto l'utente e impostato la sessione, esegui la reindirizzazione alla home page
-		    response.sendRedirect("http://localhost:8080/TheOtherSpace/HomePageServlet");
+		    response.sendRedirect("HomePageServlet");
 		    return;
 		}
 //		Se i controlli falliscono mostro il messaggio di errore

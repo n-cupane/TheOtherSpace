@@ -23,7 +23,7 @@
         <header id="header" class="row justify-content-center">
             
             <div class="col-2 d-flex align-items-end justify-content-end">
-                <img src="<%=request.getContextPath()%>/res/logo_other_space.png" alt="Logo The Other" id="logo_other_space">
+                <a href="<%=request.getContextPath()%>/HomePageServlet"><img src="<%=request.getContextPath()%>/res/logo_other_space.png" alt="Logo The Other" id="logo_other_space"></a>
             </div>
             
             <nav class="col-3 d-flex align-items-center justify-content-evenly">
@@ -50,12 +50,12 @@
                     <ul class="dropdown-menu">
                     <% if((Boolean)request.getAttribute("isLoggedIn")){ %>
                     <!-- Se l'utente è loggato, mostra solo l'username e l'opzione Logout -->
-                      <li><a class="dropdown-item" href="/TheOtherSpace/MyAccountServlet">My account</a></li>
-                      <li><a class="dropdown-item" href="/TheOtherSpace/LogoutServlet">Logout</a></li>
+                      <li><a class="dropdown-item" href="<%= request.getContextPath() %>/MyAccountServlet">My account</a></li>
+                      <li><a class="dropdown-item" href="<%= request.getContextPath() %>/LogoutServlet">Logout</a></li>
                     <% }else{ %>
                      <!-- Se l'utente non è loggato, mostra le opzioni Signin e Login -->
-                      <li><a class="dropdown-item" href="/TheOtherSpace/SignUpServlet">Registrati</a></li>
-                      <li><a class="dropdown-item" href="/TheOtherSpace/LogInServlet">Login</a></li>
+                      <li><a class="dropdown-item" href="<%= request.getContextPath() %>/SignUpServlet">Registrati</a></li>
+                      <li><a class="dropdown-item" href="<%= request.getContextPath() %>/LogInServlet">Login</a></li>
                      <% } %>
                     </ul>
 
@@ -67,15 +67,15 @@
         
         
         <div class="container_movies" id="container_movies">
-	            <a href="MyAccountServlet">La mia Card</a>
-	            <a href="AccountInfoServlet">Le mie info</a>
-				<a href="MyNextTicketServlet">Le mie proiezioni</a>
+	            <a href="<%= request.getContextPath() %>/MyAccountServlet">La mia Card</a>
+	            <a href="<%= request.getContextPath() %>/AccountInfoServlet">Le mie info</a>
+				<a href="<%= request.getContextPath() %>/MyNextTicketServlet">Le mie proiezioni</a>
     	</div>
     </div>
 	<div class="container-next-ticket">
 		<div class="nextTicket">
 		<% if (nextScreening != null && userNextTicket != null) { %>
-			<form id="myNextTicket" action="AltraServlet" method="POST"> 
+			<form id="myNextTicket" action="<%= request.getContextPath() %>/AltraServlet" method="POST"> 
 			        <label for="userFirstName">User First Name:</label>
 			        <input type="text" id="userFirstName" name="userFirstName" value="<%= activeUser.getFirstName() %>" readonly><br>
 			        <label for="userLastName">User Last Name:</label>
@@ -92,7 +92,7 @@
 		<% } %> 
 		</div>
 		<div>
-			<form action="MyTicketServlet" method="POST">
+			<form action="<%= request.getContextPath() %>/MyTicketServlet" method="POST">
 				<button type="submit">I miei Biglietti</button>
 			</form>
 		</div>

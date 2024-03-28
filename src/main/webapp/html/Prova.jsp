@@ -42,12 +42,12 @@
                     <ul class="dropdown-menu">
                     <% if((Boolean)request.getAttribute("isLoggedIn")){ %>
                     <!-- Se l'utente è loggato, mostra solo l'username e l'opzione Logout -->
-                      <li><a class="dropdown-item" href="/TheOtherSpace/MyAccountServlet">My account</a></li>
-                      <li><a class="dropdown-item" href="/TheOtherSpace/LogoutServlet">Logout</a></li>
+                      <li><a class="dropdown-item" href="<%= request.getContextPath() %>/MyAccountServlet">My account</a></li>
+                      <li><a class="dropdown-item" href="<%= request.getContextPath() %>/LogoutServlet">Logout</a></li>
                     <% }else{ %>
                      <!-- Se l'utente non è loggato, mostra le opzioni Signin e Login -->
-                      <li><a class="dropdown-item" href="/TheOtherSpace/SignUpServlet">Registrati</a></li>
-                      <li><a class="dropdown-item" href="/TheOtherSpace/LogInServlet">Login</a></li>
+                      <li><a class="dropdown-item" href="<%= request.getContextPath() %>/SignUpServlet">Registrati</a></li>
+                      <li><a class="dropdown-item" href="<%= request.getContextPath() %>/LogInServlet">Login</a></li>
                      <% } %>
                     </ul>
 
@@ -59,9 +59,9 @@
         
         
         <div class="container_movies" id="container_movies">
-	            <a href="MyAccountServlet">La mia Card</a>
-	            <a href="AccountInfoServlet">Le mie info</a>
-				<a href="MyNextTicketServlet">Le mie proiezioni</a>
+	            <a href="<%= request.getContextPath() %>/MyAccountServlet">La mia Card</a>
+	            <a href="<%= request.getContextPath() %>/AccountInfoServlet">Le mie info</a>
+				<a href="<%= request.getContextPath() %>/MyNextTicketServlet">Le mie proiezioni</a>
     	</div>
     </div>
 

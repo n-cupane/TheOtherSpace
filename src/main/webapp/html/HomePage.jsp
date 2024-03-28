@@ -22,7 +22,7 @@
         <header id="header" class="row justify-content-center">
             
             <div class="col-2 d-flex align-items-end justify-content-end">
-                <img src="<%=request.getContextPath()%>/res/logo_other_space.png" alt="Logo The Other" id="logo_other_space">
+                <a href="<%=request.getContextPath()%>/HomePageServlet"><img src="<%=request.getContextPath()%>/res/logo_other_space.png" alt="Logo The Other" id="logo_other_space"></a>
             </div>
             
             <nav class="col-3 d-flex align-items-center justify-content-evenly">
@@ -48,12 +48,12 @@
                     <ul class="dropdown-menu">
                     <% if((Boolean)request.getAttribute("isLoggedIn")){ %>
                     <!-- Se l'utente è loggato, mostra solo l'username e l'opzione Logout -->
-                      <li><a class="dropdown-item" href="/TheOtherSpace/MyAccountServlet">My account</a></li>
-                      <li><a class="dropdown-item" href="/TheOtherSpace/LogoutServlet">Logout</a></li>
+                      <li><a class="dropdown-item" href="<%= request.getContextPath() %>/MyAccountServlet">My account</a></li>
+                      <li><a class="dropdown-item" href="<%= request.getContextPath() %>/LogoutServlet">Logout</a></li>
                     <% }else{ %>
                      <!-- Se l'utente non è loggato, mostra le opzioni Signin e Login -->
-                      <li><a class="dropdown-item" href="/TheOtherSpace/SignUpServlet">Registrati</a></li>
-                      <li><a class="dropdown-item" href="/TheOtherSpace/LogInServlet">Login</a></li>
+                      <li><a class="dropdown-item" href="<%= request.getContextPath() %>/SignUpServlet">Registrati</a></li>
+                      <li><a class="dropdown-item" href="<%= request.getContextPath() %>/LogInServlet">Login</a></li>
                      <% } %>
                     </ul>
 
@@ -103,7 +103,7 @@
 	                
 	                for (Movie movie : movies) {
 	            %>
-	            <a href="http://localhost:8080/TheOtherSpace/MovieDetailsServlet?movieId=<%=movie.getId() %>" class="container_poster">
+	            <a href="<%= request.getContextPath() %>/MovieDetailsServlet?movieId=<%=movie.getId() %>" class="container_poster">
 	                <img class="poster_movie" src="<%=movie.getImageUrl() %>">
 		            <p id="title_movie"><%= movie.getTitle() %></p>
 	            </a>

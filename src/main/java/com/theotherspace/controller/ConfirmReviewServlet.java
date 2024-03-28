@@ -47,19 +47,19 @@ public class ConfirmReviewServlet extends HttpServlet {
         int ratingValue;
     	  switch(ratingParameter) {
        		case "a":
-       			ratingValue = 1;
+       			ratingValue = 5;
        			break;
        		case "b":
-       			ratingValue = 2;
+       			ratingValue = 4;
        			break;
        		case "c":
        			ratingValue = 3;
        			break;
        		case "d":
-       			ratingValue = 4;
+       			ratingValue = 2;
        			break;
        		case "e":
-       			ratingValue = 5;
+       			ratingValue = 1;
        			break;
        		default:
        			ratingValue = 0;

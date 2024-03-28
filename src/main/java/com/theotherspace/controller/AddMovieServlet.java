@@ -110,7 +110,7 @@ public class AddMovieServlet extends HttpServlet {
 				movie.setId(oldMovieId);
 				BusinessLogic.updateMovie(movie);
 				System.out.println("BBBBBBBBBBBBBB" + BusinessLogic.findMovieByTitle(title).getTitle());
-				response.sendRedirect("http://localhost:8080/TheOtherSpace/MovieControlPanelServlet");
+				response.sendRedirect("/MovieControlPanelServlet");
 				return;
 			}
 		}
@@ -119,7 +119,7 @@ public class AddMovieServlet extends HttpServlet {
 			
 		
 		
-		response.sendRedirect("http://localhost:8080/TheOtherSpace/MovieControlPanelServlet");
+		response.sendRedirect("/MovieControlPanelServlet");
 	}
 
 }

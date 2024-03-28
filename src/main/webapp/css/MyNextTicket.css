@@ -352,6 +352,14 @@ h2{
 }
 
 
+.tickets-not-occurred{
+	min-height: 22vh;
+}
+
+.tickets-occurred{
+	min-height: 22vh;
+}
+
 
 
 

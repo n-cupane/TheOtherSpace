@@ -45,11 +45,11 @@
                     <% if((Boolean)request.getAttribute("isLoggedIn")){ %>
                     <!-- Se l'utente è loggato, mostra solo l'username e l'opzione Logout -->
                       <li><a class="dropdown-item" href="#"><%= session.getAttribute("loggedInUser") %></a></li>
-                      <li><a class="dropdown-item" href="/TheOtherSpace/LogoutServlet">Logout</a></li>
+                      <li><a class="dropdown-item" href="<%= request.getContextPath() %>/LogoutServlet">Logout</a></li>
                     <% }else{ %>
                      <!-- Se l'utente non è loggato, mostra le opzioni Signin e Login -->
-                      <li><a class="dropdown-item" href="/TheOtherSpace/SignUpServlet">Registrati</a></li>
-                      <li><a class="dropdown-item" href="/TheOtherSpace/LogInServlet">Login</a></li>
+                      <li><a class="dropdown-item" href="<%= request.getContextPath() %>/SignUpServlet">Registrati</a></li>
+                      <li><a class="dropdown-item" href="<%= request.getContextPath() %>/LogInServlet">Login</a></li>
                      <% } %>
                     </ul>
 
@@ -67,7 +67,7 @@
         Long oldMovieId = (Long) request.getAttribute("oldMovieId");
         %>
 
-        <form action="http://localhost:8080/TheOtherSpace/AddMovieServlet" method="POST" id="movie-to-add-container" class="container">
+        <form action="<%= request.getContextPath() %>/AddMovieServlet" method="POST" id="movie-to-add-container" class="container">
 
             <div class="add-element">
                 <label for="add-title">Titolo:</label>

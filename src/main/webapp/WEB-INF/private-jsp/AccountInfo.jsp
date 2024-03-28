@@ -17,7 +17,7 @@
         <header id="header" class="row justify-content-center">
             
             <div class="col-2 d-flex align-items-end justify-content-end">
-                <img src="<%=request.getContextPath()%>/res/logo_other_space.png" alt="Logo The Other" id="logo_other_space">
+                <a href="<%=request.getContextPath()%>/HomePageServlet"><img src="<%=request.getContextPath()%>/res/logo_other_space.png" alt="Logo The Other" id="logo_other_space"></a>
             </div>
             
             <nav class="col-3 d-flex align-items-center justify-content-evenly">
@@ -44,12 +44,12 @@
                     <ul class="dropdown-menu">
                     <% if((Boolean)request.getAttribute("isLoggedIn")){ %>
                     <!-- Se l'utente è loggato, mostra solo l'username e l'opzione Logout -->
-                      <li><a class="dropdown-item" href="/TheOtherSpace/MyAccountServlet">My account</a></li>
-                      <li><a class="dropdown-item" href="/TheOtherSpace/LogoutServlet">Logout</a></li>
+                      <li><a class="dropdown-item" href="<%= request.getContextPath() %>/MyAccountServlet">My account</a></li>
+                      <li><a class="dropdown-item" href="<%= request.getContextPath() %>/LogoutServlet">Logout</a></li>
                     <% }else{ %>
                      <!-- Se l'utente non è loggato, mostra le opzioni Signin e Login -->
-                      <li><a class="dropdown-item" href="/TheOtherSpace/SignUpServlet">Registrati</a></li>
-                      <li><a class="dropdown-item" href="/TheOtherSpace/LogInServlet">Login</a></li>
+                      <li><a class="dropdown-item" href="<%= request.getContextPath() %>/SignUpServlet">Registrati</a></li>
+                      <li><a class="dropdown-item" href="<%= request.getContextPath() %>/LogInServlet">Login</a></li>
                      <% } %>
                     </ul>
 
@@ -61,15 +61,15 @@
         
         
         <div class="container_movies" id="container_movies">
-	            <a href="MyAccountServlet">La mia Card</a>
-	            <a href="AccountInfoServlet">Le mie info</a>
-				<a href="MyNextTicketServlet">Le mie proiezioni</a>
+	            <a href="<%= request.getContextPath() %>/MyAccountServlet">La mia Card</a>
+	            <a href="<%= request.getContextPath() %>/AccountInfoServlet">Le mie info</a>
+				<a href="<%= request.getContextPath() %>/MyNextTicketServlet">Le mie proiezioni</a>
     	</div>
     </div>
     <div class="form">
     	<h2>Modifica Dati Utente</h2>
     <% User activeUser = (User)request.getAttribute("activeUser"); %>
-    <form action="AccountInfoServlet" method="post">
+    <form action="<%= request.getContextPath() %>/AccountInfoServlet" method="post">
         <input type="hidden" name="userId" value="<%= activeUser.getId() %>">
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" value="<%= activeUser.getUsername() %>"><br>
@@ -94,7 +94,7 @@
     <div class="delete">
     	<h1>Cancellazione dell'account</h1>
 	    <p>Se vuoi cancellare il tuo account, 
-	    <a href="AccountDeletionServlet" onclick="return confirm('Sei sicuro di voler cancellare il tuo account?')">clicca qui</a>
+	    <a href="<%= request.getContextPath() %>/AccountDeletionServlet" onclick="return confirm('Sei sicuro di voler cancellare il tuo account?')">clicca qui</a>
 	    </p>
 	    <p>Eliminando il tuo account non potrai usufruire dei servizi The Other Space Cinema.</p>
     </div>

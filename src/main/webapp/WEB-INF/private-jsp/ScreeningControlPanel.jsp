@@ -31,22 +31,22 @@
         <h3>Pannello di controllo</h3>
         <span id="below-h3"></span>
 
-        <a href="http://localhost:8080/TheOtherSpace/UserControlPanelServlet" class="left-menu-element">
+        <a href="<%= request.getContextPath() %>/UserControlPanelServlet" class="left-menu-element">
             <span class="material-icons">&#xe7ef;</span>
             <h5>Utenti</h5>
         </a>
 
-        <a href="http://localhost:8080/TheOtherSpace/MovieControlPanelServlet" class="left-menu-element">
+        <a href="<%= request.getContextPath() %>/MovieControlPanelServlet" class="left-menu-element">
             <span class="material-icons">&#xe02c;</span>
             <h5>Film</h5>
         </a>
 
-        <a href="http://localhost:8080/TheOtherSpace/TheaterControlPanelServlet" class="left-menu-element">
+        <a href="<%= request.getContextPath() %>/TheaterControlPanelServlet" class="left-menu-element">
             <span class="material-icons">&#xefed;</span>
             <h5>Sale</h5>
         </a>
         
-        <a href="http://localhost:8080/TheOtherSpace/ScreeningControlPanelServlet" class="left-menu-element current">
+        <a href="<%= request.getContextPath() %>/ScreeningControlPanelServlet" class="left-menu-element current">
             <span class="material-icons">&#xe04b;</span>
             <h5>Proiezioni</h5>
         </a>
@@ -67,7 +67,7 @@
                     <p class="uhname">DATA E ORA</p>
                     <p class="uh-dob"></p>
                     <div>
-                        <a href="http://localhost:8080/TheOtherSpace/ScreeningControlPanelAddServlet">
+                        <a href="<%= request.getContextPath() %>/ScreeningControlPanelAddServlet">
                         <span id="add-user" class="material-icons edit">&#xe04b;</span>
                          </a>
                     </div>
@@ -83,10 +83,10 @@
                     <p class="user-email"><%=screening.getTheater().getNumber() %></p>
                     <p class="username"><%=screening.getDateTime().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm")) %></p>
                     <p class="user-dob"></p>
-                    <a href="http://localhost:8080/TheOtherSpace/ScreeningControlPanelEditServlet?screeningId=<%=screening.getId()%>">
+                    <a href="<%= request.getContextPath() %>/ScreeningControlPanelEditServlet?screeningId=<%=screening.getId()%>">
                         <span class="material-icons edit">&#xe3c9;</span>
                     </a>
-                    <form action="http://localhost:8080/TheOtherSpace/ScreeningControlPanelServlet" method="POST">
+                    <form action="<%= request.getContextPath() %>/ScreeningControlPanelServlet" method="POST">
                     	<input type='text' style="display:none" name="screeningId" value="<%=screening.getId() %>">
                         <button type="submit" class="material-icons delete">&#xe872;</button>
                     </form>
