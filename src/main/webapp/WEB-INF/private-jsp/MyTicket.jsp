@@ -99,7 +99,7 @@
                             if (screeningDateTime.isAfter(currentDateTime)) { // Proiezione non ancora avvenuta
             %>
             <div class="ticket">
-			    <form id="myNextTicket" action="<%= request.getContextPath() %>/AltraServlet" method="POST"> 
+			    <form id="myNextTicket" action="<%= request.getContextPath() %>/TicketDownloadServlet" method="POST"> 
 			        <label for="userFirstName">User First Name:</label>
 			        <input type="text" id="userFirstName" name="userFirstName" value="<%= userFirstName %>" readonly><br>
 			        
@@ -145,7 +145,7 @@
                             if (screeningDateTime.isBefore(currentDateTime)) { // Proiezione già avvenuta
             %>
             <div class="ticket">
-			    <form id="myNextTicket" action="<%= request.getContextPath() %>/AltraServlet" method="POST"> 
+			    <form id="myNextTicket" action="<%= request.getContextPath() %>/TicketDownloadServlet" method="POST"> 
 			        <label for="userFirstName">User First Name:</label>
 			        <input type="text" id="userFirstName" name="userFirstName" value="<%= userFirstName %>" readonly><br>
 			        

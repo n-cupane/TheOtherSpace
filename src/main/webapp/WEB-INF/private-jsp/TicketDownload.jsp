@@ -1,20 +1,28 @@
-<%@page import="com.theotherspace.model.Ticket"%>
 <%@page import="com.theotherspace.model.User"%>
+<%@page import="com.theotherspace.utilities.BusinessLogic"%>
+<%@page import="com.theotherspace.model.Screening"%>
+<%@page import="com.theotherspace.model.Ticket"%>
 <%@page import="java.util.List"%>
 <%@page import="java.time.LocalDateTime"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+<meta charset="ISO-8859-1">
+<title>Lista Ticket</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/Booking.css"/>
-    <title>Document</title>
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/MyNextTicket.css"/>
 </head>
 <body>
+	
+	<% String screeningTicketTime = (String) request.getAttribute("screeningTicketTime");
+		double ticketPrice = (double)request.getAttribute("ticketPrice");
+		int ticketSeat = (int)request.getAttribute("ticketSeat");
+		String ticketMovieTitle = (String)request.getAttribute("ticketMovieTitle"); %>
+		
 	<div id="container" class="container-fluid">
 
         <header id="header" class="row justify-content-center">
@@ -40,17 +48,17 @@
                       	<p><%= ((User)request.getSession().getAttribute("activeUser")).getUsername() %></p>
                    	 <% }else{ %>
                    	 	<p>Login</p>
-                     <% } %>
+                     <% }  %>
                      
                       
                     </button>
                     <ul class="dropdown-menu">
                     <% if((Boolean)request.getAttribute("isLoggedIn")){ %>
-                    <!-- Se l'utente Ã¨ loggato, mostra solo l'username e l'opzione Logout -->
+                    <!-- Se l'utente è loggato, mostra solo l'username e l'opzione Logout -->
                       <li><a class="dropdown-item" href="<%= request.getContextPath() %>/MyAccountServlet">My account</a></li>
                       <li><a class="dropdown-item" href="<%= request.getContextPath() %>/LogoutServlet">Logout</a></li>
                     <% }else{ %>
-                     <!-- Se l'utente non Ã¨ loggato, mostra le opzioni Signin e Login -->
+                     <!-- Se l'utente non è loggato, mostra le opzioni Signin e Login -->
                       <li><a class="dropdown-item" href="<%= request.getContextPath() %>/SignUpServlet">Registrati</a></li>
                       <li><a class="dropdown-item" href="<%= request.getContextPath() %>/LogInServlet">Login</a></li>
                      <% } %>
@@ -64,57 +72,51 @@
         
         
         <div class="container_movies" id="container_movies">
-	            <div class="screen">
-	            
-	            </div>
+	            <a href="<%= request.getContextPath() %>/MyAccountServlet">La mia Card</a>
+	            <a href="<%= request.getContextPath() %>/AccountInfoServlet">Le mie info</a>
+				<a href="<%= request.getContextPath() %>/MyNextTicketServlet">Le mie proiezioni</a>
+				<button onclick="screenshot()">Download ticket</button>
     	</div>
     </div>
-    <div class="container-room">
-        <div class="seats-container">
-            <form action="<%= request.getContextPath() %>/CheckOutServlet" method="post">
-                <% 
-                    int seatsVariable = (int)request.getAttribute("seatsVariable"); 
-                	double price = (double)request.getAttribute("price");
-                	String imgMovie = (String)request.getAttribute("imgMovie");
-                	LocalDateTime screeningDateTimeVariable = (LocalDateTime)request.getAttribute("screeningDateTimeVariable");
-                	Long showing_idVariable = (Long)request.getAttribute("showing_idVariable");
-                	List<Integer> ticketForScreaningBlocked = (List<Integer>)request.getAttribute("ticketForScreaningBlocked");
-                	
-                    for (int i = 1; i <= seatsVariable; i++) {
-                        boolean isBlocked = ticketForScreaningBlocked.contains(i); // Verifico se il posto Ã¨ bloccato
-                %>
-                    <div class="seat">
-                        <input type="checkbox" id="seat<%= i %>" name="seat<%= i %>" value="<%= i %>" <%= isBlocked ? "disabled" : "" %>>
-                    </div>
-                <% } %>
-                <input type="hidden" name="price" value="<%= price %>">
-    			<input type="hidden" name="screeningDateTimeVariable" value="<%= screeningDateTimeVariable %>">
-    			<input type="hidden" name="showing_idVariable" value="<%= showing_idVariable %>">
-    			<input type="hidden" name="seatsVariable" value="<%= seatsVariable %>">
-    			<input type="hidden" name="imgMovie" value="<%= imgMovie %>">
-    			<input type="hidden" name="blockedListSize" value="<%= ticketForScreaningBlocked.size() %>">
-    			<% for(int i = 0; i<ticketForScreaningBlocked.size();i++){ %>
-    			
-    				<input type="hidden" name="blockedSeat" value="<%=i%>">
-    			<%}%>
-                <button id="conferma" type="submit">Conferma Selezione</button>
-            </form>
-        </div>
-    </div>
-    <div class ="testo-img">
-    	<div class="img">
-    		<img alt="" src="<%=imgMovie%>">
-    	</div>
-    <div class="room-movie-info">
-    	<p>Prezzo del singolo biglietto: <%= price %></p><br>
-        <p>Orario e data della proiezione selezionata: <%= screeningDateTimeVariable %></p><br>
-        <p><%= showing_idVariable %></p><br>
-    </div>
-    </div>
-    
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    
+    <div class="container-schermata-ticket" >
+	    <div class="container-ticket-expansion" id="ticket">
+	    <!-- Primo div -->
+		    <div class="sub-container">
+		    	<img alt="qr-code" src="<%= request.getContextPath() %>/res/Qr code my ticket.png">
+		    </div>
+		    <!-- Secondo div -->
+		    <div class="sub-container">
+		        <p><%= ticketMovieTitle %></p>
+		        <p><%= ticketPrice %></p>
+		        <p><%= ticketSeat %></p>
+		        <p><%= screeningTicketTime %></p>
+		    </div>
+		    <!-- Terzo div -->
+		    <div class="sub-container">
+		        <p>Benvenuto nel cinema The Other Space. Siamo lieti di averti come nostro ospite.</p>
+		        <p>Il biglietto che hai appena acquistato ti dà accesso a un'esperienza cinematografica straordinaria.</p>
+		        <p>Assicurati di arrivare in tempo per lo spettacolo e di prendere posto comodamente.</p>
+		        <p>Ricordati di conservare il biglietto durante tutto lo spettacolo e di mostrarlo al personale in caso di necessità.</p>
+		        <p>Se hai domande o richieste, non esitare a chiedere al personale. Siamo qui per rendere la tua esperienza al cinema indimenticabile.</p>
+		    </div>
+		</div>
+   </div>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+   
 </body>
+<script>
+   	function screenshot(){
+   		html2canvas(document.getElementById('ticket')).then(function(canvas){
+   			var imgdata = canvas.toDataURL('ticket/png')
+   	   		var doc = new jsPDF()
+   	   		doc.addImage(imgdata,'PNG',0,50)
+   	   		doc.save('Ticket.pdf');
+   		})
+   		
+   	}
+   </script>
 <footer>
     <div class="footer-content">
         <div class="contact-section">
@@ -124,7 +126,7 @@
             </ul>
         </div>
         <div class="space-cinema-section">
-            <h4>THE OTHER SPACE CINEMA</h4>
+            <h4>THE SPACE CINEMA</h4>
             <ul>
                 <li>Chi siamo</li>
                 <li>PNRR</li>
@@ -152,8 +154,9 @@
         </div>
         <div class="app-section">
             <h4>LA NOSTRA APP</h4>
-            <p>Scopri di piÃ¹</p>
+            <p>Scopri di più</p>
         </div>
     </div>
 </footer>
+
 </html>

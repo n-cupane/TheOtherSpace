@@ -85,6 +85,11 @@ public class CheckOutServlet extends HttpServlet {
         screeningDateTimeVariable = LocalDateTime.parse(screeningDateTimeString);
         // Prelevo i posti nella sala dalla variabile statica di booking
         int seatsVariable = Integer.parseInt(request.getParameter("seatsVariable"));
+        
+        
+
+        
+        
         // effettuo i controlli per aggiungere i posti checkkati in una lista seats
         for (int i = 1; i <= seatsVariable; i++) {
         	
@@ -105,11 +110,52 @@ public class CheckOutServlet extends HttpServlet {
         	blockedTicket.add(new Ticket(userTicket,userScreening,price,seat));
         	ticketNumber++;
         }
+        if(seats.isEmpty()) {
+        	
+        	//Test
+    		boolean isLoggedIn = (request.getSession().getAttribute("activeUser") != null);
+            request.setAttribute("isLoggedIn",isLoggedIn);
+            
+            if(isLoggedIn) {
+            	User activeUser =  (User)request.getSession().getAttribute("activeUser");
+                String activeUserUsername = activeUser.getUsername();
+                request.setAttribute("username", activeUserUsername);
+              
+            }
+            
+            List<Ticket> ticketForScreaningBlocked = BusinessLogic.findAllTicketsForScreening(screeningId);
+            List<Integer> ticketForScreaningInt = new ArrayList();
+            
+            for(Ticket ticket : ticketForScreaningBlocked) {
+            	ticketForScreaningInt.add(ticket.getSeat());
+            }
+            
+            
+            
+            String showing_idVariable_string = (String)request.getParameter("showing_idVariable");
+            Long showing_idVariable = Long.parseLong(showing_idVariable_string);
+            
+            String imgMovie = (String)request.getParameter("imgMovie");
+            
+        	request.setAttribute("ticketForScreaningBlocked", ticketForScreaningInt);
+            request.setAttribute("username", ((User)request.getSession().getAttribute("activeUser")).getUsername());
+    		request.setAttribute("seatsVariable", seatsVariable);
+    		request.setAttribute("screeningDateTimeVariable", screeningDateTimeVariable);
+    		request.setAttribute("price", price);
+    		request.setAttribute("imgMovie", imgMovie);
+    		request.setAttribute("showing_idVariable", showing_idVariable);
+    		request.getRequestDispatcher("html/Booking.jsp").forward(request, response);
+    		
+    		
+        }
+        
       //verifico se l'utente ha una card
         User userTicket = (User)request.getSession().getAttribute("activeUser");
         if(userTicket.getCardCode()!=null) {
         	haveCard = true;
         }
+        
+        
         
        
         

@@ -296,4 +296,14 @@
     <servlet-name>ScreeningControlPanelEditServlet</servlet-name>
     <url-pattern>/ScreeningControlPanelEditServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>TicketDownloadServlet</display-name>
+    <servlet-name>TicketDownloadServlet</servlet-name>
+    <servlet-class>com.theotherspace.controller.TicketDownloadServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TicketDownloadServlet</servlet-name>
+    <url-pattern>/TicketDownloadServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

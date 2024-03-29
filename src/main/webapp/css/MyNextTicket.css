@@ -363,6 +363,60 @@ h2{
 }
 
 
+.container-schermata-ticket {
+    width: 100vw;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+}
+
+.container-ticket-expansion {
+    width: 40%;
+    height: 50%;
+    border: 2px solid black;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.sub-container {
+    width: 100%;
+    border-top: 2px solid black;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.sub-container:last-child {
+    border-bottom: 2px solid black;
+}
+
+.sub-container:first-child {
+    height: 25%;
+}
+
+.sub-container:nth-child(2) {
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around; /* Aggiungi spazio tra gli elementi */
+    gap: 20px; /* Aggiunge uno spazio di 20px tra gli elementi */
+}
+
+.sub-container:nth-child(2) p {
+    align-self: flex-start; /* Allinea gli elementi al inizio del div verticalmente */
+}
+
+
+.sub-container:first-child img{
+    height: 100%;
+}
+
+
+
+
+
 
 
 
