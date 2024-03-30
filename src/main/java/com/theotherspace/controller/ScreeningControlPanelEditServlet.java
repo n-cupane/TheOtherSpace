@@ -83,14 +83,14 @@ public class ScreeningControlPanelEditServlet extends HttpServlet {
 		s.setDateTime(dateTime);
 		
 //		Aggiungere controllo di disponibilità della sala nello slot orario
-		if (true) {
+		if (BusinessLogic.timeSlotIsFree(theaterId, movieId, dateTime)) {
 			BusinessLogic.updateScreening(s);
 			request.setAttribute("screeningToEdit", s);
 			request.getRequestDispatcher("WEB-INF/private-jsp/ScreeningControlPanel-edit.jsp").forward(request, response);
 		    return;	
 		} else {
 			errorMsg = "La sala non è disponibile nella data e nell'ora indicate";
-			request.setAttribute("errorMsh", errorMsg);
+			request.setAttribute("errorMsg", errorMsg);
 			request.setAttribute("screeningToEdit", oldScreening);
 			request.getRequestDispatcher("WEB-INF/private-jsp/ScreeningControlPanel-edit.jsp").forward(request, response);
 		    return;

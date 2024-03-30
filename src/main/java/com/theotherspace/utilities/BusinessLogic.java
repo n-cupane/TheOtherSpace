@@ -1,6 +1,7 @@
 package com.theotherspace.utilities;
 
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import com.theotherspace.dao.DaoFactory;
@@ -191,7 +192,9 @@ public class BusinessLogic {
 		return DaoFactory.getDaoFactory().getScreeningDao().findAllScreeningsByMovieId(movieId);
 	}
 	
-
+	public static boolean timeSlotIsFree(long theaterId, long movieId, LocalDateTime beginning) {
+		return DaoFactory.getDaoFactory().getScreeningDao().timeSlotIsFree(theaterId, movieId, beginning);
+	}
 	
 	
 //	METODI MOVIE

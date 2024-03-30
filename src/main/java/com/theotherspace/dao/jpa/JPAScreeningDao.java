@@ -1,6 +1,9 @@
 package com.theotherspace.dao.jpa;
 
-import java.util.List;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import com.theotherspace.dao.ScreeningDao;
 import com.theotherspace.model.Movie;
@@ -72,6 +75,34 @@ public class JPAScreeningDao implements ScreeningDao{
 		Query q = em.createQuery("select s from showing s join s.movie m where m = :x");
 		q.setParameter("x", m);
 		return (List<Screening>) q.getResultList();
+	}
+
+	@Override
+	public boolean timeSlotIsFree(long theaterId, long movieId, LocalDateTime beginning) {
+		
+		Theater theater = BusinessLogic.findTheaterById(theaterId);
+		int movieDuration = BusinessLogic.findMovieById(movieId).getDuration();
+		LocalDateTime end = beginning.plusMinutes(movieDuration);
+		List<Screening> screeningsInTheater = this.findAllScreeningsByTheater(theaterId);
+		
+		var overlapping = screeningsInTheater.stream()
+							.map(s -> new ArrayList<LocalDateTime>(List.of(s.getDateTime(), s.getDateTime().plusMinutes(s.getMovie().getDuration()))))
+							.filter(s ->
+							(s.get(0).isBefore(beginning) && s.get(1).isAfter(beginning))
+							|| (s.get(0).isAfter(beginning) && s.get(1).isBefore(end))
+							|| (s.get(0).isBefore(end) && s.get(1).isAfter(end)))
+							.collect(Collectors.toList());
+		
+		return overlapping.size() == 0;				
+			
+	}
+
+	@Override
+	public List<Screening> findAllScreeningsByTheater(long theaterId) {
+		EntityManager em = JPADaoFactory.getEntityManager();
+		Query q = em.createQuery("select s from showing s where s.theater = :x");
+		q.setParameter("x", BusinessLogic.findTheaterById(theaterId));
+		return q.getResultList();
 	}
 
 }

@@ -73,7 +73,7 @@ public class ScreeningControlPanelAddServlet extends HttpServlet {
 		s.setDateTime(dateTime);
 		
 //		Metti controlli per assicurarti che lo slot orario sia disponibile per la sala scelta
-		if (true) {
+		if (BusinessLogic.timeSlotIsFree(theaterId, movieId, dateTime)) {
 			BusinessLogic.addScreening(s);
 			request.getRequestDispatcher("WEB-INF/private-jsp/ScreeningControlPanel-add.jsp").forward(request, response);
 			return;
