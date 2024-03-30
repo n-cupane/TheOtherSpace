@@ -94,6 +94,12 @@ public class LogInServlet extends HttpServlet {
         if (loginSuccess) {
         	wrongCredential = false;
         	this.logIn(activeUser, request.getSession());
+        	
+        	if (activeUser.getId() == 1) {
+        		response.sendRedirect("UserControlPanelServlet");
+        		return;
+        	}
+        	
             response.sendRedirect("HomePageServlet");   
         } else {   // Nel caso in cui le credenziali inserite non risultino corrette invio l'utente alla servlet di login con l'errore caricato 
         	wrongCredential = true; // modifica il boolean di controllo per far apparire il messaggio nella jsp

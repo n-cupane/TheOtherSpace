@@ -33,6 +33,9 @@ public class MovieDetailsServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+//		 Recupero l'id del film passato come parametro dalla home page e poi recupero il film stesso
+		 int movieId = Integer.parseInt(request.getParameter("movieId"));
+		 Movie movieToDisplay = BusinessLogic.findMovieById(movieId);
 		
      	boolean isLoggedIn = (request.getSession().getAttribute("activeUser") != null);
         request.setAttribute("isLoggedIn",isLoggedIn);
@@ -42,17 +45,20 @@ public class MovieDetailsServlet extends HttpServlet {
             User activeUser =  (User)request.getSession().getAttribute("activeUser");
             String activeUserUsername = activeUser.getUsername();
             request.setAttribute("username", activeUserUsername);
+            boolean movieInFavorites = activeUser.getMovies().contains(movieToDisplay);
+            ///////////////////////////////////////////////////////////////////////////////////////////////
+            if (movieInFavorites) System.out.println(activeUserUsername + " has fav ->" + movieToDisplay.getTitle());
+            request.setAttribute("movieInFavorites", movieInFavorites);
         } 
 		
-//		 Recupero l'id del film passato come parametro dalla home page e poi recupero il film stesso
-		 int movieId = Integer.parseInt(request.getParameter("movieId"));
-		 Movie movieToDisplay = BusinessLogic.findMovieById(movieId);
+
 		 
 //		 Recupero Lista Recensioni per film
 		 List<Review> movieReviews = BusinessLogic.findAllReviewsOfMovie(movieId);
 		 
 		 if (movieToDisplay != null) {
 //		 Passo gli attributi da mostrare sulla jsp
+		 request.setAttribute("movieId", movieToDisplay.getId());
 		 request.setAttribute("movieTitle", movieToDisplay.getTitle());
 		 request.setAttribute("over18", movieToDisplay.isOver18());
 		 request.setAttribute("movieDescription", movieToDisplay.getDescription());

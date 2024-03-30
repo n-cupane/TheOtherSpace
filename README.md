@@ -11,7 +11,7 @@
 - [x]  Pagina informazioni personali con modifica
 - [x]  Visualizzazione e gestione prenotazioni
 - [x]  Recensione film
-- [ ]  Aggiunta film ai preferiti
+- [x]  Aggiunta film ai preferiti
 
 # Lato Admin:
 
@@ -27,11 +27,11 @@
 
 # Da fixare:
 
-- [ ] Caratteri accentati nella descrizione dei film (deriva da DB) 
+- [x] Caratteri accentati nella descrizione dei film
 - [x] Utilizzare session in tutte le servlet per controllare se l'utente è loggato
 - [ ] Non mostrare proiezioni passate all'utente
 - [x] Permettere solo a utenti loggati di arrivare alla scelta del posto
-- [ ] L'accesso come admin deve rimandare al pannello di controllo
+- [x] L'accesso come admin deve rimandare al pannello di controllo
 - [ ] Impostare vincoli not null e unique nel DB tramite JPA
 - [ ] Creare servlet di logout e gestire tutti i logout reindirizzandoli a questa
 - [x] Aggiungere link a home tramite logo in tutte le servlet

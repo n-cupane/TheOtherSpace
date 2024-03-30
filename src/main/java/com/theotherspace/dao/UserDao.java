@@ -20,6 +20,8 @@ public interface UserDao extends GeneralDao<User> {
 	
 	abstract public void updateCardPointInsert(User user, Integer newCardCode);
 	
+	abstract public void addToFavorites(long userId, long movieId);
 	
+	abstract public void removeFromFavorites(long userId, long movieId);
 
 }

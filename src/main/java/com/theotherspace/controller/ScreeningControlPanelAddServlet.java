@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import com.theotherspace.model.Screening;
+import com.theotherspace.model.User;
 import com.theotherspace.utilities.BusinessLogic;
 
 /**
@@ -30,6 +31,15 @@ public class ScreeningControlPanelAddServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//Controllo Aggiuntivo
+				if(request.getSession().getAttribute("activeUser")==null) {
+					response.sendRedirect("LogInServlet");
+					return;
+				}
+		if (((User)request.getSession().getAttribute("activeUser")).getId() != 1) {
+			response.sendRedirect("HomePageServlet");
+			return;
+		}
 		request.getRequestDispatcher("WEB-INF/private-jsp/ScreeningControlPanel-add.jsp").forward(request, response);
 	}
 
@@ -41,6 +51,11 @@ public class ScreeningControlPanelAddServlet extends HttpServlet {
 		//Controllo Aggiuntivo
 		if(request.getSession().getAttribute("activeUser")==null) {
 			response.sendRedirect("LogInServlet");
+			return;
+		}
+		
+		if (((User)request.getSession().getAttribute("activeUser")).getId() != 1) {
+			response.sendRedirect("HomePageServlet");
 			return;
 		}
 		

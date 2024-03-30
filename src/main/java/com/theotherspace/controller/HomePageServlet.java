@@ -43,6 +43,9 @@ public class HomePageServlet extends HttpServlet {
             User activeUser =  (User)request.getSession().getAttribute("activeUser");
             String activeUserUsername = activeUser.getUsername();
             request.setAttribute("username", activeUserUsername);
+            
+            List<Movie> favoriteMovies = BusinessLogic.findAllFavoritesOfUser(activeUser.getId());
+            request.setAttribute("favoriteMovies", favoriteMovies);
         } 
         
         List<Movie> movies = BusinessLogic.findAllMovies();
