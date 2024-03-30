@@ -18,7 +18,7 @@ public class Theater {
 	
 	@Column(name = "seats")
 	private int seats;
-	@Column(name = "room_number")
+	@Column(name = "room_number", unique = true)
 	private int number;
 	
 	@OneToMany(mappedBy = "theater")
