@@ -113,17 +113,16 @@ p {
 
 }
 
-#text_all_movies{
-	width: 100%;
+.text_all_movies{
 	font-size: 35px;
-	margin-left: 21.8vw;
-
+	margin-left: 22.5vw;
+	margin-top: 2vh;
+	margin-bottom: 1vh;
 }
 
 .container_movies{
 	
 	margin:auto;
-	padding-top: 1vw;
 	width: 55vw;
 	display: flex;
 	flex-direction: row;
@@ -184,4 +183,20 @@ footer {
 
 .app-section p {
     margin-top: 20px;
+}
+
+.mySwiper {
+	width: 55vw;
+	margin: auto;
+	margin-bottom: 2vh;
+}
+
+.s-slide {
+	width: 10vw;
+	margin: 0;
+}
+
+swiper-slide a {
+	width: 10vw;
+	height: 40vh;
 }

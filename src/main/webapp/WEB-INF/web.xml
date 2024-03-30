@@ -306,4 +306,13 @@
     <servlet-name>TicketDownloadServlet</servlet-name>
     <url-pattern>/TicketDownloadServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <display-name>AddFavoriteServlet</display-name>
+    <servlet-name>AddFavoriteServlet</servlet-name>
+    <servlet-class>com.theotherspace.controller.AddFavoriteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddFavoriteServlet</servlet-name>
+    <url-pattern>/AddFavoriteServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

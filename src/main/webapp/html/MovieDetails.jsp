@@ -16,6 +16,7 @@
       rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/MovieDetailsStyle.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 <body>
     <div id="container" class="container-fluid">
@@ -66,6 +67,7 @@
                 
         <div id="movie-container">
         <%
+        long movieId = (long) request.getAttribute("movieId");
         String movieTitle = (String) request.getAttribute("movieTitle");
         boolean over18 = (boolean) request.getAttribute("over18");
         String movieDescription = (String) request.getAttribute("movieDescription");
@@ -81,8 +83,25 @@
         
         <div id="right-movie-container">
         
+        	<form action="AddFavoriteServlet" method="post" id="movie-form" class="col-md-12">
+			    <input type="hidden" name="movieId" value="<%= movieId %>">
+
+			    <div class="row" style="margin-right:10px">
+			        <h1 id="movie-title" class="col-md-8"><%= movieTitle.toUpperCase() %></h1>
+			        <%if((Boolean)request.getAttribute("isLoggedIn")) {
+			        boolean movieInFavorites = (boolean) request.getAttribute("movieInFavorites");%>
+			        <input type="submit" id="submit-btn" value="Aggiungi ai Preferiti" style="display: none;">
+			        <input class="star col-md-4" type="checkbox" onChange="this.form.submit()" title="bookmark page" 
+			        <%if (!movieInFavorites){ %>
+			        checked
+			        <%} %>
+			        ><br/><br/>
+			        <%} %>
+			    </div>
+			</form>
+        
         	<form action="<%= request.getContextPath() %>/BookingServlet" method="post" id="movie-form">
-        	<h1 id="movie-title"><%=movieTitle.toUpperCase() %></h1>
+        	
         	
         	<div id="below-title">
         	<%

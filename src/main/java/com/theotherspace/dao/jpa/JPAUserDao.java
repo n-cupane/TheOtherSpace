@@ -127,6 +127,35 @@ public class JPAUserDao implements UserDao {
 	    em.merge(user);
 	    tr.commit();
 	}
+
+	@Override
+	public void addToFavorites(long userId, long movieId) {
+		EntityManager em = JPADaoFactory.getEntityManager();
+		em.clear();
+		EntityTransaction tr = em.getTransaction();
+		
+		tr.begin();
+		User user = em.find(User.class, userId);
+		Movie movie = em.find(Movie.class, movieId);
+		user.getMovies().add(movie);
+		movie.getUsers().add(user);
+		tr.commit();
+	}
+
+	@Override
+	public void removeFromFavorites(long userId, long movieId) {
+		EntityManager em = JPADaoFactory.getEntityManager();
+		em.clear();
+		EntityTransaction tr = em.getTransaction();
+		
+		tr.begin();
+		User user = em.find(User.class, userId);
+		Movie movie = em.find(Movie.class, movieId);
+		user.getMovies().remove(movie);
+		movie.getUsers().remove(user);
+		tr.commit();
+		
+	}
 	
 	
 

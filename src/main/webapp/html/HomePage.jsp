@@ -95,7 +95,32 @@
             </button>
         </div>
         
-        <h1 id="text_all_movies">ALL MOVIES</h1>
+        <%
+        List<Movie> favoriteMovies = (List<Movie>) request.getAttribute("favoriteMovies");
+        if (favoriteMovies != null && favoriteMovies.size() > 0) {
+        	%>
+        	<h1 class="text_all_movies">PREFERITI</h1>
+        	
+        	<swiper-container class="mySwiper" navigation="true" loop="true" space-between="30"
+		    slides-per-view="5">
+			    <%
+			    for (Movie favoriteMovie: favoriteMovies) {
+			    	%>
+			    	<swiper-slide class="s-slide">
+			    		<a href="<%= request.getContextPath() %>/MovieDetailsServlet?movieId=<%=favoriteMovie.getId() %>">
+			    			<img class="poster_movie" src="<%=favoriteMovie.getImageUrl() %>">
+			    		</a>
+			    		<p id="title_movie"><%= favoriteMovie.getTitle() %></p>
+			    	</swiper-slide>
+			    	<%
+			    }
+			    %>
+		  </swiper-container>
+        	<%
+        }
+        %>
+        
+        <h1 class="text_all_movies">ALL MOVIES</h1>
         
         <div class="container_movies" id="container_movies">
 	            <% 
@@ -110,6 +135,7 @@
     	</div>
     </div>
 
+	<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 <footer>
