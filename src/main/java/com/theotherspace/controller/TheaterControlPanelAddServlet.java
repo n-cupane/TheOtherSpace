@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 import com.theotherspace.model.Theater;
+import com.theotherspace.model.User;
 import com.theotherspace.utilities.BusinessLogic;
 
 /**
@@ -32,6 +33,11 @@ public class TheaterControlPanelAddServlet extends HttpServlet {
 		//Controllo Aggiuntivo
 		if(request.getSession().getAttribute("activeUser")==null) {
 			response.sendRedirect("LogInServlet");
+			return;
+		}
+		
+		if (((User)request.getSession().getAttribute("activeUser")).getId() != 1) {
+			response.sendRedirect("HomePageServlet");
 			return;
 		}
 		

@@ -37,6 +37,11 @@ public class SearchMovieServlet extends HttpServlet {
 			return;
 		}
 		
+		if (((User)request.getSession().getAttribute("activeUser")).getId() != 1) {
+			response.sendRedirect("HomePageServlet");
+			return;
+		}
+		
 		boolean isLoggedIn = (request.getSession().getAttribute("activeUser") != null);
         request.setAttribute("isLoggedIn",isLoggedIn);
         

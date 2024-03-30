@@ -14,6 +14,7 @@ import java.time.ZoneId;
 import java.util.Date;
 
 import com.theotherspace.model.Screening;
+import com.theotherspace.model.User;
 import com.theotherspace.utilities.BusinessLogic;
 
 /**
@@ -38,6 +39,11 @@ public class ScreeningControlPanelEditServlet extends HttpServlet {
 		//Controllo Aggiuntivo
 		if(request.getSession().getAttribute("activeUser")==null) {
 			response.sendRedirect("LogInServlet");
+			return;
+		}
+		
+		if (((User)request.getSession().getAttribute("activeUser")).getId() != 1) {
+			response.sendRedirect("HomePageServlet");
 			return;
 		}
 		

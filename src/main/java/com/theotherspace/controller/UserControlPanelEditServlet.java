@@ -37,6 +37,11 @@ public class UserControlPanelEditServlet extends HttpServlet {
 			return;
 		}
 		
+		if (((User)request.getSession().getAttribute("activeUser")).getId() != 1) {
+			response.sendRedirect("HomePageServlet");
+			return;
+		}
+		
 		long userId = Long.parseLong(request.getParameter("userId"));
 		User userToEdit = BusinessLogic.findUserById(userId);
 		request.setAttribute("userToEdit", userToEdit);

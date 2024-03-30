@@ -36,6 +36,11 @@ public class UserControlPanelAddServlet extends HttpServlet {
 			return;
 		}
 		
+		if (((User)request.getSession().getAttribute("activeUser")).getId() != 1) {
+			response.sendRedirect("HomePageServlet");
+			return;
+		}
+		
 		request.getRequestDispatcher("WEB-INF/private-jsp/UserControlPanel-add.jsp").forward(request, response);
 	}
 
