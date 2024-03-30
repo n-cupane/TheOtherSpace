@@ -241,8 +241,8 @@ p {
 
 .container-review{
 	display: flex;
-	justify-content: center;
-	align-items: ceneter;
+	justify-content: flex-start;
+	align-items: center;
 	width: 50%;
 	margin-top: 2%;
 	margin-left: 5%;
@@ -280,7 +280,7 @@ p {
 }
 
 .review-rating{
-	width: 100%;
+	width: 70%;
 	text-align: left;
 	margin-bottom: 2%;
 	margin-top: 2%;
@@ -362,9 +362,17 @@ footer {
    position: absolute;
 }
 
+.delete {
+    color: orangered; 
+    background-color: rgba(0, 0, 0, 0);
+	border: none;
+	justify-self: flex-end;
+	margin-top: 5%;
+}
 
-
-
+.rm-rw {
+	margin-left: 20%;
+}
 
 
 
