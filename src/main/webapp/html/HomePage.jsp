@@ -29,6 +29,7 @@
             <nav class="col-3 d-flex align-items-center justify-content-evenly">
 
                 <a href="#container_movies">FILM</a>
+                
 
             </nav>
 
@@ -42,8 +43,7 @@
                       	<p><%= ((User)request.getSession().getAttribute("activeUser")).getUsername() %></p>
                    	 <% }else{ %>
                    	 	<p>Login</p>
-                     <% } 
-                     %>
+                     <% } %>
                      
                       
                     </button>
@@ -60,7 +60,7 @@
                     </ul>
 
                 </div>
-
+                
             </div>
         </header>
 

@@ -59,7 +59,8 @@ div.dropdown {
 }
 
 p {
-    margin: 0;
+	margin:0;
+    font-size: 0.8vw;
 }
 
 .carousel-indicators button {
@@ -96,7 +97,7 @@ p {
 }
 
 #ricerca-cinema p {
-    font-size: 1vw;
+    font-size: 0.8vw;
     display: inline-block;
 }
 

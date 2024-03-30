@@ -18,7 +18,7 @@ padding: 0;
 
 #header {
 	width:100vw;
-    height: 10vh;
+    height: 11vh;
     background-color: black;
 }
 
@@ -54,7 +54,8 @@ div.dropdown {
 }
 
 p {
-    margin: 0;
+	margin:0;
+    font-size: 0.8vw;
 }
 
 .carousel-indicators button {
@@ -269,6 +270,7 @@ form label,
 form input,
 form button {
     margin-bottom: 2%; 
+    font-size: 0.8vw;
 }
 
 form button{

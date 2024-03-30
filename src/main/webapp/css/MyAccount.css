@@ -26,14 +26,14 @@ padding: 0;
     max-height: 10vh;
 }
 
-
-
 a {
     color: white;
     text-decoration: none;
-    font-size: 1vw;
+    font-size: 0.8vw;
 
 }
+
+
 
 #logo_other_space{
     width: 80%;
@@ -156,15 +156,15 @@ p {
 	display: flex;
 	justify-content: center;
 	text-align: center;
-	font-size: 0.8vw;
+	font-size: 1.3vw;
 }
 
 p{
-	font-size: 1vw;
+	font-size: 0.8vw;
 }
 
 a{
-	font-size: 1.3vw;
+	font-size: 1vw;
 }
 
 #movie-container {
@@ -265,7 +265,7 @@ a{
 }
 
 h1{
-	font-size: 2vw;
+	font-size: 1.3vw;
 }
 form {
     width: 100%; 
@@ -279,7 +279,7 @@ form label,
 form input,
 form button {
     margin-bottom: 2%; 
-    font-size: 1vw
+	font-size: 1.3vw;
 }
 
 
@@ -460,6 +460,8 @@ footer {
 	width: 100%;
 	margin-left: 60%;
 }
+
+
 
 
 
