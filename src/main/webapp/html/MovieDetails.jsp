@@ -159,6 +159,14 @@
 	    	<div class = "review-rating">
 	    		<p>Voto: <%=reviews.getRating() %>/5</p>
 	    	</div>
+	    	<%
+	    	if (((Boolean)request.getAttribute("isLoggedIn")) && ((User)request.getSession().getAttribute("activeUser")).getId() == 1){
+	    		%>
+	    		<form class="rm-rw" action="<%= request.getContextPath() %>/RemoveReviewServlet" method="post">
+	    			<input name="reviewId" style="display:none" value="<%=reviews.getId() %>">
+	    			<button type="submit" class="material-icons delete">&#xe872;</button>
+	    		</form>
+	    	<%} %>
     	</div>
     	<%}%>
     </div>

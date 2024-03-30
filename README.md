@@ -21,7 +21,7 @@
 - [x]  CRUD utenti
 - [x]  CRUD proiezioni
 - [x]  CRUD sale
-- [ ]  Moderazione recensioni
+- [x]  Moderazione recensioni
 
 
 

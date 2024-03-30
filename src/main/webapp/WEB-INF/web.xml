@@ -315,4 +315,14 @@
     <servlet-name>AddFavoriteServlet</servlet-name>
     <url-pattern>/AddFavoriteServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>RemoveReviewServlet</display-name>
+    <servlet-name>RemoveReviewServlet</servlet-name>
+    <servlet-class>com.theotherspace.controller.RemoveReviewServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RemoveReviewServlet</servlet-name>
+    <url-pattern>/RemoveReviewServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
