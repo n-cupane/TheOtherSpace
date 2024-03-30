@@ -27,7 +27,7 @@
 
 # Da fixare:
 
-- [ ] Caratteri accentati nella descrizione dei film (deriva da DB) 
+- [x] Caratteri accentati nella descrizione dei film
 - [x] Utilizzare session in tutte le servlet per controllare se l'utente è loggato
 - [ ] Non mostrare proiezioni passate all'utente
 - [x] Permettere solo a utenti loggati di arrivare alla scelta del posto
