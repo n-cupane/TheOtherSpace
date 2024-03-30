@@ -19,6 +19,7 @@ import com.theotherspace.model.Theater;
 import com.theotherspace.model.Ticket;
 import com.theotherspace.model.User;
 import com.theotherspace.utilities.BusinessLogic;
+import com.theotherspace.utilities.SendMail;
 
 /**
  * Servlet implementation class ProvaServlet
@@ -54,7 +55,7 @@ public class ProvaServlet extends HttpServlet {
             String activeUserUsername = activeUser.getUsername();
             request.setAttribute("username", activeUserUsername);
         } 
-		JPADaoFactory.getEntityManager();
+		
 		request.getRequestDispatcher("html/Prova.jsp").forward(request, response);
 	}
 

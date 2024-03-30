@@ -11,6 +11,7 @@ import java.util.List;
 
 import com.theotherspace.model.User;
 import com.theotherspace.utilities.BusinessLogic;
+import com.theotherspace.utilities.SendMail;
 
 /**
  * Servlet implementation class SignUpServlet
@@ -70,6 +71,8 @@ public class SignUpServlet extends HttpServlet {
 		    User activeUser = BusinessLogic.findUserByEmail(u.getEmail());
 		    // Imposta l'utente appena registrato come utente loggato nella sessione
 		    request.getSession().setAttribute("activeUser", activeUser);
+		    
+		    SendMail.send(activeUser);
 		    
 		    // Dopo aver aggiunto l'utente e impostato la sessione, esegui la reindirizzazione alla home page
 		    response.sendRedirect("HomePageServlet");
