@@ -11,7 +11,7 @@
 - [x]  Pagina informazioni personali con modifica
 - [x]  Visualizzazione e gestione prenotazioni
 - [x]  Recensione film
-- [ ]  Aggiunta film ai preferiti
+- [x]  Aggiunta film ai preferiti
 
 # Lato Admin:
 
