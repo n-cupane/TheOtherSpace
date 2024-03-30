@@ -32,7 +32,7 @@
 - [ ] Non mostrare proiezioni passate all'utente
 - [x] Permettere solo a utenti loggati di arrivare alla scelta del posto
 - [x] L'accesso come admin deve rimandare al pannello di controllo
-- [ ] Impostare vincoli not null e unique nel DB tramite JPA
+- [x] Impostare vincoli not null e unique nel DB tramite JPA
 - [ ] Creare servlet di logout e gestire tutti i logout reindirizzandoli a questa
 - [x] Aggiungere link a home tramite logo in tutte le servlet
 - [ ] Valutare, come suggerito da Filippo, di non eliminare del tutto gli utenti dal DB ma di cambiarne solo la visibilità (forse anche altro come screening)
