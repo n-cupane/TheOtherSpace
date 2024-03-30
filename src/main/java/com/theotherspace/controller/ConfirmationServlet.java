@@ -88,6 +88,7 @@ public class ConfirmationServlet extends HttpServlet {
 		        //blockedTicketPrice = blockedTicketPriceUnfixed-discount;
 		        userTicket.setCardPoints(-userTicket.getCardPoints());
 		        System.out.println(userTicket.getCardPoints());
+		        BusinessLogic.updateUser(userTicket);
 		        // Reimposta lo sconto a 0 per il prossimo biglietto
 		        
 		        
@@ -96,14 +97,15 @@ public class ConfirmationServlet extends HttpServlet {
 		    	blockedTicketPrice = Double.parseDouble(request.getParameter("blockedTicketPrice"+i));  //10
 		    } else if(haveCard && !usePoints) {
 		    	blockedTicketPrice = Double.parseDouble(request.getParameter("blockedTicketPrice"+i));  //10
+		    } else if(userTicket.getCardPoints()==0) {
+		    	blockedTicketPrice = Double.parseDouble(request.getParameter("blockedTicketPrice"+i));
 		    }
 		    
 			int blockedTicketSeat = Integer.parseInt(request.getParameter("blockedTicketSeat"+i));
 			Long blockedTicketUserId = Long.parseLong(request.getParameter("blockedTicketUserId"+i));
 			Long blockedTicketScreeningId = Long.parseLong(request.getParameter("blockedTicketScreening"+i));
-			User blockedTicketUser = BusinessLogic.findUserById(blockedTicketUserId);
 			Screening blockedTicketScreening = BusinessLogic.findScreeningById(blockedTicketScreeningId);
-			Ticket blockedTicketConfirmed = new Ticket(blockedTicketUser,blockedTicketScreening,blockedTicketPrice,blockedTicketSeat);
+			Ticket blockedTicketConfirmed = new Ticket(userTicket,blockedTicketScreening,blockedTicketPrice,blockedTicketSeat);
 			BusinessLogic.addTicket(blockedTicketConfirmed);
 		}
         

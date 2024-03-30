@@ -100,6 +100,10 @@
             %>
             <div class="ticket">
 			    <form id="myNextTicket" action="<%= request.getContextPath() %>/TicketDownloadServlet" method="POST"> 
+			    	
+			    	<label for="movieName">Movie name:</label>
+				    <input type="text" id="movieName" name="movieName" value="<%= ticket.getScreening().getMovie().getTitle() %>" readonly><br>
+			    	
 			        <label for="userFirstName">User First Name:</label>
 			        <input type="text" id="userFirstName" name="userFirstName" value="<%= userFirstName %>" readonly><br>
 			        
@@ -146,6 +150,10 @@
             %>
             <div class="ticket">
 			    <form id="myNextTicket" action="<%= request.getContextPath() %>/TicketDownloadServlet" method="POST"> 
+			    
+			    	<label for="movieName">Movie name:</label>
+				    <input type="text" id="movieName" name="movieName" value="<%= ticket.getScreening().getMovie().getTitle() %>" readonly><br>
+				    
 			        <label for="userFirstName">User First Name:</label>
 			        <input type="text" id="userFirstName" name="userFirstName" value="<%= userFirstName %>" readonly><br>
 			        

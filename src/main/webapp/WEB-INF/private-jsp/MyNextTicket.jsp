@@ -75,11 +75,13 @@
 	<div class="container-next-ticket">
 		<div class="nextTicket">
 		<% if (nextScreening != null && userNextTicket != null) { %>
-			<form id="myNextTicket" action="<%= request.getContextPath() %>/AltraServlet" method="POST"> 
-			        <label for="userFirstName">User First Name:</label>
-			        <input type="text" id="userFirstName" name="userFirstName" value="<%= activeUser.getFirstName() %>" readonly><br>
-			        <label for="userLastName">User Last Name:</label>
-			        <input type="text" id="userLastName" name="userLastName" value="<%= activeUser.getLastName() %>" readonly><br>
+			<form id="myNextTicket" action="<%= request.getContextPath() %>/TicketDownloadServlet" method="POST"> 
+						<label for="movieName">Movie name:</label>
+				        <input type="text" id="movieName" name="movieName" value="<%= userNextTicket.getScreening().getMovie().getTitle() %>" readonly><br>
+				        <label for="userFirstName">User First Name:</label>
+				        <input type="text" id="userFirstName" name="userFirstName" value="<%= activeUser.getFirstName() %>" readonly><br>
+				        <label for="userLastName">User Last Name:</label>
+				        <input type="text" id="userLastName" name="userLastName" value="<%= activeUser.getLastName() %>" readonly><br>
 					    <label for="screeningDateTime">Screening Date Time:</label>
 					    <input type="text" id="screeningDateTime" name="screeningDateTime" value="<%= nextScreening.getDateTime() %>" readonly><br>
 					    <label for="price">Prezzo:</label>
