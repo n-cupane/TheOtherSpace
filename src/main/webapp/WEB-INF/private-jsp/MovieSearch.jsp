@@ -17,49 +17,6 @@
 </head>
 <body>
     <div id="container" class="container-fluid">
-
-        <header id="header" class="row justify-content-center">
-            
-            <div class="col-2 d-flex align-items-end justify-content-end">
-                <a href="<%=request.getContextPath()%>/HomePageServlet"><img src="<%=request.getContextPath()%>/res/logo_other_space.png" alt="Logo The Other" id="logo_other_space"></a>
-            </div>
-            
-            <nav class="col-3 d-flex align-items-center justify-content-evenly">
-
-                <a href="#container_movies">FILM</a>
-
-            </nav>
-
-            <div class="col-2 d-flex align-items-center">
-
-                <div class="dropdown">
-                    
-                    <button id="btn" class="btn btn-secondary dropdown-toggle d-flex justify-content-evenly align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      <span id="person-img" class="material-icons">&#xe7fd;</span>
-                      <% if((Boolean)request.getAttribute("isLoggedIn")){ %>
-                      	<p><%= ((User)request.getSession().getAttribute("activeUser")).getUsername() %></p>
-                   	 <% }else{ %>
-                   	 	<p>Login</p>
-                     <% }  %>
-                     
-                      
-                    </button>
-                    <ul class="dropdown-menu">
-                    <% if((Boolean)request.getAttribute("isLoggedIn")){ %>
-                    <!-- Se l'utente è loggato, mostra solo l'username e l'opzione Logout -->
-                      <li><a class="dropdown-item" href="#"><%= session.getAttribute("loggedInUser") %></a></li>
-                      <li><a class="dropdown-item" href="<%= request.getContextPath() %>/LogoutServlet">Logout</a></li>
-                    <% }else{ %>
-                     <!-- Se l'utente non è loggato, mostra le opzioni Signin e Login -->
-                      <li><a class="dropdown-item" href="<%= request.getContextPath() %>/SignUpServlet">Registrati</a></li>
-                      <li><a class="dropdown-item" href="<%= request.getContextPath() %>/LogInServlet">Login</a></li>
-                     <% } %>
-                    </ul>
-
-                </div>
-                <span id="search-icon" class="material-icons">&#xe8b6;</span>
-            </div>
-        </header>
 		<%
 		List<Movie> moviesFound = (List<Movie>) request.getAttribute("moviesFound");
 		if ( moviesFound == null) {
