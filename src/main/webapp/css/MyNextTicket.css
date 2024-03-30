@@ -23,15 +23,17 @@ padding: 0;
 }
 
 [alt="Logo The Space"] {
-    padding-bottom: 2%;
+    max-height: 10vh;
 }
 
 a {
     color: white;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 1vw;
 
 }
+
+
 
 #logo_other_space{
     width: 80%;
@@ -40,7 +42,6 @@ a {
 #btn {
     background-color: black;
     border: 3px solid orange;
-    width: 100%;
 }
 
 div.dropdown {
@@ -50,7 +51,6 @@ div.dropdown {
 #search-icon {
     border-left: 1px solid grey;
     margin-left: 6%;
-    padding-left: 3%;
 }
 
 p {
@@ -91,7 +91,7 @@ p {
 }
 
 #ricerca-cinema p {
-    font-size: 20pt;
+    font-size: 1vw;
     display: inline-block;
 }
 
@@ -132,7 +132,7 @@ p {
 .container_movies a {
     color: black;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 1.3vw;
     width: 12%;
     text-align: center;
 }
@@ -166,6 +166,7 @@ p {
 	background-color: #0e0e0e;
 	display: flex;
 	flex-direction: row;
+	
 }
 
 #left-movie-container {
@@ -249,10 +250,11 @@ p {
 }
 
 .form h2{
-	margin-top:10%;
+	margin-top:5%;
 	width: 100%;
 	text-align: center;
 	margin-bottom: 4%;
+	font-size: 1.8vw;
 }
 form {
     width: 100%; 
@@ -269,6 +271,10 @@ form button {
     margin-bottom: 2%; 
 }
 
+form button{
+	margin-top: 2%; 
+}
+
 
 .delete a{
 	color: orange;
@@ -281,7 +287,7 @@ form label{
 
 footer {
 	width:100vw;
-    background-color: #333;
+    background-color: black;
     color: white;
     padding: 30px;
     text-align: center;
@@ -293,8 +299,20 @@ footer {
     justify-content: space-around;
 }
 
+.footer-content li{
+    font-size: 1vw;
+}
+
+.footer-content p{
+	margin-top:20px;
+    font-size: 1vw;
+}
+
+
+
 .footer-content h4 {
     color: orange;
+    font-size: 1.3vw;
 }
 
 .footer-content ul {
@@ -330,13 +348,16 @@ footer {
     background-size: cover; 
     background-position: center; 
     width: 70%;
+    max-width:70%;
+    max-height:40vh;
     margin-left: 15%;
+    margin-top:5%;
     border-radius: 30px;
     display: flex;
     flex-wrap:wrap;
     justify-content:space-around;
-    align-items: center; /* Centra gli elementi orizzontalmente */
-    padding: 20px; /* Aggiunge spazio interno al form */
+    align-items: center; 
+    padding: 20px; 
 }
 
 
@@ -344,6 +365,7 @@ footer {
 #myNextTicket input {
     width: 25%; /* Aggiunge spazio tra gli elementi */
     margin-left: 25%;
+    
   
 }
 
@@ -351,6 +373,7 @@ h2{
 	color: black;
 	margin-top: 2%;
 	margin-bottom: 5%;
+	font-size: 1.8vw;
 }
 
 

@@ -18,7 +18,7 @@
 
         <header id="header" class="row justify-content-center">
             
-            <div class="col-2 d-flex align-items-end justify-content-end">
+            <div class="col-2 d-flex align-items-center justify-content-center">
                 <a href="<%=request.getContextPath()%>/HomePageServlet"><img src="<%=request.getContextPath()%>/res/logo_other_space.png" alt="Logo The Other" id="logo_other_space"></a>
             </div>
             
@@ -56,7 +56,7 @@
                     </ul>
 
                 </div>
-                <span id="search-icon" class="material-icons">&#xe8b6;</span>
+                
             </div>
         </header>
 
@@ -72,7 +72,8 @@
     		<%if(haveCard) {%>
 	        	<p>L'acquisto aggiungera' 100 punti al saldo della tua carta</p>
         	<%} %>
-        <p>Price: <%= request.getAttribute("price") %></p>
+        <p>Price for ticket: <%= request.getAttribute("price") %> x <%= request.getAttribute("ticketNumber") %></p>
+        <p>Subtotal: <%=((double)request.getAttribute("price"))*((int)request.getAttribute("ticketNumber"))%> </p>
         <p>Screening Date and Time: <%= request.getAttribute("screeningDateTimeVariable") %></p>
         <p>Ticket Number: <%= request.getAttribute("ticketNumber") %></p>
         <p>Seats:</p>

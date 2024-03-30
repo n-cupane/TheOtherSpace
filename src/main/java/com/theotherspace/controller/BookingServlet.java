@@ -51,10 +51,10 @@ public class BookingServlet extends HttpServlet {
 			return;
 		}
 		
-		//Test
+		//Verifico che l'utente sia loggato
 		boolean isLoggedIn = (request.getSession().getAttribute("activeUser") != null);
         request.setAttribute("isLoggedIn",isLoggedIn);
-        
+        //nel caso sia loggato lo inserisco come attributo
         if(isLoggedIn) {
         	User activeUser =  (User)request.getSession().getAttribute("activeUser");
             String activeUserUsername = activeUser.getUsername();

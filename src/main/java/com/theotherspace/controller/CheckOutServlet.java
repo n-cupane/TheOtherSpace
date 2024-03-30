@@ -63,6 +63,7 @@ public class CheckOutServlet extends HttpServlet {
 			screeningDateTimeVariable = null;
 			price = 0;
 			haveCard = false;
+			ticketNumber = 0;
 			
 			
 			

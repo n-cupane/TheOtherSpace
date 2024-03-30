@@ -22,7 +22,7 @@
 
         <header id="header" class="row justify-content-center">
             
-            <div class="col-2 d-flex align-items-end justify-content-end">
+            <div class="col-2 d-flex align-items-center justify-content-center">
                 <a href="<%=request.getContextPath()%>/HomePageServlet"><img src="<%=request.getContextPath()%>/res/logo_other_space.png" alt="Logo The Other" id="logo_other_space"></a>
             </div>
             
@@ -60,7 +60,7 @@
                     </ul>
 
                 </div>
-                <span id="search-icon" class="material-icons">&#xe8b6;</span>
+
             </div>
         </header>
 
@@ -181,7 +181,7 @@
     <div class="footer-content">
     	<div style="display: flex">
 	    	<p>This website uses TMDB and the TMDB APIs but is not endorsed, certified, or otherwise approved by TMDB.</p>
-	    	<img style="height: 2em; margin-left: 20px" src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_1-5bdc75aaebeb75dc7ae79426ddd9be3b2be1e342510f8202baf6bffa71d7f5c4.svg">
+	    	<img style="height: 1.5vw; margin-left: 19.5px; margin-top: 20px" src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_1-5bdc75aaebeb75dc7ae79426ddd9be3b2be1e342510f8202baf6bffa71d7f5c4.svg">
     	</div>
     </div>
 </footer>

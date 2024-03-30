@@ -2,6 +2,7 @@ package com.theotherspace.model;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.Column;
@@ -142,8 +143,13 @@ public class User {
 	}
 
 	public List<Movie> getMovies() {
-		return movies;
+	    if (movies == null) {
+	        return new ArrayList();
+	    } else {
+	        return movies;
+	    }
 	}
+
 
 	public void setMovies(List<Movie> movies) {
 		this.movies = movies;

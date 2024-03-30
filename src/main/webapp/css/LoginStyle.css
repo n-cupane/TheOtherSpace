@@ -2,7 +2,7 @@ body{
     width: 100%;
     height: 100vh;
     margin: 0;
-    background-image:url(https://4kwallpapers.com/images/wallpapers/dune-2-8k-2024-6016x3384-15019.jpg);
+    background-image:url('../res/Login-wallpaper.jpg');
     background-size: cover;
     background-position: center;
 }

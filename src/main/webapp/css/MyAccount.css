@@ -18,18 +18,20 @@ padding: 0;
 
 #header {
 	width:100vw;
-    height: 10vh;
+    height: 11vh;
     background-color: black;
 }
 
 [alt="Logo The Space"] {
-    padding-bottom: 2%;
+    max-height: 10vh;
 }
+
+
 
 a {
     color: white;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 1vw;
 
 }
 
@@ -40,7 +42,6 @@ a {
 #btn {
     background-color: black;
     border: 3px solid orange;
-    width: 100%;
 }
 
 div.dropdown {
@@ -50,7 +51,6 @@ div.dropdown {
 #search-icon {
     border-left: 1px solid grey;
     margin-left: 6%;
-    padding-left: 3%;
 }
 
 p {
@@ -91,7 +91,7 @@ p {
 }
 
 #ricerca-cinema p {
-    font-size: 20pt;
+    font-size: 1vw;
     display: inline-block;
 }
 
@@ -132,7 +132,7 @@ p {
 .container_movies a {
     color: black;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 1.3vw;
     width: 12%;
     text-align: center;
 }
@@ -156,7 +156,15 @@ p {
 	display: flex;
 	justify-content: center;
 	text-align: center;
-	font-size: 20px;
+	font-size: 0.8vw;
+}
+
+p{
+	font-size: 1vw;
+}
+
+a{
+	font-size: 1.3vw;
 }
 
 #movie-container {
@@ -253,6 +261,11 @@ p {
 	width: 100%;
 	text-align: center;
 	margin-bottom: 4%;
+	font-size: 1.8vw;
+}
+
+h1{
+	font-size: 2vw;
 }
 form {
     width: 100%; 
@@ -266,6 +279,7 @@ form label,
 form input,
 form button {
     margin-bottom: 2%; 
+    font-size: 1vw
 }
 
 
@@ -280,7 +294,7 @@ form label{
 
 footer {
 	width:100vw;
-    background-color: #333;
+    background-color: black;
     color: white;
     padding: 30px;
     text-align: center;
@@ -292,8 +306,20 @@ footer {
     justify-content: space-around;
 }
 
+.footer-content li{
+    font-size: 1vw;
+}
+
+.footer-content p{
+	margin-top:20px;
+    font-size: 1vw;
+}
+
+
+
 .footer-content h4 {
     color: orange;
+    font-size: 1.3vw;
 }
 
 .footer-content ul {
@@ -392,6 +418,7 @@ footer {
 }
 
 .image {
+    max-width: 80%;
     width: 80%;
 }
 
@@ -414,6 +441,7 @@ footer {
 }
 
 .my-card {
+    max-width: 80%;
     width: 80%;
     display: flex;
     flex-wrap: wrap;
@@ -422,7 +450,7 @@ footer {
     background-position: center; /* Centra l'immagine all'interno dell'elemento */
     justify-content: center;
     align-items: center;
-    height: 25%;
+    height: 40%;
     border-radius: 20px;
     color: white;
 }
