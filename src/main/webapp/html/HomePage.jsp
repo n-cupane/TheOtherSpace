@@ -120,7 +120,7 @@
         }
         %>
         
-        <h1 class="text_all_movies">ALL MOVIES</h1>
+        <h1 class="text_all_movies">TUTTI I FILM</h1>
         
         <div class="container_movies" id="container_movies">
 	            <% 

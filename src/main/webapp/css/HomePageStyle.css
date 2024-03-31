@@ -15,11 +15,14 @@ body {
 
 
 #container {
+	
+    background-image: linear-gradient(90deg, #000000, rgb(35, 35, 35));
+	/*
 padding: 0;
 background-image: url('../res/background.jpg'); 
 background-size: cover; 
-background-position: center; 
-}
+background-position: center; */
+} 
 
 #header {
 	width:100vw;
@@ -177,19 +180,19 @@ footer {
 }
 
 .footer-content li{
-    font-size: 1vw;
+    font-size: 0.6vw;
 }
 
 .footer-content p{
 	margin-top:20px;
-    font-size: 1vw;
+    font-size: 0.7vw;
 }
 
 
 
 .footer-content h4 {
     color: orange;
-    font-size: 1.3vw;
+    font-size: 1vw;
 }
 
 .footer-content ul {
