@@ -29,7 +29,7 @@ padding: 0;
 a {
     color: white;
     text-decoration: none;
-    font-size: 0.8vw;
+    font-size: 0.7vw;
 
 }
 
@@ -54,7 +54,7 @@ div.dropdown {
 }
 
 p {
-    margin: 0;
+    margin: auto;
 }
 
 .carousel-indicators button {
@@ -91,7 +91,7 @@ p {
 }
 
 #ricerca-cinema p {
-    font-size: 1vw;
+    font-size: 0.8vw;
     display: inline-block;
 }
 
@@ -132,7 +132,7 @@ p {
 .container_movies a {
     color: black;
     text-decoration: none;
-    font-size: 1.3vw;
+    font-size: 1vw;
     width: 12%;
     text-align: center;
 }
@@ -156,11 +156,11 @@ p {
 	display: flex;
 	justify-content: center;
 	text-align: center;
-	font-size: 1.3vw;
+	font-size: 1vw;
 }
 
 p{
-	font-size: 0.8vw;
+	font-size: 0.7vw;
 }
 
 a{
@@ -254,6 +254,7 @@ a{
     margin-right: auto;
     margin-bottom: 10%;
     
+    
 }
 
 .form h2{
@@ -261,34 +262,103 @@ a{
 	width: 100%;
 	text-align: center;
 	margin-bottom: 4%;
-	font-size: 1.8vw;
+	font-size: 1.6vw;
 }
 
 h1{
-	font-size: 1.3vw;
+	font-size: 1vw;
 }
 form {
-    width: 100%; 
+    width: 50%; 
     align-content: center;
     justify-content: space-between;
-    text-align: center; 
-    margin-bottom: 2%;
+    text-align: justify;
+    height: 80%;
+ 
+}
+
+.form-user important{
+    width: 100vw; 
+    align-content: center;
+    justify-content: space-between;
+    text-align: justify;
+    min-height: 70vh;
+    color: black;
+ 
 }
 
 form label,
 form input,
 form button {
-    margin-bottom: 2%; 
-	font-size: 1.3vw;
+	font-size: 1vw;
+	margin: auto;
 }
 
 
 .delete a{
 	color: orange;
 }
+.delete{
+	margin-top:15vh;
+	margin-bottom:15vh;
+	width: 100vw;
+	display: flex;
+	align-content: center;
+	justify-content: center;
+	text-align: justify;
+	flex-direction: column;
+	justify-content:space-between;
+	min-height: 5vh;
+	color:black;
+}
+
+#user-form{
+	margin-top:10vh;
+	width: 100vw;
+	display: flex;
+	align-content: center;
+	justify-content: center;
+	flex-direction: column;
+	min-height: 40vh;
+	color:black;
+}
+
+#user-form h2{
+	font-size:1.3vw;
+	text-align: center;
+	margin-bottom: 10vh;
+}
+
+#myTicket {
+	width: 20%;
+}
+
+#user-form button{
+	
+	margin-top: 10vh;
+}
+
+#user-form label{
+	text-align: center;
+	margin-bottom: 1vh;
+	
+}
+
+#user-form input{
+	min-width: 20vw;
+	border-radius: 10px;
+	border: 1px solid orange;
+	
+}
+
+.delete h1{
+	width:100%;
+	text-align: center;
+	
+}
 
 form label{
-	width: 5%;
+	width: 100%;
 	text-align: justify;
 }
 
@@ -339,13 +409,19 @@ footer {
 	background-color: white;
 	width: 100%;
 	color: black;
+	display: flex;
+	align-content: center;
+	justify-content: center;
 	
 }
 
 .container-next-ticket{
 	background-color: white;
-	width: 100%;
-	height: 100vh;
+	width: 100vw;
+	min-height: 100vh;
+	display: flex;
+	align-content: center;
+	justify-content: center;
 	
 }
 
@@ -355,27 +431,41 @@ footer {
     background-size: cover; 
     background-position: center; 
     width: 50%;
-    margin-left: 25%;
     border-radius: 30px;
     display: flex;
     flex-wrap:wrap;
     justify-content:space-around;
-    align-items: center; /* Centra gli elementi orizzontalmente */
-    padding: 20px; /* Aggiunge spazio interno al form */
+    align-items: center; 
+    padding: 20px; 
+    height: 35%;
+    margin-right: 20vh;
 }
 
 
 #myNextTicket label,
 #myNextTicket input {
-    width: 25%; /* Aggiunge spazio tra gli elementi */
-    margin-left: 25%;
+    width: 25%;
+    margin-left: 23%; /* Aggiunge spazio tra gli elementi */
+   
   
+}
+
+#myNextTicket input{
+	width:20%
+}
+
+#myTicket input{
+	width:15%;
+}
+
+.nextTicket{
+	margin-top: 20vh;
 }
 
 
 .conditions-form {
   width: 50%;
-  height:66vh;
+  min-height:70vh;
   margin: auto;
   color: black;
   display: flex;
@@ -383,8 +473,11 @@ footer {
   justify-content: center;
 }
 
-.conditions-form form {
+.conditions-form form important{
   text-align: justify;
+  align-content: center;
+  justify-content: center;
+
 }
 
 .conditions-form div {
@@ -395,12 +488,10 @@ footer {
 
 .conditions-form label {
   margin-left: 10px;
-  width: 50%;
+  width: 100%;
 }
 
-.conditions-form input[type="submit"] {
-  margin-top: 100px; 
-}
+
 
 .container {
     width: 100%;
@@ -441,8 +532,7 @@ footer {
 }
 
 .my-card {
-    max-width: 80%;
-    width: 80%;
+	width:20vw;
     display: flex;
     flex-wrap: wrap;
     background-image: url('https://w.wallha.com/ws/15/TdHetnsS.png'); /* Aggiungi l'URL dell'immagine di sfondo */
@@ -450,7 +540,7 @@ footer {
     background-position: center; /* Centra l'immagine all'interno dell'elemento */
     justify-content: center;
     align-items: center;
-    height: 40%;
+	height:10vw;
     border-radius: 20px;
     color: white;
 }

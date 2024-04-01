@@ -70,6 +70,9 @@
 	            <a href="<%= request.getContextPath() %>/MyAccountServlet">La mia Card</a>
 	            <a href="<%= request.getContextPath() %>/AccountInfoServlet">Le mie info</a>
 				<a href="<%= request.getContextPath() %>/MyNextTicketServlet">Le mie proiezioni</a>
+				<form id="myTicket"action="<%= request.getContextPath() %>/MyTicketServlet" method="POST">
+				<button type="submit">I miei Biglietti</button>
+				</form>
     	</div>
     </div>
 	<div class="container-next-ticket">
@@ -93,11 +96,7 @@
 			    </form>
 		<% } %> 
 		</div>
-		<div>
-			<form action="<%= request.getContextPath() %>/MyTicketServlet" method="POST">
-				<button type="submit">I miei Biglietti</button>
-			</form>
-		</div>
+		
 	</div>
 </body>
 <footer>

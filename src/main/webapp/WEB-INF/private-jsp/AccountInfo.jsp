@@ -66,10 +66,11 @@
 				<a href="<%= request.getContextPath() %>/MyNextTicketServlet">Le mie proiezioni</a>
     	</div>
     </div>
-    <div class="form">
-    	<h2>Modifica Dati Utente</h2>
+    <div class="form-user">
+    	
     <% User activeUser = (User)request.getAttribute("activeUser"); %>
-    <form action="<%= request.getContextPath() %>/AccountInfoServlet" method="post">
+    <form id="user-form" action="<%= request.getContextPath() %>/AccountInfoServlet" method="post">
+    	<h2>Modifica Dati Utente</h2>
         <input type="hidden" name="userId" value="<%= activeUser.getId() %>">
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" value="<%= activeUser.getUsername() %>"><br>
