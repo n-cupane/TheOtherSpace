@@ -14,12 +14,18 @@
                 <h2 id="title">SIGN UP</h2>
                 <form action="<%= request.getContextPath() %>/SignUpServlet" method="POST">
                     <div class="container_input">
-                        <input type="text" id="name" name="firstName" placeholder="Nome"  required><br><br>
-                        <input type="text" id="surname" name="lastName" placeholder="Cognome"  required><br><br>
-                        <input type="text" id="username" name="username" placeholder="Username"  required><br><br>
-                        <input type="text" id="email" name="email" placeholder="E-mail" required><br><br>
-                        <input type="password" id="password" name="password" placeholder="Password" ><br><br>
-                        <input type="date" id="dob" name="dob"><br><br>
+                    	<label for="firstName">Nome:</label>
+                        <input type="text" id="name" name="firstName" required>
+                        <label for="lastName">Cognome:</label>
+                        <input type="text" id="surname" name="lastName"  required>
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" name="username"  required>
+                        <label for="email">Email:</label>
+                        <input type="text" id="email" name="email" required>
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" required >
+                        <label for="dob">Data di nascita:</label>
+                        <input type="date" id="dob" name="dob" required>
                     </div>
                     <div class="container_button">
                         <button type="submit" id="button_signin">Registrati</button>

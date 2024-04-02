@@ -64,7 +64,7 @@ public class AcceptCardServlet extends HttpServlet {
     			}
     	
         // TODO Auto-generated method stub
-        response.getWriter().append("Served at: ").append(request.getContextPath());
+        response.sendRedirect("MyAccountServlet");
     }
 
     /**
@@ -82,7 +82,7 @@ public class AcceptCardServlet extends HttpServlet {
         User activeUser = (User)request.getSession().getAttribute("activeUser");
         BusinessLogic.updateUserCard(activeUser, "");
         BusinessLogic.updateUserCard(activeUser, randomString);
-        response.sendRedirect("AccountInfoServlet");
+        response.sendRedirect("AcceptCardServlet");
         
     }
 

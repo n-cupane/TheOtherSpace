@@ -40,23 +40,25 @@ public class ProvaServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//Controllo Aggiuntivo
-		if(request.getSession().getAttribute("activeUser")==null) {
-			response.sendRedirect("LogInServlet");
-			return;
-		}
+//		//Controllo Aggiuntivo
+//		if(request.getSession().getAttribute("activeUser")==null) {
+//			response.sendRedirect("LogInServlet");
+//			return;
+//		}
+//		
+//		boolean isLoggedIn = (request.getSession().getAttribute("activeUser") != null);
+//        request.setAttribute("isLoggedIn",isLoggedIn);
+//        
+//        if(isLoggedIn) {
+//            // Se l'utente è loggato, mostro solo username e logout nel dropdown
+//            User activeUser =  (User)request.getSession().getAttribute("activeUser");
+//            String activeUserUsername = activeUser.getUsername();
+//            request.setAttribute("username", activeUserUsername);
+//        } 
+//		
+//		request.getRequestDispatcher("html/Prova.jsp").forward(request, response);
 		
-		boolean isLoggedIn = (request.getSession().getAttribute("activeUser") != null);
-        request.setAttribute("isLoggedIn",isLoggedIn);
-        
-        if(isLoggedIn) {
-            // Se l'utente è loggato, mostro solo username e logout nel dropdown
-            User activeUser =  (User)request.getSession().getAttribute("activeUser");
-            String activeUserUsername = activeUser.getUsername();
-            request.setAttribute("username", activeUserUsername);
-        } 
-		
-		request.getRequestDispatcher("html/Prova.jsp").forward(request, response);
+		SendMail.generateNewPassword();
 	}
 
 	/**

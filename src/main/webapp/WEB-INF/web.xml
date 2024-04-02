@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xsi:schemaLocation="http://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd" id="WebApp_ID" version="6.0">
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xsi:schemaLocation="http://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd https://jakarta.ee/xml/ns/jakartaee http://xmlns.jcp.org/xml/ns/javaee" id="WebApp_ID" version="6.0">
   <display-name>TheOtherSpace</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
@@ -324,5 +324,15 @@
   <servlet-mapping>
     <servlet-name>RemoveReviewServlet</servlet-name>
     <url-pattern>/RemoveReviewServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PasswordForgottenServlet</display-name>
+    <servlet-name>PasswordForgottenServlet</servlet-name>
+    <servlet-class>com.theotherspace.controller.PasswordForgottenServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PasswordForgottenServlet</servlet-name>
+    <url-pattern>/PasswordForgottenServlet</url-pattern>
   </servlet-mapping>
 </web-app>
