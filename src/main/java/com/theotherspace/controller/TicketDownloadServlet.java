@@ -59,6 +59,11 @@ public class TicketDownloadServlet extends HttpServlet {
             request.setAttribute("username", activeUserUsername);
         } 
         
+        if(ticketSeat==0) {
+			response.sendRedirect("MyTicketServlet");
+			return;}
+		
+        
         
         request.setAttribute("screeningTicketTime", screeningDateTimeString);
         request.setAttribute("ticketPrice", ticketPrice);

@@ -48,4 +48,37 @@ public class SendMail {
 		}
 	}
 	
+public static void sendConfirmation(User activeUser) {
+		
+		StringBuilder msg = new StringBuilder();
+		msg.append("Ti confermiamo l'emissione dei tuoi biglietti");
+		msg.append("\npuoi trovarli in area personale sotto la voce i tuoi biglietti\n");
+		msg.append("per qualsiasi info o dubbio contattaci a: cinema.theotherspace@gmail.com\n");
+		msg.append("nel caso avessi aderito alla promozione TheOtherCard\n");
+		msg.append("troverai il tuo saldo aggiornato\n");
+		msg.append("A presto su http://fraxthrough.duckdns.org:57435/TheOtherSpace/");
+		
+		Properties props = new Properties();
+		props.put("mail.smtp.host", "smtp.gmail.com");
+		props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        
+        Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+        	protected javax.mail.PasswordAuthentication getPasswordAuthentication() {
+        		return new PasswordAuthentication(user, appPass);
+        	}
+        });
+        
+        try {
+        	MimeMessage message = new MimeMessage(session);
+        	message.setFrom(new InternetAddress(user));
+        	message.addRecipient(Message.RecipientType.TO, new InternetAddress(activeUser.getEmail()));
+        	message.setSubject("Conferma Emissione biglietti");
+        	message.setText(msg.toString());
+        	Transport.send(message);
+        } catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 }

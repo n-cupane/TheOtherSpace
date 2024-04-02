@@ -61,6 +61,12 @@ public class BookingServlet extends HttpServlet {
             request.setAttribute("username", activeUserUsername);
           
         } 
+        
+      //Controllo Aggiuntivo
+      		if(screeningDateTimeVariable==null) {
+      			response.sendRedirect("HomePageServlet");
+      			return;
+      		}
 		
 		//Prelevo l'orario della proiezione
 		int hour = screeningDateTimeVariable.getHour();

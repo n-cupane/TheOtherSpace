@@ -12,6 +12,7 @@ import com.theotherspace.model.Screening;
 import com.theotherspace.model.Ticket;
 import com.theotherspace.model.User;
 import com.theotherspace.utilities.BusinessLogic;
+import com.theotherspace.utilities.SendMail;
 
 /**
  * Servlet implementation class ConfirmationServlet
@@ -108,6 +109,8 @@ public class ConfirmationServlet extends HttpServlet {
 			Ticket blockedTicketConfirmed = new Ticket(userTicket,blockedTicketScreening,blockedTicketPrice,blockedTicketSeat);
 			BusinessLogic.addTicket(blockedTicketConfirmed);
 		}
+		
+		SendMail.sendConfirmation(userTicket);
         
         response.sendRedirect("AccountInfoServlet");
 	}

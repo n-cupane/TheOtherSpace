@@ -50,6 +50,12 @@ public class CheckOutServlet extends HttpServlet {
             request.setAttribute("username", activeUserUsername);
           
         }  
+        
+      //Controllo Aggiuntivo
+  		if(ticketNumber==0) {
+  			response.sendRedirect("HomePageServlet");
+  			return;
+  		}
 			
 			request.setAttribute("price", price);
 			request.setAttribute("screeningDateTimeVariable", screeningDateTimeVariable);
