@@ -29,7 +29,7 @@ padding: 0;
 a {
     color: white;
     text-decoration: none;
-    font-size: 1vw;
+    font-size:1vw;
 
 }
 
@@ -137,7 +137,7 @@ p {
 .container_movies a {
     color: black;
     text-decoration: none;
-    font-size: 1.3vw;
+    font-size: 1vw;
     width: 12%;
     text-align: center;
 }
@@ -240,6 +240,16 @@ p {
 	font-size: 20px;
 }
 
+#buttonForm {
+	height: 3vh;
+	 display: flex;
+	  justify-content: center;
+	  align-content: center;
+}
+#buttonForm button{
+	height: 100%;
+}
+
 .form {
 	color:black;
     display: flex;
@@ -264,7 +274,7 @@ p {
 form {
     width: 100%; 
     align-content: center;
-    justify-content: space-between;
+    justify-content: space-around;
     text-align: center; 
     margin-bottom: 2%;
     color: black;
@@ -277,9 +287,7 @@ form button {
     font-size: 0.8vw;
 }
 
-form button{
-	margin-top: 2%; 
-}
+
 
 
 .delete a{
@@ -311,7 +319,7 @@ footer {
 
 .footer-content p{
 	margin-top:20px;
-    font-size: 1vw;
+    font-size: 0.8vw;
 }
 
 
@@ -350,9 +358,7 @@ footer {
 
 
 #myNextTicket {
-    background-image: url("/TheOtherSpace/res/Ticket_template.jpeg");
-    background-size: cover; 
-    background-position: center; 
+    background-color: rgba(0, 0, 0, 0.1);
     width: 70%;
     max-width:70%;
     max-height:40vh;
@@ -364,13 +370,44 @@ footer {
     justify-content:space-around;
     align-items: center; 
     padding: 20px; 
+    border: 3px solid orange;
 }
+
+#myNextTicketButton{
+	
+    width: 70%;
+    max-width:70%;
+    max-height:40vh;
+    margin-left: 15%;
+    margin-top:5%;
+    border-radius: 30px;
+    display: flex;
+    flex-wrap:wrap;
+    justify-content:space-around;
+    align-items: center; 
+    padding: 20px; 
+   
+}
+
+
 
 
 #myNextTicket label,
 #myNextTicket input {
     width: 25%; /* Aggiunge spazio tra gli elementi */
-    margin-left: 25%;
+    margin-left: 10%;
+    
+  
+}
+
+
+#myNextTicket input {
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    border: 1px solid orange;
+    color: white;
+    width: 25%; /* Aggiunge spazio tra gli elementi */
+
     
   
 }
@@ -403,7 +440,7 @@ h2{
 
 .container-ticket-expansion {
     width: 40%;
-    height: 50%;
+    height: 80%;
     border: 2px solid black;
     box-sizing: border-box;
     display: flex;
@@ -412,13 +449,13 @@ h2{
 
 .sub-container {
     width: 100%;
-    border-top: 2px solid black;
+    border-top:1px solid black;
     padding: 10px;
     box-sizing: border-box;
 }
 
 .sub-container:last-child {
-    border-bottom: 2px solid black;
+ border-top:1px solid black;
 }
 
 .sub-container:first-child {

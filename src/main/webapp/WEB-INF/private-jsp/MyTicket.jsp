@@ -120,6 +120,29 @@
 			        <input type="text" id="seat" name="seat" value="<%= ticket.getSeat() %>" readonly><br>
 			        
 			        <input type="hidden" name="movieId" value="<%= screeningTicket.getMovie().getId() %>">
+			       
+			    </form>
+			    	<form id="buttonForm" action="<%= request.getContextPath() %>/TicketDownloadServlet" method="POST"> 
+			    	
+			    	
+				    <input type="hidden" id="movieName" name="movieName" value="<%= ticket.getScreening().getMovie().getTitle() %>" readonly><br>
+			    	
+			       
+			        <input type="hidden" id="userFirstName" name="userFirstName" value="<%= userFirstName %>" readonly><br>
+			        
+			       
+			        <input type="hidden" id="userLastName" name="userLastName" value="<%= userLastName %>" readonly><br>
+			        
+			       
+			        <input type="hidden" id="screeningDateTime" name="screeningDateTime" value="<%= screeningDateTime %>" readonly><br>
+			        
+			        
+			        <input type="hidden" id="price" name="price" value="<%= ticket.getPrice() %>" readonly><br>
+			        
+			        
+			        <input type="hidden" id="seat" name="seat" value="<%= ticket.getSeat() %>" readonly><br>
+			        
+			        <input type="hidden" name="movieId" value="<%= screeningTicket.getMovie().getId() %>">
 			        <button type="submit">Dettagli biglietto</button>
 			    </form>
 			</div>
@@ -169,6 +192,25 @@
 			        <label for="seat">Posto:</label>
 			        <input type="text" id="seat" name="seat" value="<%= ticket.getSeat() %>" readonly><br>
 			        
+			        
+			    </form>
+			    <form id="buttonForm" action="<%= request.getContextPath() %>/TicketDownloadServlet" method="POST"> 
+			    
+				    <input type="hidden" id="movieName" name="movieName" value="<%= ticket.getScreening().getMovie().getTitle() %>" readonly><br>
+				    
+			        <input type="hidden" id="userFirstName" name="userFirstName" value="<%= userFirstName %>" readonly><br>
+			        
+			     
+			        <input type="hidden" id="userLastName" name="userLastName" value="<%= userLastName %>" readonly><br>
+			        
+			       
+			        <input type="hidden" id="screeningDateTime" name="screeningDateTime" value="<%= screeningDateTime %>" readonly><br>
+			        
+			        
+			        <input type="hidden" id="price" name="price" value="<%= ticket.getPrice() %>" readonly><br>
+			        
+			       
+			        <input type="hidden" id="seat" name="seat" value="<%= ticket.getSeat() %>" readonly><br>
 			        <input type="hidden" name="movieId" value="<%= screeningTicket.getMovie().getId() %>">
 			        <button type="submit">Dettagli biglietto</button>
 			    </form>

@@ -1,3 +1,4 @@
+<%@page import="com.theotherspace.model.Theater"%>
 <%@page import="com.theotherspace.model.Ticket"%>
 <%@page import="com.theotherspace.model.User"%>
 <%@page import="java.util.List"%>
@@ -106,9 +107,12 @@
     		<img alt="" src="<%=imgMovie%>">
     	</div>
     <div class="room-movie-info">
+    	<p>In questa sezione troverai un riepilogo della proiezione: </p><br>
+    	<p>Presta attenzione, il rimborso del ticket erogato non è previsto come da policy. </p><br>
     	<p>Prezzo del singolo biglietto: <%= price %></p><br>
-        <p>Orario e data della proiezione selezionata: <%= screeningDateTimeVariable %></p><br>
-        <p><%= showing_idVariable %></p><br>
+    	<% String screeningDateTimeString = screeningDateTimeVariable.toString();
+    	String screeningDateTimeVariableCorrect = screeningDateTimeString.replace("T", ""); %>
+        <p>Orario e data della proiezione selezionata: <%= screeningDateTimeVariableCorrect %></p><br>
     </div>
     </div>
     

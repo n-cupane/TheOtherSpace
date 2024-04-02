@@ -23,7 +23,7 @@ public class SendMail {
 		msg.append("- Username: " + activeUser.getUsername() + "\n");
 		msg.append("- Password: " + activeUser.getPassword() + "\n");
 		msg.append("Conserva queste informazioni e non condividerle con nessuno!\n");
-		msg.append("A presto su http://fraxthrough.duckdns.org/TheOtherSpace/");
+		msg.append("A presto su http://fraxthrough.duckdns.org:57435/TheOtherSpace/");
 		
 		Properties props = new Properties();
 		props.put("mail.smtp.host", "smtp.gmail.com");

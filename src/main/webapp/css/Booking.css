@@ -1,4 +1,5 @@
-
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&display=swap');
 
 .container-room {
     background-color: white;
@@ -59,7 +60,7 @@ padding: 0;
 a {
     color: white;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 1vw;
 
 }
 
@@ -311,7 +312,7 @@ form label{
 
 footer {
 	width:100vw;
-    background-color: #333;
+    background-color: black;
     color: white;
     padding: 30px;
     text-align: center;
@@ -323,8 +324,20 @@ footer {
     justify-content: space-around;
 }
 
+.footer-content li{
+    font-size: 0.6vw;
+}
+
+.footer-content p{
+	margin-top:20px;
+    font-size: 0.7vw;
+}
+
+
+
 .footer-content h4 {
     color: orange;
+    font-size: 1vw;
 }
 
 .footer-content ul {
@@ -384,33 +397,50 @@ footer {
 	
 }
 .room-movie-info{
-	height: 45vh;
-	text-align: center;
-	width: 30%;
+	width: 50%;
+	display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+
 }
 
 .room-movie-info p{
-	color: black;
+	color: white;
+	margin-left: 15%;
+	font-size: 1.5vh;
 }
 
 #conferma{
 	width: 100%;
+	border-radius: 20px;
+	background-color: rgba(0, 0, 0, 0.9);
+	border:3px solid orange;
+	color: white;
 }
 
 
 .checkout {
-    color: black;
-    height: 66vh;
+	border:3px solid orange;
+	border-radius:20px;
+	width:50vw;
+	background-color: rgba(0, 0, 0, 0.9);
+    color: white;
+    min-height: 66vh;
     display: flex;
     justify-content: center; /* Centra il contenuto orizzontalmente */
     flex-wrap: wrap;
+    margin-left:25vw;
     align-items: center;
     align-content: center;
-    text-align: center; /* Allinea il testo al centro */
+    text-align: center;
+    margin-bottom: 15vh; 
+    padding: 40px;/* Allinea il testo al centro */
 }
 
 .checkout p {
     width: 100%;
+    font-size: 1.3vh;
 }
 
 .checkout form {
@@ -418,14 +448,27 @@ footer {
     justify-content: center;
 }
 
+.checkout button{
+	border: 3px solid orange;
+	border-radius: 6px;
+	color: white;
+	background-color: rgba(0, 0, 0, 0.9);
+}
+
 
 .testo-img {
-	border-top:1px solid orange;
-
+	
+	border:3px solid orange;
+	width:50vw;
+	background-color: rgba(0, 0, 0, 0.9);
 	margin-top: 10%;
     display: flex;
     justify-content: center; /* Allinea i div interni al centro orizzontalmente */
-    height: 60vh;
+    height: 30vh;
+    margin-left: 25vw;
+    border-radius: 20px;
+    margin-bottom: 10vh;
+    color: white;
 }
 
 
@@ -437,7 +480,16 @@ footer {
 }
 
 img{
-    height: 70%;
+    height: 80%;
+}
+
+
+.img {
+	
+	
+    display: flex;
+    justify-content: center; /* Allinea i div interni al centro orizzontalmente */
+    align-items: center;
 }
 
 

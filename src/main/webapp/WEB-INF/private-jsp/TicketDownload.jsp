@@ -86,10 +86,12 @@
 		    </div>
 		    <!-- Secondo div -->
 		    <div class="sub-container">
-		        <p><%= ticketMovieTitle %></p>
-		        <p><%= ticketPrice %></p>
-		        <p><%= ticketSeat %></p>
-		        <p><%= screeningTicketTime %></p>
+		   		<p> Inquadrando il QR-Code verrai reindirizzato alla schermata dei tuoi biglietti</p>
+		   		<p> Nel caso in cui non avessi effettuato il login verrai reindirizzato alla pagina di Login</p>
+		        <p> La tua proiezione: <%= ticketMovieTitle %></p>
+		        <p> Prezzo: <%= ticketPrice %></p>
+		        <p> Il tuo Posto: <%= ticketSeat %></p>
+		        <p> Orario proiezione: <%= screeningTicketTime %></p>
 		    </div>
 		    <!-- Terzo div -->
 		    <div class="sub-container">
