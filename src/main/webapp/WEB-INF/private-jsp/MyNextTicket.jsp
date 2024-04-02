@@ -1,3 +1,4 @@
+<%@page import="java.time.format.DateTimeFormatter"%>
 <%@page import="com.theotherspace.model.Screening"%>
 <%@page import="com.theotherspace.model.User"%>
 <%@page import="com.theotherspace.model.Ticket"%>
@@ -28,7 +29,7 @@
             
             <nav class="col-3 d-flex align-items-center justify-content-evenly">
 
-                <a href="#container_movies">FILM</a>
+               <a href="<%=request.getContextPath()%>/HomePageServlet">HOME</a>
                 
 
             </nav>
@@ -79,14 +80,14 @@
 		<div class="nextTicket">
 		<% if (nextScreening != null && userNextTicket != null) { %>
 			<form id="myNextTicket" action="<%= request.getContextPath() %>/TicketDownloadServlet" method="POST"> 
-						<label for="movieName">Movie name:</label>
+						<label for="movieName">Film:</label>
 				        <input type="text" id="movieName" name="movieName" value="<%= userNextTicket.getScreening().getMovie().getTitle() %>" readonly><br>
-				        <label for="userFirstName">User First Name:</label>
+				        <label for="userFirstName">Nome:</label>
 				        <input type="text" id="userFirstName" name="userFirstName" value="<%= activeUser.getFirstName() %>" readonly><br>
-				        <label for="userLastName">User Last Name:</label>
+				        <label for="userLastName">Cognome:</label>
 				        <input type="text" id="userLastName" name="userLastName" value="<%= activeUser.getLastName() %>" readonly><br>
-					    <label for="screeningDateTime">Screening Date Time:</label>
-					    <input type="text" id="screeningDateTime" name="screeningDateTime" value="<%= nextScreening.getDateTime() %>" readonly><br>
+					    <label for="screeningDateTime">Data e ora:</label>
+					    <input type="text" id="screeningDateTime" name="screeningDateTime" value="<%= nextScreening.getDateTime().format(DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm")) %>" readonly><br>
 					    <label for="price">Prezzo:</label>
 					    <input type="text" id="price" name="price" value="<%= userNextTicket.getPrice() %>" readonly><br>
 				        <label for="seat">Posto:</label>

@@ -15,7 +15,7 @@
                 <form action="<%= request.getContextPath() %>/SignUpServlet" method="POST">
                     <div class="container_input">
                     	<label for="firstName">Nome:</label>
-                        <input type="text" id="name" name="firstName" required>
+                        <input type="text" id="name" name="firstName" autofocus required>
                         <label for="lastName">Cognome:</label>
                         <input type="text" id="surname" name="lastName"  required>
                         <label for="username">Username:</label>

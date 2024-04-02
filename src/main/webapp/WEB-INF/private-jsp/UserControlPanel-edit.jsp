@@ -24,7 +24,7 @@
             <h3>Pannello di controllo</h3>
             <span id="below-h3"></span>
     
-            <a href="<%= request.getContextPath() %>/UserControlPanelServlet" class="left-menu-element">
+            <a href="<%= request.getContextPath() %>/UserControlPanelServlet" class="left-menu-element current">
             <span class="material-icons">&#xe7ef;</span>
             <h5>Utenti</h5>
         </a>
@@ -34,7 +34,7 @@
             <h5>Film</h5>
         </a>
 
-        <a href="<%= request.getContextPath() %>/TheaterControlPanelServlet" class="left-menu-element current">
+        <a href="<%= request.getContextPath() %>/TheaterControlPanelServlet" class="left-menu-element">
             <span class="material-icons">&#xefed;</span>
             <h5>Sale</h5>
         </a>
@@ -44,7 +44,7 @@
             <h5>Proiezioni</h5>
         </a>
     
-            <a id="logout" href="">logout</a>
+            <a id="logout" href="<%=request.getContextPath() %>/LogoutServlet">logout</a>
     
         </div>
         

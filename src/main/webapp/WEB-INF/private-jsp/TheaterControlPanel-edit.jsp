@@ -45,7 +45,7 @@
             <h5>Proiezioni</h5>
         </a>
     
-            <a id="logout" href="">logout</a>
+            <a id="logout" href="<%=request.getContextPath() %>/LogoutServlet">logout</a>
     
         </div>
         

@@ -6,7 +6,9 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.theotherspace.model.Movie;
 import com.theotherspace.model.Review;
@@ -65,6 +67,13 @@ public class MovieDetailsServlet extends HttpServlet {
 		 request.setAttribute("movieGenre", BusinessLogic.findGenreById(movieToDisplay.getGenre().getId()).getName() );
 		 request.setAttribute("imgUrl", movieToDisplay.getImageUrl());
 		 List<Screening> screeningsOfMovie = BusinessLogic.findAllScreningsByMovieId(movieId);
+		 if (screeningsOfMovie != null) {
+			 screeningsOfMovie = screeningsOfMovie.stream()
+					 				.filter(s -> s.getDateTime().isAfter(LocalDateTime.now()))
+					 				.collect(Collectors.toList());
+		 }
+		 
+		 
 		 request.setAttribute("screeningsOfMovie", screeningsOfMovie);
 		 request.setAttribute("movieReviews", movieReviews);
 		 

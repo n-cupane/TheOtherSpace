@@ -14,7 +14,7 @@
                 <h2 id="title">LOGIN</h2>
                 <form action="<%= request.getContextPath() %>/LogInServlet" method="POST">
                     <div class="container_input">
-                        <input type="text" id="email" name="email" placeholder="E-mail" required><br><br>
+                        <input type="text" id="email" name="email" placeholder="E-mail" autofocus required><br><br>
                         <input type="password" id="password" name="password" placeholder="Password" ><br><br>
                     </div>
                     <div class="container_button">

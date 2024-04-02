@@ -58,7 +58,6 @@ public class ProvaServlet extends HttpServlet {
 //		
 //		request.getRequestDispatcher("html/Prova.jsp").forward(request, response);
 		
-		SendMail.generateNewPassword();
 	}
 
 	/**

@@ -1,3 +1,4 @@
+<%@page import="java.time.format.DateTimeFormatter"%>
 <%@page import="com.theotherspace.model.User"%>
 <%@page import="com.theotherspace.utilities.BusinessLogic"%>
 <%@page import="com.theotherspace.model.Screening"%>
@@ -27,7 +28,7 @@
             
             <nav class="col-3 d-flex align-items-center justify-content-evenly">
 
-                <a href="#container_movies">FILM</a>
+                <a href="<%=request.getContextPath()%>/HomePageServlet">HOME</a>
                 
 
             </nav>
@@ -101,17 +102,17 @@
             <div class="ticket">
 			    <form id="myNextTicket" action="<%= request.getContextPath() %>/TicketDownloadServlet" method="POST"> 
 			    	
-			    	<label for="movieName">Movie name:</label>
+			    	<label for="movieName">Titolo:</label>
 				    <input type="text" id="movieName" name="movieName" value="<%= ticket.getScreening().getMovie().getTitle() %>" readonly><br>
 			    	
-			        <label for="userFirstName">User First Name:</label>
+			        <label for="userFirstName">Nome:</label>
 			        <input type="text" id="userFirstName" name="userFirstName" value="<%= userFirstName %>" readonly><br>
 			        
-			        <label for="userLastName">User Last Name:</label>
+			        <label for="userLastName">Cognome:</label>
 			        <input type="text" id="userLastName" name="userLastName" value="<%= userLastName %>" readonly><br>
 			        
-			        <label for="screeningDateTime">Screening Date Time:</label>
-			        <input type="text" id="screeningDateTime" name="screeningDateTime" value="<%= screeningDateTime %>" readonly><br>
+			        <label for="screeningDateTime">Data e ora:</label>
+			        <input type="text" id="screeningDateTime" name="screeningDateTime" value="<%= screeningDateTime.format(DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm")) %>" readonly><br>
 			        
 			        <label for="price">Prezzo:</label>
 			        <input type="text" id="price" name="price" value="<%= ticket.getPrice() %>" readonly><br>

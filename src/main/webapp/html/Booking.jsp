@@ -26,7 +26,7 @@
             
             <nav class="col-3 d-flex align-items-center justify-content-evenly">
 
-                <a href="#container_movies">FILM</a>
+                <a href="<%=request.getContextPath()%>/HomePageServlet">HOME</a>
                 
 
             </nav>
