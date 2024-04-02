@@ -111,7 +111,7 @@
 	<%} else { %>
 			<div class="container">
 		    <div class="left-half">
-		        <img src="https://i0.wp.com/www.tariffando.it/wp-content/uploads/2021/05/Immagine.png?fit=794%2C410&ssl=1" alt="Image" class="image">
+		        <img src="<%=request.getContextPath() %>/res/TheOtherSpaceCard.png" alt="Image" class="image">
 		        <div class="my-card">
 		    	<p>Username: <%=activeUser.getUsername() %></p>
 		    	<p>Codice carta: <%=activeUser.getCardCode()%></p>
@@ -151,7 +151,7 @@
             </ul>
         </div>
         <div class="space-cinema-section">
-            <h4>THE SPACE CINEMA</h4>
+            <h4>THE OTHER SPACE CINEMA</h4>
             <ul>
                 <li>Chi siamo</li>
                 <li>PNRR</li>

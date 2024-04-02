@@ -110,7 +110,7 @@
             </ul>
         </div>
         <div class="space-cinema-section">
-            <h4>THE SPACE CINEMA</h4>
+            <h4>THE OTHER SPACE CINEMA</h4>
             <ul>
                 <li>Chi siamo</li>
                 <li>PNRR</li>
