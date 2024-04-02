@@ -112,7 +112,7 @@ public class ConfirmationServlet extends HttpServlet {
 		
 		SendMail.sendConfirmation(userTicket);
         
-        response.sendRedirect("AccountInfoServlet");
+        response.sendRedirect("MyNextTicketServlet");
 	}
 
 }

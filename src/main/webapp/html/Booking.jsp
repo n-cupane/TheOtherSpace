@@ -111,7 +111,7 @@
     	<p>Presta attenzione, il rimborso del ticket erogato non è previsto come da policy. </p><br>
     	<p>Prezzo del singolo biglietto: <%= price %></p><br>
     	<% String screeningDateTimeString = screeningDateTimeVariable.toString();
-    	String screeningDateTimeVariableCorrect = screeningDateTimeString.replace("T", ""); %>
+    	String screeningDateTimeVariableCorrect = screeningDateTimeString.replace("T", " "); %>
         <p>Orario e data della proiezione selezionata: <%= screeningDateTimeVariableCorrect %></p><br>
     </div>
     </div>

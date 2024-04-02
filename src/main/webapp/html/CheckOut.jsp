@@ -103,7 +103,9 @@
 		    <%if(haveCard) {%>
 		    	<p>Un saldo inferiore ai 1000 punti comporterà uno sconto di 1 euro ogni 100 punti</p>
 		    	<p>Un saldo pari a 1000 punti comporterà l'emissione di un biglietto omaggio</p>
+		    	<p>Utilizza il saldo della tua card</p>
 	        	<input type="checkbox" name="usePoints" value="true">
+	        	<p></p>
 
         	<%} %>
 		    <button type="submit">Confirm Checkout</button>
