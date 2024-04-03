@@ -84,7 +84,7 @@ public class LogInServlet extends HttpServlet {
         // Per ogni utente nel DB verifico se le credenziali inserite appratengono ad uno di essi
         
         for (User user : users) {
-            if (user.getEmail().equals(email) && user.getPassword().equals(password)) {
+            if (user.getEmail().equalsIgnoreCase(email) && user.getPassword().equals(password)) {
                 loginSuccess = true;
                 break;
             } 

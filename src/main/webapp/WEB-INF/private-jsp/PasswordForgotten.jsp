@@ -6,7 +6,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Recupero Password</title>
-        <link rel="stylesheet" href="<%=request.getContextPath() %>/css/LoginStyle.css">
+        <link rel="stylesheet" href="<%=request.getContextPath() %>/css/NewPasswordStyle.css">
+        
     </head>
     <body>
         <div class="container_total">

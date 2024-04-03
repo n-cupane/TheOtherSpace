@@ -98,8 +98,9 @@
 		        <p>Benvenuto nel cinema The Other Space. Siamo lieti di averti come nostro ospite.</p>
 		        <p>Il biglietto che hai appena acquistato ti dà accesso a un'esperienza cinematografica straordinaria.</p>
 		        <p>Assicurati di arrivare in tempo per lo spettacolo e di prendere posto comodamente.</p>
-		        <p>Ricordati di conservare il biglietto durante tutto lo spettacolo e di mostrarlo al personale in caso di necessità.</p>
-		        <p>Se hai domande o richieste, non esitare a chiedere al personale. Siamo qui per rendere la tua esperienza al cinema indimenticabile.</p>
+		        <p>Conserva il biglietto durante tutto lo spettacolo e mostralo al personale in caso di necessità.</p>
+		        <p>Se hai dubbi, domande o perplessità, non esitare a chiedere al personale.</p>
+		        <p>Siamo qui per rendere la tua esperienza al cinema indimenticabile.</p>
 		    </div>
 		</div>
    </div>
