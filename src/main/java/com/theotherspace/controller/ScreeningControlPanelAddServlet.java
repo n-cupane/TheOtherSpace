@@ -31,11 +31,7 @@ public class ScreeningControlPanelAddServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//Controllo Aggiuntivo
-				if(request.getSession().getAttribute("activeUser")==null) {
-					response.sendRedirect("LogInServlet");
-					return;
-				}
+
 		if (((User)request.getSession().getAttribute("activeUser")).getId() != 1) {
 			response.sendRedirect("HomePageServlet");
 			return;
@@ -47,12 +43,6 @@ public class ScreeningControlPanelAddServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		//Controllo Aggiuntivo
-		if(request.getSession().getAttribute("activeUser")==null) {
-			response.sendRedirect("LogInServlet");
-			return;
-		}
 		
 		if (((User)request.getSession().getAttribute("activeUser")).getId() != 1) {
 			response.sendRedirect("HomePageServlet");

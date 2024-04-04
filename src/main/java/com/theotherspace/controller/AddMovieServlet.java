@@ -30,22 +30,6 @@ public class AddMovieServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		//Controllo Aggiuntivo
-		if(request.getSession().getAttribute("activeUser")==null) {
-			response.sendRedirect("LogInServlet");
-			return;
-		}
-		
-		boolean isLoggedIn = (request.getSession().getAttribute("activeUser") != null);
-        request.setAttribute("isLoggedIn",isLoggedIn);
-        
-        if(isLoggedIn) {
-            // Se l'utente è loggato, mostro solo username e logout nel dropdown
-            User activeUser =  (User)request.getSession().getAttribute("activeUser");
-            String activeUserUsername = activeUser.getUsername();
-            request.setAttribute("username", activeUserUsername);
-        }
         
 		Movie movie = new Movie();
 		Long movieId = null;
@@ -99,12 +83,6 @@ public class AddMovieServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		//Controllo Aggiuntivo
-		if(request.getSession().getAttribute("activeUser")==null) {
-			response.sendRedirect("LogInServlet");
-			return;
-		}
 		
 		Long oldMovieId = null;
 		try {

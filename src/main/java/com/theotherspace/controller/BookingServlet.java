@@ -45,12 +45,6 @@ public class BookingServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//Controllo Aggiuntivo
-		if(request.getSession().getAttribute("activeUser")==null) {
-			response.sendRedirect("LogInServlet");
-			return;
-		}
-		
 		//Verifico che l'utente sia loggato
 		boolean isLoggedIn = (request.getSession().getAttribute("activeUser") != null);
         request.setAttribute("isLoggedIn",isLoggedIn);

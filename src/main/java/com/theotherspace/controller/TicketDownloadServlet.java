@@ -42,12 +42,7 @@ public class TicketDownloadServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	
-    	//Controllo Aggiuntivo
-		if(request.getSession().getAttribute("activeUser")==null) {
-			response.sendRedirect("LogInServlet");
-			return;
-		}
+
 		
 		boolean isLoggedIn = (request.getSession().getAttribute("activeUser") != null);
         request.setAttribute("isLoggedIn",isLoggedIn);
@@ -84,14 +79,7 @@ public class TicketDownloadServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//Controllo Aggiuntivo
-		if(request.getSession().getAttribute("activeUser")==null) {
-			response.sendRedirect("LogInServlet");
-			return;
-		}
-		
-		
-        
+
         // Prelevo i dati del biglietto dal form 
         
          ticketMovieId = Long.parseLong(request.getParameter("movieId"));

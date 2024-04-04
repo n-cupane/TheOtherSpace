@@ -39,12 +39,7 @@ public class MyNextTicketServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//Controllo Aggiuntivo
-		if(request.getSession().getAttribute("activeUser")==null) {
-			response.sendRedirect("LogInServlet");
-			return;
-		}
-		
+
 		boolean isLoggedIn = (request.getSession().getAttribute("activeUser") != null);
         request.setAttribute("isLoggedIn",isLoggedIn);
         

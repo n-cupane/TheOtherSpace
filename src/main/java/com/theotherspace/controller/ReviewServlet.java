@@ -16,23 +16,14 @@ public class ReviewServlet extends HttpServlet {
 	long userId;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		//Controllo Aggiuntivo
-		if(request.getSession().getAttribute("activeUser")==null) {
-			response.sendRedirect("LogInServlet");
-			return;
-		}
+
 		request.setAttribute("movieId", movieId);
 		request.setAttribute("userId", userId);
 		request.getRequestDispatcher("WEB-INF/private-jsp/Review.jsp").forward(request, response);
     }
 	
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	//Controllo Aggiuntivo
-		if(request.getSession().getAttribute("activeUser")==null) {
-			response.sendRedirect("LogInServlet");
-			return;
-		}
+
         // Recupera i dati della recensione dalla richiesta
         movieId = Long.parseLong(request.getParameter("movieId"));
         userId = Long.parseLong(request.getParameter("userId"));

@@ -57,12 +57,6 @@ public class AcceptCardServlet extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	
-    	//Controllo Aggiuntivo
-    			if(request.getSession().getAttribute("activeUser")==null) {
-    				response.sendRedirect("LogInServlet");
-    				return;
-    			}
-    	
         // TODO Auto-generated method stub
         response.sendRedirect("MyAccountServlet");
     }
@@ -72,11 +66,7 @@ public class AcceptCardServlet extends HttpServlet {
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	
-    	//Controllo Aggiuntivo
-    			if(request.getSession().getAttribute("activeUser")==null) {
-    				response.sendRedirect("LogInServlet");
-    				return;
-    			}
+
     	
         String randomString = generateRandomString();
         User activeUser = (User)request.getSession().getAttribute("activeUser");

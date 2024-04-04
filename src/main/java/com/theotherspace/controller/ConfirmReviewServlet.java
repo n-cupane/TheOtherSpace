@@ -38,14 +38,7 @@ public class ConfirmReviewServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		//Controllo Aggiuntivo
-		if(request.getSession().getAttribute("activeUser")==null) {
-			response.sendRedirect("LogInServlet");
-			return;
-		}
-		
-		// TODO Auto-generated method stub
+
 		String textReview = request.getParameter("reviewText");
 		long userId = Long.parseLong(request.getParameter("userId"));
 		long movieId = Long.parseLong(request.getParameter("movieId"));

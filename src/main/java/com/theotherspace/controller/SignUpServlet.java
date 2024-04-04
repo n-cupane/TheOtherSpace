@@ -53,7 +53,16 @@ public class SignUpServlet extends HttpServlet {
 		username = request.getParameter("username");
 		email = request.getParameter("email");
 		password = request.getParameter("password");
-		dob = LocalDate.parse(request.getParameter("dob"));
+		String dobString = request.getParameter("dob");
+		
+//		Controlli per impedire all'utente di non inserire dati nel form
+		if (firstName.isBlank() || lastName.isBlank() || username.isBlank() || email.isBlank() || password.isBlank() || dobString.isBlank()) {
+			response.sendRedirect("SignUpServlet");
+			return;
+		}
+		
+		dob = LocalDate.parse(dobString);
+		
 		
 //		Creo il nuovo utente
 		User u = new User();

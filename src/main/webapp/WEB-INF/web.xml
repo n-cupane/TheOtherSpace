@@ -345,4 +345,13 @@
     <servlet-name>AccountDeletionServlet</servlet-name>
     <url-pattern>/AccountDeletionServlet</url-pattern>
   </servlet-mapping>
+  <filter>
+    <display-name>LoggedFilter</display-name>
+    <filter-name>LoggedFilter</filter-name>
+    <filter-class>com.theotherspace.utilities.LoggedFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>LoggedFilter</filter-name>
+    <url-pattern>/LoggedFilter</url-pattern>
+  </filter-mapping>
 </web-app>
