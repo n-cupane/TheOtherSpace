@@ -24,7 +24,7 @@ import com.theotherspace.model.User;
 		"ReviewServlet", "ScreeningControlPanelAddServlet", "ScreeningControlPanelEditServlet",
 		"ScreeningControlPanelServlet", "SearchMovieServlet", "TheaterControlPanelAddServlet",
 		"TheaterControlPanelEditServlet", "TheaterControlPanelServlet", "TicketDownloadServlet",
-		"UserControlPanelAddServlet", "UserControlPanelEditServlet", "UserControlPanel"})
+		"UserControlPanelAddServlet", "UserControlPanelEditServlet", "UserControlPanelServlet"})
 public class LoggedFilter extends HttpFilter implements Filter {
        
     /**
@@ -48,7 +48,6 @@ public class LoggedFilter extends HttpFilter implements Filter {
 	public void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
 		
 		User activeUser = (User) request.getSession().getAttribute("activeUser");
-		System.out.println("uuuuuuuuuuuuuuuuu au:" + activeUser);
 		if (activeUser == null) {
 			response.sendRedirect("LogInServlet");
 			return;
