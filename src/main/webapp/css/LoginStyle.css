@@ -17,7 +17,7 @@ body{
 }
 
 #title{
-    font-size: 30px;
+    font-size: 1.5vw;
     margin-bottom: 20px;
     color: white;
 }
@@ -41,8 +41,10 @@ form{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 20vw;
-    height: 15vw;
+    max-width: 20vw;
+    min-width: 20vw;
+    max-height: 15vw;
+    min-height: 15vw;
     border: 2px solid orange;
     border-radius: 10%;
     padding: 70px;
@@ -59,7 +61,7 @@ input{
     border: 1px solid black;
     border-radius: 10px;
     box-sizing: border-box;
-    font-size: 17px;
+    font-size: 0.8vw;
 }
 
 ::placeholder{
@@ -80,13 +82,14 @@ input{
     border: 1px solid black;
     border-radius: 15px;
     background-color: orange;
-    font-size: 17px;
+    font-size: 0.8vw;
 }
 
  p {
- 	font-size:medium;
+ 	
 	color:white;
 	text-align: center;
+	font-size: 0.8vw;
 }
 
 a {

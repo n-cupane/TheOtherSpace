@@ -49,8 +49,18 @@ padding: 0;
 
 #header {
 	width:100vw;
-    height: 10vh;
+    max-height: 11vh;
     background-color: black;
+}
+
+.col-2 {
+  max-height: 100%;
+  min-height:	100%;
+}
+
+.col-3 {
+  max-height: 100%;
+  min-height:	100%;
 }
 
 [alt="Logo The Space"] {
@@ -64,14 +74,22 @@ a {
 
 }
 
-#logo_other_space{
-    width: 80%;
+#logo_other_space {
+    max-height: 10vh;
+    min-height: 10vh;
+    
 }
 
 #btn {
     background-color: black;
     border: 3px solid orange;
-    width: 100%;
+ 
+}
+
+#btn {
+  max-height: 10vh;
+
+  
 }
 
 div.dropdown {
@@ -81,11 +99,12 @@ div.dropdown {
 #search-icon {
     border-left: 1px solid grey;
     margin-left: 6%;
-    padding-left: 3%;
+
 }
 
 p {
-    margin: 0;
+	margin:0;
+    font-size: 0.8vw;
 }
 
 .carousel-indicators button {

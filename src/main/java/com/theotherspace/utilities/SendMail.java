@@ -24,12 +24,13 @@ public class SendMail {
 		msg.append("- Username: " + activeUser.getUsername() + "\n");
 		msg.append("- Password: " + activeUser.getPassword() + "\n");
 		msg.append("Conserva queste informazioni e non condividerle con nessuno!\n");
-		msg.append("A presto su http://theotherspace.duckdns.org/TheOtherSpace/");
+		msg.append("A presto su http://fraxthrough.duckdns.org:57435/TheOtherSpace/");
 		
 		Properties props = new Properties();
 		props.put("mail.smtp.host", "smtp.gmail.com");
 		props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.port", "587");
         
         Session session = Session.getInstance(props, new javax.mail.Authenticator() {
         	protected javax.mail.PasswordAuthentication getPasswordAuthentication() {
@@ -57,12 +58,13 @@ public class SendMail {
 		msg.append("per qualsiasi info o dubbio contattaci a: cinema.theotherspace@gmail.com\n");
 		msg.append("nel caso avessi aderito alla promozione TheOtherCard\n");
 		msg.append("troverai il tuo saldo aggiornato\n");
-		msg.append("A presto su http://theotherspace.duckdns.org/TheOtherSpace/");
+		msg.append("A presto su http://fraxthrough.duckdns.org:57435/TheOtherSpace/");
 		
 		Properties props = new Properties();
 		props.put("mail.smtp.host", "smtp.gmail.com");
 		props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.port", "587");
         
         Session session = Session.getInstance(props, new javax.mail.Authenticator() {
         	protected javax.mail.PasswordAuthentication getPasswordAuthentication() {
@@ -95,6 +97,7 @@ public class SendMail {
 		props.put("mail.smtp.host", "smtp.gmail.com");
 		props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.port", "587");
         
         Session session = Session.getInstance(props, new javax.mail.Authenticator() {
         	protected javax.mail.PasswordAuthentication getPasswordAuthentication() {

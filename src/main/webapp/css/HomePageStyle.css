@@ -26,9 +26,22 @@ background-position: center; */
 
 #header {
 	width:100vw;
-    height: 11vh;
+    max-height: 11vh;
     background-color: black;
 }
+
+.col-2 {
+  max-height: 100%;
+  min-height:	100%;
+}
+
+.col-3 {
+  max-height: 100%;
+  min-height:	100%;
+}
+
+
+
 
 [alt="Logo The Space"] {
     max-height: 10vh;
@@ -41,8 +54,10 @@ a {
 
 }
 
-#logo_other_space{
-    width: 80%;
+#logo_other_space {
+    max-height: 10vh;
+    min-height: 10vh;
+    
 }
 
 #btn {
@@ -50,6 +65,13 @@ a {
     border: 3px solid orange;
  
 }
+
+#btn {
+  max-height: 10vh;
+
+  
+}
+
 
 div.dropdown {
     width: 35%;
