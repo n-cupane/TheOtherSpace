@@ -278,4 +278,41 @@ public class JDBCTicketDao implements TicketDao {
 		
 	}
 
+	@Override
+	public List<Ticket> findAllTicketsOfUserOrderByDate(long userId) {
+		
+		List<Ticket> ticketsToReturn = new ArrayList<>();
+		
+		try (Connection c = JDBCDaoFactory.getConnection()) {
+			
+			PreparedStatement ps = c.prepareStatement("select * from ticket JOIN SHOWING ON SHOWING_ID=SHOWING.ID where user_id = ? ORDER BY SHOWING.DATE_TIME");
+			ps.setLong(1, userId);
+			ResultSet rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				
+				Ticket t = new Ticket();
+				long ticketId = rs.getLong("id");
+				long screeningId = rs.getLong("showing_id");
+				double price = rs.getDouble("price");
+				int seat = rs.getInt("seat");
+				
+				t.setId(ticketId);
+				t.setUserId(userId);
+				t.setScreeningId(screeningId);
+				t.setPrice(price);
+				t.setSeat(seat);
+				
+				ticketsToReturn.add(t);
+				
+			}
+			
+			return (ticketsToReturn.size()>0) ? ticketsToReturn : null;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
 }

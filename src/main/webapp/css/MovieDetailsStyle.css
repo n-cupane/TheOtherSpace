@@ -1,0 +1,417 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: black;
+    color: white;
+    font-family: 'Oswald', sans-serif;
+    
+}
+
+#container {
+padding: 0;
+}
+
+#header {
+	width:100vw;
+    max-height: 11vh;
+    background-color: black;
+}
+
+.col-2 {
+  max-height: 100%;
+  min-height:	100%;
+}
+
+.col-3 {
+  max-height: 100%;
+  min-height:	100%;
+}
+
+[alt="Logo The Space"] {
+    padding-bottom: 2%;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    font-size: 1vw;
+
+}
+
+#logo_other_space {
+    max-height: 10vh;
+    min-height: 10vh;
+    
+}
+
+#btn {
+    background-color: black;
+    border: 3px solid orange;
+ 
+}
+
+#btn {
+  max-height: 10vh;
+
+  
+}
+
+div.dropdown {
+    width: 35%;
+}
+
+#search-icon {
+    border-left: 1px solid grey;
+    margin-left: 6%;
+
+}
+
+p {
+	margin:0;
+    font-size: 0.8vw;
+}
+
+.carousel-indicators button {
+    margin: 0 0,5% 0 !important;
+    width: 10px  !important;
+    height: 10px  !important;
+    border-radius: 100%;
+}
+
+#row-scegli-cinema {
+    height: 8.5vh;
+}
+
+#col-scegli-cinema {
+    height: 100%;
+    width: 43%;
+    padding: 0;
+}
+
+#scegli-cinema {
+    height: 100%;
+    width: 40%;
+}
+
+#div-arancione {
+    background-color: orange;
+    width: 90px;
+    height: 3px;
+
+}
+
+#ricerca-cinema {
+    width: 100%;
+}
+
+#ricerca-cinema p {
+    font-size: 20pt;
+    display: inline-block;
+}
+
+#select-cinema {
+    width: 50%;
+    display: inline-block;
+    background-color: black;
+    color: grey;
+    border: none;
+    border-bottom: 1px solid grey;
+}
+#select-cinema-btn {
+    width: 12%;
+    height: 80%;
+    background-color: black;
+    color: white;
+    border: 3px solid grey;
+    border-radius: 5%;
+
+}
+
+#text_all_movies{
+	padding-left: 4vw;
+	padding-top:4vw;
+}
+
+.container_movies{
+	padding-left: 4vw;
+	padding-right: 4vw;
+	padding-top: 1vw;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+
+
+.container_poster{
+	width: 15%;
+	height: 40vh;
+	margin-bottom: 10px;
+}
+
+.poster_movie{
+	width: 100%;
+	height: 100%;
+	background-image: url('../res/background.jpg'); 
+	background-size: cover; 
+	background-position: center; 
+	
+}
+
+#title_movie{
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	font-size: 20px;
+}
+
+#movie-container {
+	width: 100%;
+	padding-top: 5%;
+	padding-bottom: 5%;
+	background-color: #0e0e0e;
+	display: flex;
+	flex-direction: row;
+}
+
+#left-movie-container {
+	width: 60%;
+	height: 100%;
+}
+
+#right-movie-container {
+	width: 40%;
+	height: 100%;
+}
+
+#movie-image {
+	width: 30%;
+	display: block;
+	margin: auto;
+}
+
+#movie-title {
+	margin-bottom: 3%;
+}
+
+#below-title {
+	width: 12%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+	margin-bottom: 5%;
+}
+
+#over-18 {
+	width: 30%;
+}
+
+#movie-genre {
+	font-weight: lighter;
+	color: #cccccc;
+	width: 60%;
+}
+
+#movie-description {
+	font-weight: lighter;
+	color: #cccccc;
+	width: 70%;
+	margin-bottom: 8%;
+}
+
+#screening-select {
+	background-color: #0e0e0e;
+	width: 70%;
+	border: 1px solid #aaaaaa;
+	border-radius: 6px;
+	color: white;
+	padding: 1%;
+	margin-bottom: 8%;
+	font-size: 1.3vh;
+}
+
+#submit-btn {
+	background-color: #0e0e0e;
+	width: 70%;
+	padding: 2%;
+	border: 3px solid orange;
+	border-radius: 6px;
+	color: white;
+	font-size: 1.3vh;
+}
+
+.reviews{
+	display: flex;
+	justify-content: center;
+	align-items: ceneter;
+	width: 100%;
+	flex-wrap: wrap;
+	margin-bottom: 5%;
+	margin-top: 3%;
+	background-image: url('https://wallpapercave.com/wp/wp6418815.jpg'); 
+	background-size: cover; 
+	background-position: center; 
+}
+
+.container-review{
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	width: 50%;
+	margin-top: 2%;
+	margin-left: 5%;
+	margin-right: 5%;
+	border-radius: 10px;
+	background-color: rgba(0, 0, 0, 0.7);
+	border: 2px solid orange;
+	flex-wrap: wrap;
+}
+
+.review-user{
+	width: 50%;
+	text-align: left;
+	margin-top: 1%;
+	font-size: large;
+	align-items: center;
+	display: flex;
+}
+
+.review-date{
+	width: 50%;
+	text-align: right;
+	margin-top: 2%;
+	color: grey;
+}
+
+.review-text{
+	width: 80%;
+	text-align: left;
+	margin: auto;
+	background-color: rgba(128, 128, 128, 0.3);
+	margin-top: 2%;
+	border-radius: 10px;
+	
+}
+
+.review-rating{
+	width: 70%;
+	text-align: left;
+	margin-bottom: 2%;
+	margin-top: 2%;
+}
+
+.review-user p{
+	font-size: 25px;
+	width: 70%;
+	
+}
+
+.review-rating p{
+	margin-left: 5%;
+}
+
+.review-text p{
+	margin-left: 5%;
+	margin-top: 2%;
+	margin-bottom: 2%;
+}
+
+.review-date p{
+	margin-right: 5%;
+}
+
+.review-user span{
+	display: block;
+	width: 5%;
+	margin-top:1%;
+	margin-left:5%;
+}
+
+footer {
+	width:100vw;
+    background-color: black;
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.footer-content li{
+    font-size: 0.6vw;
+}
+
+.footer-content p{
+	margin-top:20px;
+    font-size: 0.7vw;
+}
+
+
+
+.footer-content h4 {
+    color: orange;
+    font-size: 1vw;
+}
+
+.footer-content ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-content ul li {
+    margin-bottom: 10px;
+}
+
+.app-section p {
+    margin-top: 20px;
+}
+
+.star {
+    visibility:hidden;
+    font-size:35px;
+    cursor:pointer;
+    color: white;
+}
+
+.star:before {
+   content: "\2605";
+   position: absolute;
+   visibility:visible;
+}
+
+.star:checked:before {
+   content: "\2606";
+   position: absolute;
+}
+
+.delete {
+    color: orangered; 
+    background-color: rgba(0, 0, 0, 0);
+	border: none;
+	justify-self: flex-end;
+	margin-top: 5%;
+}
+
+.rm-rw {
+	margin-left: 20%;
+}
+
+
+
+
+
+
+
+
+
+

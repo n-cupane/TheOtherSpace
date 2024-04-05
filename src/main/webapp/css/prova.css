@@ -1,0 +1,428 @@
+.container {
+    width: 100%;
+    height:80vh;
+    display: flex;
+    margin-bottom: 10%;
+}
+
+.left-half {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image {
+    width: 80%;
+}
+
+.right-half {
+    width: 50%;
+	color:black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.inner-div {
+    flex: 1;
+    margin: 5px;
+    padding: 10px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: white;
+    color: white;
+    font-family: 'Oswald', sans-serif;
+}
+
+#container {
+padding: 0;
+}
+
+#header {
+    height: 10vh;
+    background-color: black;
+}
+
+[alt="Logo The Space"] {
+    padding-bottom: 2%;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+
+}
+
+#logo_other_space{
+    width: 80%;
+}
+
+#btn {
+    background-color: black;
+    border: 3px solid orange;
+    width: 100%;
+}
+
+div.dropdown {
+    width: 35%;
+}
+
+#search-icon {
+    border-left: 1px solid grey;
+    margin-left: 6%;
+    padding-left: 3%;
+}
+
+p {
+    margin: 0;
+}
+
+.carousel-indicators button {
+    margin: 0 0,5% 0 !important;
+    width: 10px  !important;
+    height: 10px  !important;
+    border-radius: 100%;
+}
+
+#row-scegli-cinema {
+    height: 8.5vh;
+}
+
+#col-scegli-cinema {
+    height: 100%;
+    width: 43%;
+    padding: 0;
+}
+
+#scegli-cinema {
+    height: 100%;
+    width: 40%;
+}
+
+#div-arancione {
+    background-color: orange;
+    width: 90px;
+    height: 3px;
+
+}
+
+#ricerca-cinema {
+    width: 100%;
+}
+
+#ricerca-cinema p {
+    font-size: 20pt;
+    display: inline-block;
+}
+
+#select-cinema {
+    width: 50%;
+    display: inline-block;
+    background-color: black;
+    color: grey;
+    border: none;
+    border-bottom: 1px solid grey;
+}
+#select-cinema-btn {
+    width: 12%;
+    height: 80%;
+    background-color: black;
+    color: white;
+    border: 3px solid grey;
+    border-radius: 5%;
+
+}
+
+#text_all_movies{
+	padding-left: 4vw;
+	padding-top:4vw;
+}
+
+.container_movies {
+    padding-left: 4vw;
+    padding-right: 4vw;
+    padding-top: 1vw;
+    width: 100%;
+    display: flex;
+    background-color: white;
+    align-items: center; /* Posiziona gli elementi al centro verticalmente */
+    justify-content: center; /* Posiziona gli elementi al centro orizzontalmente */
+}
+
+.container_movies a {
+    color: black;
+    text-decoration: none;
+    font-size: 20px;
+    width: 12%;
+    text-align: center;
+}
+
+
+.container_poster{
+	width: 15%;
+	height: 40vh;
+}
+
+.poster_movie{
+	width: 100%;
+	height: 100%;
+	background-image: url("https://www.themoviedb.org/t/p/w600_and_h900_bestv2/zozGfM5kO9qbx1XSvwDwrh6yTca.jpg");
+	background-size: cover;
+	background-position: center;
+	
+}
+
+#title_movie{
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	font-size: 20px;
+}
+
+#movie-container {
+	width: 100%;
+	padding-top: 5%;
+	padding-bottom: 5%;
+	background-color: #0e0e0e;
+	display: flex;
+	flex-direction: row;
+}
+
+#left-movie-container {
+	width: 60%;
+	height: 100%;
+}
+
+#right-movie-container {
+	width: 40%;
+	height: 100%;
+}
+
+#movie-image {
+	width: 30%;
+	display: block;
+	margin: auto;
+}
+
+#movie-title {
+	margin-bottom: 3%;
+}
+
+#below-title {
+	width: 12%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+	margin-bottom: 5%;
+}
+
+#over-18 {
+	width: 30%;
+}
+
+#movie-genre {
+	font-weight: lighter;
+	color: #cccccc;
+	width: 60%;
+}
+
+#movie-description {
+	font-weight: lighter;
+	color: #cccccc;
+	width: 70%;
+	margin-bottom: 8%;
+}
+
+#screening-select {
+	background-color: #0e0e0e;
+	width: 70%;
+	border: 1px solid #aaaaaa;
+	border-radius: 6px;
+	color: white;
+	padding: 1%;
+	margin-bottom: 8%;
+}
+
+#submit-btn {
+	background-color: #0e0e0e;
+	width: 70%;
+	padding: 2%;
+	border: 3px solid orange;
+	border-radius: 6px;
+	color: white;
+	font-size: 20px;
+}
+
+.form {
+	color:black;
+    display: flex;
+    background-color: white;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%; 
+    height: 100vh;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10%;
+    
+}
+
+.form h2{
+	margin-top:5%;
+	width: 100%;
+	text-align: center;
+	margin-bottom: 4%;
+}
+form {
+    width: 100%; 
+    align-content: center;
+    justify-content: space-between;
+    text-align: center; 
+    margin-bottom: 2%;
+}
+
+form label,
+form input,
+form button {
+    margin-bottom: 2%; 
+}
+
+
+.delete a{
+	color: orange;
+}
+
+form label{
+	width: 5%;
+	text-align: justify;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.footer-content h4 {
+    color: orange;
+}
+
+.footer-content ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-content ul li {
+    margin-bottom: 10px;
+}
+
+.app-section p {
+    margin-top: 20px;
+}
+
+.nextTicket{
+	background-color: white;
+	width: 100%;
+	color: black;
+	
+}
+
+.container-next-ticket{
+	background-color: white;
+	width: 100%;
+	height: 100vh;
+	
+}
+
+
+#myNextTicket {
+    background-image: url("/TheOtherSpace/res/Ticket_template.jpeg");
+    background-size: cover; 
+    background-position: center; 
+    width: 50%;
+    margin-left: 25%;
+    border-radius: 30px;
+    display: flex;
+    flex-wrap:wrap;
+    justify-content:space-around;
+    align-items: center; /* Centra gli elementi orizzontalmente */
+    padding: 20px; /* Aggiunge spazio interno al form */
+}
+
+
+#myNextTicket label,
+#myNextTicket input {
+    width: 25%; /* Aggiunge spazio tra gli elementi */
+    margin-left: 25%;
+  
+}
+
+
+.conditions-form {
+  width: 50%;
+  height:66vh;
+  margin: auto;
+  color: black;
+}
+
+.conditions-form form {
+  text-align: justify;
+}
+
+.conditions-form div {
+  display: flex;
+  align-items: center;
+  margin-top: 100px; /* Aggiunto margine top */
+}
+
+.conditions-form label {
+  margin-left: 10px;
+  width: 50%;
+}
+
+.conditions-form input[type="submit"] {
+  margin-top: 100px; 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
