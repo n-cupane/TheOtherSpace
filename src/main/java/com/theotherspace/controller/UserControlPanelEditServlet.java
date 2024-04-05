@@ -30,12 +30,6 @@ public class UserControlPanelEditServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		
-		if (((User)request.getSession().getAttribute("activeUser")).getId() != 1) {
-			response.sendRedirect("HomePageServlet");
-			return;
-		}
 		
 		long userId = Long.parseLong(request.getParameter("userId"));
 		User userToEdit = BusinessLogic.findUserById(userId);

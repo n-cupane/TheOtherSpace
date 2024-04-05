@@ -31,12 +31,6 @@ public class TheaterControlPanelEditServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
-		if (((User)request.getSession().getAttribute("activeUser")).getId() != 1) {
-			response.sendRedirect("HomePageServlet");
-			return;
-		}
-		
 		long theaterId = Long.parseLong(request.getParameter("theaterId"));
 		Theater theaterToEdit = BusinessLogic.findTheaterById(theaterId);
 		request.setAttribute("theaterToEdit", theaterToEdit);

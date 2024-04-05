@@ -31,11 +31,6 @@ public class SearchMovieServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		if (((User)request.getSession().getAttribute("activeUser")).getId() != 1) {
-			response.sendRedirect("HomePageServlet");
-			return;
-		}
-		
 		boolean isLoggedIn = (request.getSession().getAttribute("activeUser") != null);
         request.setAttribute("isLoggedIn",isLoggedIn);
         

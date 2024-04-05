@@ -36,12 +36,6 @@ public class ScreeningControlPanelEditServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		
-		if (((User)request.getSession().getAttribute("activeUser")).getId() != 1) {
-			response.sendRedirect("HomePageServlet");
-			return;
-		}
-		
 		long screeningId = Long.parseLong(request.getParameter("screeningId"));
 		Screening screeningToEdit = BusinessLogic.findScreeningById(screeningId);
 		request.setAttribute("screeningToEdit", screeningToEdit);

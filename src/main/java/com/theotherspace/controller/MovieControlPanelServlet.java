@@ -31,12 +31,6 @@ public class MovieControlPanelServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		
-		if (((User)request.getSession().getAttribute("activeUser")).getId() != 1) {
-			response.sendRedirect("HomePageServlet");
-			return;
-		}
-		
 		List<Movie> movies = BusinessLogic.findAllMovies();
 		request.setAttribute("movies", movies);
 		request.getRequestDispatcher("WEB-INF/private-jsp/MovieControlPanel.jsp").forward(request, response);

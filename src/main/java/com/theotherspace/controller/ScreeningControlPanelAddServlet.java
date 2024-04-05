@@ -32,10 +32,6 @@ public class ScreeningControlPanelAddServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		if (((User)request.getSession().getAttribute("activeUser")).getId() != 1) {
-			response.sendRedirect("HomePageServlet");
-			return;
-		}
 		request.getRequestDispatcher("WEB-INF/private-jsp/ScreeningControlPanel-add.jsp").forward(request, response);
 	}
 
