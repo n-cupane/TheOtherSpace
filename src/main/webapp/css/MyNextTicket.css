@@ -17,7 +17,7 @@ padding: 0;
 }
 
 #header {
-	width:100vw;
+	margin: 0;
     max-height: 11vh;
     background-color: black;
 }
@@ -319,7 +319,6 @@ form label{
 }
 
 footer {
-	width:100vw;
     background-color: black;
     color: white;
     padding: 30px;
