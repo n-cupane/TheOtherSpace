@@ -56,12 +56,6 @@ public class AccountInfoServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		//Controllo Aggiuntivo
-				if(request.getSession().getAttribute("activeUser")==null) {
-					response.sendRedirect("LogInServlet");
-					return;
-				}
 				
 		long userId = Long.parseLong(request.getParameter("userId"));
 		String username = request.getParameter("username");
@@ -76,7 +70,7 @@ public class AccountInfoServlet extends HttpServlet {
 		String cardNumber = userBeforeChanges.getCardCode();
 		int cardPoints = userBeforeChanges.getCardPoints();
 		
-		
+//		TODO: Aggiungere controlli di validità delle nuove informazioni utente, come newUserOk in SignUpServlet
 		User updatedUser = new User(userId,username,firstName,lastName,email,password,dob);
 		
 		updatedUser.setCardCode(cardNumber);

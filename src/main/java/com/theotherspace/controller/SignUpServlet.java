@@ -121,6 +121,16 @@ public class SignUpServlet extends HttpServlet {
 			return false;
 		}
 		
+		if (LocalDate.now().getYear() - u.getDateOfBirth().getYear() > 110) {
+			errorMsg = "Devi avere meno di 110 anni!";
+			return false;
+		}
+		
+		if (u.getDateOfBirth().isAfter(LocalDate.now())) {
+			errorMsg = "Per iscriverti devi essere già nato!";
+			return false;
+		}
+		
 		return true;
 	}
 
