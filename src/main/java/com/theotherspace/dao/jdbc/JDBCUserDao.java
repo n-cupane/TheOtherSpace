@@ -258,4 +258,42 @@ public class JDBCUserDao implements UserDao {
 		
 	}
 
+	@Override
+	public User findUserByUsername(String username) {
+try (Connection c = JDBCDaoFactory.getConnection()) {
+			
+			PreparedStatement ps = c.prepareStatement("select * from user where username = ?");
+			ps.setString(1, username);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			if (rs.next()) {
+				User u = new User();
+				
+				long userId = rs.getLong("id");
+				String email = rs.getString("email");
+				String firstName = rs.getString("name");
+				String lastName = rs.getString("surname");
+				String password = rs.getString("password");
+				LocalDate dob = rs.getDate("dob").toLocalDate(); 
+				
+				u.setId(userId);
+				u.setUsername(username);
+				u.setFirstName(firstName);
+				u.setLastName(lastName);
+				u.setEmail(email);
+				u.setPassword(password);
+				u.setDateOfBirth(dob);
+				
+				return u;
+				
+			} else {
+				return null;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
 }

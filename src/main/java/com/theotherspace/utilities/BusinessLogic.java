@@ -1,9 +1,16 @@
 package com.theotherspace.utilities;
 
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import com.theotherspace.dao.DaoFactory;
+import com.theotherspace.model.Review;
+import com.theotherspace.model.Screening;
+import com.theotherspace.model.Theater;
+import com.theotherspace.model.Favorite;
+import com.theotherspace.model.Genre;
+import com.theotherspace.model.Movie;
 import com.theotherspace.model.Ticket;
 import com.theotherspace.model.User;
 
@@ -45,7 +52,29 @@ public class BusinessLogic {
 		return DaoFactory.getDaoFactory().getUserDao().findAllUsersForScreening(screeningId);
 	}
 	
+	public static User findUserByUsername(String username) {
+		return DaoFactory.getDaoFactory().getUserDao().findUserByUsername(username);
+	}
 	
+	public static List<Movie> findAllFavoritesOfUser(long id) {
+		return DaoFactory.getDaoFactory().getUserDao().findAllFavoritesOfUser(id);
+	}
+	
+	public static void updateUserCard(User u, String s) {
+		DaoFactory.getDaoFactory().getUserDao().updateCardInsert(u, s);
+	}
+	
+	public static void updateUserCardPoint(User u, Integer p) {
+		DaoFactory.getDaoFactory().getUserDao().updateCardPointInsert(u, p);
+	}
+	
+	public static void addToFavorites(long userId, long movieId) {
+		DaoFactory.getDaoFactory().getUserDao().addToFavorites(userId, movieId);
+	}
+	
+	public static void removeFromFavorites(long userId, long movieId) {
+		DaoFactory.getDaoFactory().getUserDao().removeFromFavorites(userId, movieId);
+	}
 	
 //	METODI TICKET
 	
@@ -80,5 +109,173 @@ public class BusinessLogic {
 	public static List<Ticket> findAllTicketsForMovie(long movieId) {
 		return DaoFactory.getDaoFactory().getTicketDao().findAllTicketsForMovie(movieId);
 	}
-
-}
+	
+	public static List<Ticket> findAllTicketsOfUserOrderByDate(long userId){
+		return DaoFactory.getDaoFactory().getTicketDao().findAllTicketsOfUserOrderByDate(userId);
+	}
+	
+// 	METODI REVIEW
+	
+	public static Review findReviewById(long id) {
+		return DaoFactory.getDaoFactory().getReviewDao().findById(id);
+	}
+	
+	public static List<Review> findAllReviews() {
+		return DaoFactory.getDaoFactory().getReviewDao().findAll();
+	}
+	
+	public static void updateReview(Review rw) {
+		DaoFactory.getDaoFactory().getReviewDao().update(rw);
+	}
+	
+	public static void deleteReview(long id) {
+		DaoFactory.getDaoFactory().getReviewDao().delete(id);
+	}
+	
+	public static void addReview(Review rw) {
+		DaoFactory.getDaoFactory().getReviewDao().insert(rw);
+	}
+	public static List<Review> findAllReviewsOfMovie(long id) {
+		return DaoFactory.getDaoFactory().getReviewDao().findAllReviewsOfMovie(id);
+	}
+	
+	
+// METODI THEATER
+	
+	public static Theater findTheaterById(long id) {
+		return DaoFactory.getDaoFactory().getTheaterDao().findById(id);
+	}
+	
+	public static List<Theater> findAllTheaters() {
+		return DaoFactory.getDaoFactory().getTheaterDao().findAll();
+	}
+	
+	public static void updateTheater(Theater tr) {
+		DaoFactory.getDaoFactory().getTheaterDao().update(tr);
+	}
+	
+	public static void deleteTheater(long id) {
+		DaoFactory.getDaoFactory().getTheaterDao().delete(id);
+	}
+	
+	public static void addTheater(Theater tr) {
+		DaoFactory.getDaoFactory().getTheaterDao().insert(tr);
+	}
+	
+	public static Theater findTheaterByNumber(int theaterNumber) {
+		return DaoFactory.getDaoFactory().getTheaterDao().findTheaterByNumber(theaterNumber);
+	}
+	
+// METODI SCREENING
+	
+	public static Screening findScreeningById(long id) {
+		return DaoFactory.getDaoFactory().getScreeningDao().findById(id);
+	}
+	
+	public static List<Screening> findAllScreenings() {
+		return DaoFactory.getDaoFactory().getScreeningDao().findAll();
+	}
+	
+	public static void updateScreening(Screening sc) {
+		DaoFactory.getDaoFactory().getScreeningDao().update(sc);
+	}
+	
+	public static void deleteScreening(long id) {
+		DaoFactory.getDaoFactory().getScreeningDao().delete(id);
+	}
+	
+	public static void addScreening(Screening sc) {
+		DaoFactory.getDaoFactory().getScreeningDao().insert(sc);
+	}
+	
+	public static List<Screening> findAllScreningsByMovieId(long movieId) {
+		return DaoFactory.getDaoFactory().getScreeningDao().findAllScreeningsByMovieId(movieId);
+	}
+	
+	public static boolean timeSlotIsFree(long theaterId, long movieId, LocalDateTime beginning) {
+		return DaoFactory.getDaoFactory().getScreeningDao().timeSlotIsFree(theaterId, movieId, beginning);
+	}
+	
+	
+//	METODI MOVIE
+	
+	public static Movie findMovieById(long id) {
+		return DaoFactory.getDaoFactory().getMovieDao().findById(id);
+	}
+	
+	public static List<Movie> findAllMovies() {
+		return DaoFactory.getDaoFactory().getMovieDao().findAll();
+	}
+	
+	public static void updateMovie(Movie m) {
+		DaoFactory.getDaoFactory().getMovieDao().update(m);
+	}
+	
+	public static void deleteMovie(long id) {
+		DaoFactory.getDaoFactory().getMovieDao().delete(id);
+	}
+	
+	public static void addMovie(Movie m) {
+		DaoFactory.getDaoFactory().getMovieDao().insert(m);
+	}
+	
+	public static Movie findMovieByTitle(String title) {
+		return DaoFactory.getDaoFactory().getMovieDao().findMovieByTitle(title);
+	}
+	
+	public static List<Movie> findAllMoviesForGenre(Genre g) {
+		return DaoFactory.getDaoFactory().getMovieDao().findAllMoviesForGenre(g);
+	}
+	
+	
+	
+//	METODI GENRE
+	
+	public static Genre findGenreById(long id) {
+		return DaoFactory.getDaoFactory().getGenreDao().findById(id);
+	}
+	
+	public static List<Genre> findAllGenres() {
+		return DaoFactory.getDaoFactory().getGenreDao().findAll();
+	}
+	
+	public static void updateGenre(Genre g) {
+		DaoFactory.getDaoFactory().getGenreDao().update(g);
+	}
+	
+	public static void deleteGenre(long id) {
+		DaoFactory.getDaoFactory().getGenreDao().delete(id);
+	}
+	
+	public static void addGenre(Genre g) {
+		DaoFactory.getDaoFactory().getGenreDao().insert(g);
+	}
+	
+	public static Genre findGenreByName(String name) {
+		return DaoFactory.getDaoFactory().getGenreDao().findGenreByName(name);
+	}
+	
+	
+	
+//	METODI FAVORITE
+	
+	public static Favorite findFavoriteById(long id) {
+		return DaoFactory.getDaoFactory().getFavoriteDao().findById(id);
+	}
+	
+	public static List<Favorite> findAllFavorites() {
+		return DaoFactory.getDaoFactory().getFavoriteDao().findAll();
+	}
+	
+	public static void updateFavorite(Favorite f) {
+		DaoFactory.getDaoFactory().getFavoriteDao().update(f);
+	}
+	
+	public static void deleteFavorite(long id) {
+		DaoFactory.getDaoFactory().getFavoriteDao().delete(id);
+	}
+	
+	public void addFavorite(Favorite f) {
+		DaoFactory.getDaoFactory().getFavoriteDao().insert(f);
+	}
+} 

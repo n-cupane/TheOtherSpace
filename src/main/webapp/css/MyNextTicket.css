@@ -1,0 +1,531 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: white;
+    color: white;
+    font-family: 'Oswald', sans-serif;
+}
+
+#container {
+padding: 0;
+}
+
+#header {
+	width:100vw;
+    max-height: 11vh;
+    background-color: black;
+}
+
+.col-2 {
+  max-height: 100%;
+  min-height:	100%;
+}
+
+.col-3 {
+  max-height: 100%;
+  min-height:	100%;
+}
+
+[alt="Logo The Space"] {
+    max-height: 10vh;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    font-size:1vw;
+
+}
+
+#myTicket {
+	width: 5vw important;
+}
+
+
+
+#logo_other_space {
+    max-height: 10vh;
+    min-height: 10vh;
+    
+}
+
+#btn {
+    background-color: black;
+    border: 3px solid orange;
+ 
+}
+
+#btn {
+  max-height: 10vh;
+
+  
+}
+
+div.dropdown {
+    width: 35%;
+}
+
+#search-icon {
+    border-left: 1px solid grey;
+    margin-left: 6%;
+}
+
+p {
+	margin:0;
+    font-size: 0.8vw;
+}
+
+.carousel-indicators button {
+    margin: 0 0,5% 0 !important;
+    width: 10px  !important;
+    height: 10px  !important;
+    border-radius: 100%;
+}
+
+#row-scegli-cinema {
+    height: 8.5vh;
+}
+
+#col-scegli-cinema {
+    height: 100%;
+    width: 43%;
+    padding: 0;
+}
+
+#scegli-cinema {
+    height: 100%;
+    width: 40%;
+}
+
+#div-arancione {
+    background-color: orange;
+    width: 90px;
+    height: 3px;
+
+}
+
+#ricerca-cinema {
+    width: 100%;
+}
+
+#ricerca-cinema p {
+    font-size: 1vw;
+    display: inline-block;
+}
+
+#select-cinema {
+    width: 50%;
+    display: inline-block;
+    background-color: black;
+    color: grey;
+    border: none;
+    border-bottom: 1px solid grey;
+}
+#select-cinema-btn {
+    width: 12%;
+    height: 80%;
+    background-color: black;
+    color: white;
+    border: 3px solid grey;
+    border-radius: 5%;
+
+}
+
+#text_all_movies{
+	padding-left: 4vw;
+	padding-top:4vw;
+}
+
+.container_movies {
+    padding-left: 4vw;
+    padding-right: 4vw;
+    padding-top: 1vw;
+    width: 100%;
+    display: flex;
+    background-color: white;
+    align-items: center; /* Posiziona gli elementi al centro verticalmente */
+    justify-content: center; /* Posiziona gli elementi al centro orizzontalmente */
+}
+
+.container_movies a {
+    color: black;
+    text-decoration: none;
+    font-size: 1vw;
+    width: 12%;
+    text-align: center;
+}
+
+
+.container_poster{
+	width: 15%;
+	height: 40vh;
+}
+
+.poster_movie{
+	width: 100%;
+	height: 100%;
+	background-image: url("https://www.themoviedb.org/t/p/w600_and_h900_bestv2/zozGfM5kO9qbx1XSvwDwrh6yTca.jpg");
+	background-size: cover;
+	background-position: center;
+	
+}
+
+#title_movie{
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	font-size: 20px;
+}
+
+#movie-container {
+	width: 100%;
+	padding-top: 5%;
+	padding-bottom: 5%;
+	background-color: #0e0e0e;
+	display: flex;
+	flex-direction: row;
+	
+}
+
+#left-movie-container {
+	width: 60%;
+	height: 100%;
+}
+
+#right-movie-container {
+	width: 40%;
+	height: 100%;
+}
+
+#movie-image {
+	width: 30%;
+	display: block;
+	margin: auto;
+}
+
+#movie-title {
+	margin-bottom: 3%;
+}
+
+#below-title {
+	width: 12%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+	margin-bottom: 5%;
+}
+
+#over-18 {
+	width: 30%;
+}
+
+#movie-genre {
+	font-weight: lighter;
+	color: #cccccc;
+	width: 60%;
+}
+
+#movie-description {
+	font-weight: lighter;
+	color: #cccccc;
+	width: 70%;
+	margin-bottom: 8%;
+}
+
+#screening-select {
+	background-color: #0e0e0e;
+	width: 70%;
+	border: 1px solid #aaaaaa;
+	border-radius: 6px;
+	color: white;
+	padding: 1%;
+	margin-bottom: 8%;
+}
+
+#submit-btn {
+	background-color: #0e0e0e;
+	width: 70%;
+	padding: 2%;
+	border: 3px solid orange;
+	border-radius: 6px;
+	color: white;
+	font-size: 20px;
+}
+
+#buttonForm {
+	height: 3vh;
+	 display: flex;
+	  justify-content: center;
+	  align-content: center;
+}
+#buttonForm button{
+	height: 100%;
+}
+
+.form {
+	color:black;
+    display: flex;
+    background-color: white;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%; /* Imposta la larghezza del modulo */
+    height: 100vh;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+    
+}
+
+.form h2{
+	margin-top:5%;
+	width: 100%;
+	text-align: center;
+	margin-bottom: 4%;
+	font-size: 1.8vw;
+}
+form {
+    width: 100%; 
+    align-content: center;
+    justify-content: space-around;
+    text-align: center; 
+    margin-bottom: 2%;
+    color: black;
+}
+
+form label,
+form input,
+form button {
+    margin-bottom: 2%; 
+    font-size: 0.8vw;
+}
+
+
+
+
+.delete a{
+	color: orange;
+}
+
+form label{
+	width: 5%;
+	text-align: justify;
+}
+
+footer {
+	width:100vw;
+    background-color: black;
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.footer-content li{
+    font-size: 1vw;
+}
+
+.footer-content p{
+	margin-top:20px;
+    font-size: 0.8vw;
+}
+
+
+
+.footer-content h4 {
+    color: orange;
+    font-size: 1.3vw;
+}
+
+.footer-content ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-content ul li {
+    margin-bottom: 10px;
+}
+
+.app-section p {
+    margin-top: 20px;
+}
+
+.nextTicket{
+	background-color: white;
+	width: 100%;
+	color: black;
+	display: flex;
+    flex-wrap:wrap;
+    justify-content:space-around;
+    align-items: center; 
+	
+}
+
+.container-next-ticket{
+	background-color: white;
+	width: 100%;
+	height: 100vh;
+	
+}
+
+
+#myNextTicket {
+    background-color: rgba(0, 0, 0, 0.1);
+    width: 70%;
+    max-width:70%;
+    max-height:40vh;
+    margin-left: 15%;
+    margin-top:5%;
+    border-radius: 30px;
+    display: flex;
+    flex-wrap:wrap;
+    justify-content:space-around;
+    align-items: center; 
+    padding: 20px; 
+    border: 3px solid orange;
+}
+
+#myNextTicketButton{
+	
+    width: 70%;
+    max-width:70%;
+    max-height:40vh;
+    margin-left: 15%;
+    margin-top:5%;
+    border-radius: 30px;
+    display: flex;
+    flex-wrap:wrap;
+    justify-content:space-around;
+    align-items: center; 
+    padding: 20px; 
+   
+}
+
+
+
+
+#myNextTicket label,
+#myNextTicket input {
+    width: 25%; /* Aggiunge spazio tra gli elementi */
+    margin-left: 10%;
+    
+  
+}
+
+
+#myNextTicket input {
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    border: 1px solid orange;
+    color: white;
+    width: 25%; /* Aggiunge spazio tra gli elementi */
+
+    
+  
+}
+
+h2{
+	color: black;
+	margin-top: 2%;
+	margin-bottom: 5%;
+	font-size: 1.8vw;
+}
+
+
+.tickets-not-occurred{
+	min-height: 22vh;
+}
+
+.tickets-occurred{
+	min-height: 22vh;
+}
+
+
+.container-schermata-ticket {
+    width: 100vw;
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+}
+
+.container-ticket-expansion {
+    width: 40%;
+    min-height: 80%;
+    border: 2px solid black;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.sub-container {
+    width: 100%;
+    border-top:1px solid black;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.sub-container:last-child {
+ border-top:1px solid black;
+}
+
+.sub-container:first-child {
+    min-height: 25%;
+}
+
+.sub-container:nth-child(2) {
+    min-height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around; /* Aggiungi spazio tra gli elementi */
+    gap: 20px; /* Aggiunge uno spazio di 20px tra gli elementi */
+}
+
+.sub-container:nth-child(2) p {
+    align-self: flex-start; /* Allinea gli elementi al inizio del div verticalmente */
+}
+
+
+.sub-container:first-child img{
+    height: 10vh;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
